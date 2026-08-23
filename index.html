@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-ch
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnimeArt Studio — AI Character, World Heritage & Cosmic Planets Studio</title>
-  <meta name="description"
-    content="Next-Generation Anime AI Studio with Multilingual Voice Synthesis (English, Tamil, Japanese, Chinese), World Heritage Civilizations, Cosmic Planets, Living Beings, and In-RAM Video Engine.">
+  <title>AnimeArt Studio — AI Character, Action Animation & Motion Studio</title>
+  <meta name="description" content="Next-Generation Anime AI Studio with Natural Language Action & Animation Engine, Multilingual Voice Synthesis, 60FPS In-RAM Cinema Renderer, and World Heritage & Cosmic Planets.">
 
   <!-- Google Fonts for English, Tamil, Japanese, Chinese -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Application Stylesheets -->
   <link rel="stylesheet" href="src/css/main.css">
@@ -23,20 +18,22 @@ ch
   <link rel="stylesheet" href="src/css/assets-manager.css">
   <link rel="stylesheet" href="src/css/modal.css">
 </head>
-
 <body>
 
-  <!-- Top Announcement Promo Banner -->
-  <span>⚡ <span data-i18n="promoBanner">Limited-time offer! Unlock 1 year of limitless AI Character Studio creation
-      at</span> <span class="promo-highlight">UP TO 27% OFF.</span></span>
-  <a href="#pricing" class="promo-btn" data-i18n="viewPlan">View Plan →</a>
-  <button class="promo-close" onclick="document.getElementById('promoBanner').style.display='none'">✕</button>
+  <!-- Top Announcement Promo Banner with Live Countdown Timer (Matching Screenshot) -->
+  <header class="promo-banner" id="promoBanner">
+    <div class="promo-banner-content">
+      <span>🎉 <strong>New Year Sale:</strong> Lifetime access to Starter Plan <del style="opacity: 0.7;">$119/mn</del> → <span class="promo-highlight">Just $99 (no subscriptions)</span></span>
+      <span class="promo-timer-badge" id="promoCountdownBadge">⏳ Expires in: 7d 12h 04m 21s</span>
+      <a href="javascript:void(0)" class="promo-btn" id="btnBannerClaimDeal" onclick="window.App.openModal('pricingModal')" data-i18n="claimDeal">Claim Deal →</a>
+    </div>
+    <button class="promo-close" onclick="document.getElementById('promoBanner').style.display='none'" title="Close banner">✕</button>
   </header>
 
   <!-- Main Top Navigation Bar -->
   <nav class="header-navbar">
     <div class="nav-brand-group">
-      <a href="#" class="brand-logo" data-view-target="studio">
+      <a href="javascript:void(0)" class="brand-logo" data-view-target="studio" onclick="window.App.switchView('studio')">
         <div class="brand-icon">♾️</div>
         <span>AnimeArt</span>
       </a>
@@ -44,10 +41,27 @@ ch
       <span class="breadcrumb-current" id="currentBreadcrumb" data-i18n="navStudio">Anime Studio</span>
     </div>
 
-    <div class="nav-search-bar">
+    <!-- Search Bar with Live Instant Autocomplete Dropdown -->
+    <div class="nav-search-bar" style="position: relative;">
       <span class="search-icon-svg">🔍</span>
-      <input type="text" class="nav-search-input" id="globalSearchInput"
-        placeholder="Search characters, planets, heritage, voices..." data-i18n-placeholder="searchPlaceholder">
+      <input type="text" class="nav-search-input" id="globalSearchInput" placeholder="Search characters, actions, worlds, voices..." data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+      <div class="search-dropdown-menu" id="globalSearchDropdown"></div>
+    </div>
+
+    <!-- Generator Sub-Tabs Navigation (Matching Screenshot) -->
+    <div class="generator-subtabs-nav">
+      <button class="gen-subtab-btn" id="subtabImageGen" onclick="window.App.openModal('imageGenModal')">
+        <span>✨</span> <span>Image Generator</span>
+      </button>
+      <button class="gen-subtab-btn active" id="subtabVideoGen" onclick="window.App.switchView('studio')">
+        <span>🎬</span> <span>Video & Action Generator</span>
+      </button>
+      <button class="gen-subtab-btn" id="subtabCharRig" onclick="window.App.switchView('character-lab')">
+        <span>🎭</span> <span>Character Rig</span>
+      </button>
+      <button class="gen-subtab-btn" id="subtabWorldPlanets" onclick="window.App.switchView('world-hub')">
+        <span>🪐</span> <span>World & Planets</span>
+      </button>
     </div>
 
     <div class="nav-right-actions">
@@ -59,15 +73,15 @@ ch
         <option value="zh">🇨🇳 中文 (Chinese)</option>
       </select>
 
-      <!-- Token Badge -->
-      <div class="token-badge" title="Available Creation Credits">
+      <!-- Token Badge (Clickable to Add Credits) -->
+      <div class="token-badge" id="navTokenBadge" style="cursor: pointer;" onclick="window.App.openModal('pricingModal')" title="Click to view plans & add tokens">
         <span>🪙</span>
-        <span>2,450</span>
+        <span id="navTokenCount">2,450</span>
       </div>
 
-      <a href="#pricing" class="nav-link-btn" data-i18n="pricing">Pricing</a>
-      <a href="#login" class="nav-link-btn" data-i18n="login">Login</a>
-      <button class="btn-primary-gradient" id="btnOpenNewCharModal" data-i18n="startForFree">
+      <a href="javascript:void(0)" class="nav-link-btn" id="navLinkPricing" onclick="window.App.openModal('pricingModal')" data-i18n="pricing">Pricing</a>
+      <a href="javascript:void(0)" class="nav-link-btn" id="navLinkLogin" onclick="window.App.openModal('loginModal')" data-i18n="login">Login</a>
+      <button class="btn-primary-gradient" id="btnOpenNewCharModal" onclick="window.App.openModal('newCharacterModal')" data-i18n="startForFree">
         <span>Start for Free</span>
         <span>›</span>
       </button>
@@ -80,11 +94,8 @@ ch
     <!-- Left Navigation Sidebar -->
     <aside class="app-sidebar">
       <!-- Top Home Pill -->
-      <a href="#" class="sidebar-home-btn" data-view-target="studio">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
+      <a href="javascript:void(0)" class="sidebar-home-btn" data-view-target="studio" onclick="window.App.switchView('studio')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
         <span data-i18n="navHome">Home</span>
       </a>
 
@@ -93,21 +104,16 @@ ch
         <div class="sidebar-section-title" data-i18n="secCreate">CREATE</div>
         <ul class="sidebar-nav-list">
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link active" data-view-target="studio">
+            <a href="javascript:void(0)" class="sidebar-nav-link active" data-view-target="studio" onclick="window.App.switchView('studio')">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect width="18" height="18" x="3" y="3" rx="2" />
-                  <path d="M7 3v18" />
-                  <path d="M3 7.5h4" />
-                  <path d="M3 12h18" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/></svg>
                 <span data-i18n="navStudio">Anime Studio</span>
               </span>
-              <span class="badge-tag new">NEW</span>
+              <span class="badge-tag new">60 FPS</span>
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="creation-wizard" style="color: var(--accent-pink);">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="creation-wizard" onclick="window.App.switchView('creation-wizard')" style="color: var(--accent-pink);">
               <span class="sidebar-nav-link-left">
                 <span>⚡</span>
                 <span data-i18n="navCreationWizard">Creation Studio</span>
@@ -116,50 +122,34 @@ ch
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="world-hub">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="world-hub" onclick="window.App.switchView('world-hub')">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-                  <path d="M2 12h20" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                 <span data-i18n="navWorld">World & Planets</span>
               </span>
               <span class="badge-tag new">COSMOS</span>
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="studio"
-              onclick="window.App.loadPresetScript('duel')">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="studio" onclick="window.App.switchView('studio'); window.App.loadPresetScript('duel');">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="23 7 16 12 23 17 23 7" />
-                  <rect width="14" height="14" x="1" y="5" rx="2" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="1" y="5" rx="2"/></svg>
                 <span data-i18n="navAMV">AMV Generator</span>
               </span>
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="character-lab">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="character-lab" onclick="window.App.switchView('character-lab')">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span data-i18n="navCharacter">Character Design</span>
               </span>
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="database"
-              onclick="window.App.selectFolder('voices')">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="database" onclick="window.App.switchView('database'); window.App.selectFolder('voices');">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M9 18V5l12-2v13" />
-                  <circle cx="6" cy="18" r="3" />
-                  <circle cx="18" cy="16" r="3" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                 <span data-i18n="navVoice">Voice & Audio</span>
               </span>
             </a>
@@ -172,32 +162,23 @@ ch
         <div class="sidebar-section-title" data-i18n="secAssets">ASSETS & DATABASE</div>
         <ul class="sidebar-nav-list">
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" data-view-target="database">
+            <a href="javascript:void(0)" class="sidebar-nav-link" data-view-target="database" onclick="window.App.switchView('database')">
               <span class="sidebar-nav-link-left">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
                 <span data-i18n="navFolders">All Folders (DB)</span>
               </span>
             </a>
           </li>
-          <li class="sidebar-folder-pill"
-            onclick="window.App.switchView('database'); window.App.selectFolder('characters');"
-            data-i18n="navCharFolder">
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('characters');" data-i18n="navCharFolder">
             📁 Character Assets
           </li>
-          <li class="sidebar-folder-pill"
-            onclick="window.App.switchView('database'); window.App.selectFolder('backgrounds');"
-            data-i18n="navBgFolder">
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('backgrounds');" data-i18n="navBgFolder">
             📁 Background Assets
           </li>
-          <li class="sidebar-folder-pill"
-            onclick="window.App.switchView('database'); window.App.selectFolder('voices');" data-i18n="navVoiceFolder">
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('voices');" data-i18n="navVoiceFolder">
             📁 Voice Profiles
           </li>
-          <li class="sidebar-folder-pill"
-            onclick="window.App.switchView('database'); window.App.selectFolder('scenes');" data-i18n="navScenesFolder">
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('scenes');" data-i18n="navScenesFolder">
             📁 Storyboards & AMVs
           </li>
         </ul>
@@ -208,7 +189,7 @@ ch
         <div class="sidebar-section-title" data-i18n="secPinned">PINNED TOOLS</div>
         <ul class="sidebar-nav-list">
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('Lip-Sync Engine Active')">
+            <a href="javascript:void(0)" class="sidebar-nav-link" onclick="window.App.toggleLipSyncTest()">
               <span class="sidebar-nav-link-left">
                 <span>🎙️</span>
                 <span data-i18n="toolLipSync">Auto Lip-Sync</span>
@@ -216,7 +197,7 @@ ch
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('Keyframe Sync Active')">
+            <a href="javascript:void(0)" class="sidebar-nav-link" onclick="window.App.showToast('Keyframe Sync 60FPS: Locked and Calibrated ⏱️')">
               <span class="sidebar-nav-link-left">
                 <span>⏱️</span>
                 <span data-i18n="toolKeyframe">Keyframe Sync</span>
@@ -224,7 +205,7 @@ ch
             </a>
           </li>
           <li class="sidebar-nav-item">
-            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('4K Anime Upscaler Ready')">
+            <a href="javascript:void(0)" class="sidebar-nav-link" onclick="window.App.triggerUpscaler()">
               <span class="sidebar-nav-link-left">
                 <span>✨</span>
                 <span data-i18n="toolUpscale">Upscale Anime</span>
@@ -235,11 +216,11 @@ ch
       </div>
 
       <!-- Sidebar User Profile Footer -->
-      <div class="sidebar-footer">
-        <img src="assets/characters/kaito.jpg" class="sidebar-user-avatar" alt="User Profile">
+      <div class="sidebar-footer" onclick="window.App.openModal('loginModal')" style="cursor: pointer;" title="View Creator Profile">
+        <img src="assets/characters/kaito.jpg" id="sidebarUserAvatar" class="sidebar-user-avatar" alt="User Profile">
         <div class="sidebar-user-info">
-          <div class="sidebar-user-name">Anime Creator</div>
-          <div class="sidebar-user-tier">PRO Studio Plan</div>
+          <div class="sidebar-user-name" id="sidebarUserName">Anime Creator</div>
+          <div class="sidebar-user-tier" id="sidebarUserTier">PRO Studio Plan</div>
         </div>
       </div>
     </aside>
@@ -248,28 +229,23 @@ ch
     <main class="main-content-view">
 
       <!-- ===================================================================
-           VIEW 1: ANIME STUDIO & DIRECTOR (MAIN HERO VIEW)
+           VIEW 1: ANIME STUDIO & ACTION ANIMATION DIRECTOR (MAIN HERO VIEW)
            =================================================================== -->
       <section class="view-panel active" id="view-studio">
-
+        
         <!-- Hero Section Title & Mode Switcher -->
         <div class="studio-hero-section">
           <h1 class="studio-hero-title">
-            <span data-i18n="heroTitle">What would you like to create today?</span>
+            <span data-i18n="heroTitle">What would you like to animate today?</span>
             <span class="hero-sparkle">✨</span>
           </h1>
 
           <!-- Mode Switcher Tabs -->
           <div class="mode-switcher-container">
-            <button class="mode-tab-btn active" data-mode="studio">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect width="18" height="18" x="3" y="3" rx="2" />
-                <path d="M7 3v18" />
-                <path d="M3 7.5h4" />
-                <path d="M3 12h18" />
-              </svg>
+            <button class="mode-tab-btn active" data-mode="studio" onclick="window.App.switchView('studio')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/></svg>
               <span data-i18n="tabStudio">Anime Studio</span>
-              <span class="badge-tag new">NEW</span>
+              <span class="badge-tag new">60 FPS</span>
             </button>
             <button class="mode-tab-btn" data-mode="amv" onclick="window.App.loadPresetScript('duel')">
               <span>🎬</span>
@@ -283,65 +259,39 @@ ch
               <span>🌍</span>
               <span data-i18n="tabWorld">World & Planets</span>
             </button>
-            <button class="mode-tab-btn" data-mode="audio"
-              onclick="window.App.switchView('database'); window.App.selectFolder('voices');">
+            <button class="mode-tab-btn" data-mode="audio" onclick="window.App.switchView('database'); window.App.selectFolder('voices');">
               <span>🎵</span>
               <span data-i18n="tabAudio">Audio</span>
             </button>
           </div>
 
-          <div class="hero-vibe-tagline" data-i18n="heroTagline">Vibe Direct Now — AI Character, World & Voice Studio
-          </div>
+          <div class="hero-vibe-tagline" data-i18n="heroTagline">Vibe Direct Now — AI Action, Animation & Motion Studio</div>
         </div>
 
-        <!-- Mode Carousel Cards (Matching screenshot) -->
-        <div class="modes-cards-grid">
-          <div class="mode-card" onclick="window.App.loadPresetScript('english')">
-            <img src="assets/characters/kaito.jpg" class="mode-card-img" alt="Anime Short">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">🎬</div>
-              <div class="mode-card-title" data-i18n="modeShort">Anime Short</div>
-            </div>
+        <!-- DYNAMIC ACTION PROMPT INPUT BAR (Animate any user prompt) -->
+        <div class="action-prompt-bar-container">
+          <div class="action-prompt-bar">
+            <div class="prompt-icon">⚡</div>
+            <input type="text" class="action-prompt-input" id="customActionPromptInput" placeholder="Describe ANY action (e.g., 'Draw burning katana and slash across dark sky', 'Levitate meditating with golden lotus aura', 'Dash with thunder strikes')...">
+            <button class="btn-animate-action" id="btnExecuteCustomAction">
+              <span>⚡</span>
+              <span>Animate Action</span>
+            </button>
           </div>
 
-          <div class="mode-card" onclick="window.App.loadPresetScript('tamil')">
-            <img src="assets/characters/ananya.jpg" class="mode-card-img" alt="Character Promo">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">🏛️</div>
-              <div class="mode-card-title">Tamil Heritage</div>
-            </div>
-          </div>
-
-          <div class="mode-card" onclick="window.App.loadPresetScript('mars')">
-            <img src="assets/backgrounds/horror_castle.jpg" class="mode-card-img" alt="Mars Expedition">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">🪐</div>
-              <div class="mode-card-title">Mars Planet</div>
-            </div>
-          </div>
-
-          <div class="mode-card" onclick="window.App.loadPresetScript('japanese')">
-            <img src="assets/characters/ren.jpg" class="mode-card-img" alt="Action AMV">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">⛩️</div>
-              <div class="mode-card-title">Kyoto Shrine</div>
-            </div>
-          </div>
-
-          <div class="mode-card" onclick="window.App.loadPresetScript('europa')">
-            <img src="assets/backgrounds/fantasy_temple.jpg" class="mode-card-img" alt="Europa Ocean">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">🌌</div>
-              <div class="mode-card-title">Europa Moon</div>
-            </div>
-          </div>
-
-          <div class="mode-card" onclick="window.App.loadPresetScript('chinese')">
-            <img src="assets/characters/mei.jpg" class="mode-card-img" alt="Visual Novel">
-            <div class="mode-card-overlay">
-              <div class="mode-card-icon">🐉</div>
-              <div class="mode-card-title">Great Wall</div>
-            </div>
+          <!-- Quick Action Preset Chips -->
+          <div class="action-preset-chips-row">
+            <span class="chips-label">Instant Actions:</span>
+            <button class="action-chip active" data-action="Blade Storm Slash">⚔️ Blade Storm Slash</button>
+            <button class="action-chip" data-action="Thunder Overdrive">⚡ Thunder Overdrive</button>
+            <button class="action-chip" data-action="Solar Dragon Burst">🔥 Solar Dragon Burst</button>
+            <button class="action-chip" data-action="Celestial Starfall">✨ Celestial Starfall</button>
+            <button class="action-chip" data-action="Sakura Waltz">🌸 Sakura Waltz</button>
+            <button class="action-chip" data-action="Kinetic Strike">🥋 Kinetic Strike</button>
+            <button class="action-chip" data-action="Emotional Crying">😭 Emotional Speech</button>
+            <button class="action-chip" data-action="Blushing Love">💖 Blushing Love</button>
+            <button class="action-chip" data-action="Astral Transcendence">🧘 Astral Zen</button>
+            <button class="action-chip" data-action="Void Singularity">🌪️ Void Singularity</button>
           </div>
         </div>
 
@@ -355,15 +305,13 @@ ch
 
               <!-- Dynamic Subtitle Dialogue Box with Speaker Avatar -->
               <div class="cinema-dialogue-overlay" id="cinemaDialogueOverlay">
-                <img src="assets/characters/kaito.jpg" id="cinemaSpeakerAvatar" class="dialogue-speaker-avatar"
-                  alt="Speaker Avatar">
+                <img src="assets/characters/kaito.jpg" id="cinemaSpeakerAvatar" class="dialogue-speaker-avatar" alt="Speaker Avatar">
                 <div class="dialogue-content">
                   <div class="dialogue-header-row">
                     <span class="dialogue-speaker-name" id="cinemaSpeakerName">Kaito</span>
                     <span class="dialogue-lang-tag" id="cinemaSpeakerLang">ENGLISH 🇬🇧</span>
                   </div>
-                  <div class="dialogue-text" id="cinemaDialogueText">"Welcome to Neo Tokyo, let's begin the mission!"
-                  </div>
+                  <div class="dialogue-text" id="cinemaDialogueText">"Welcome to Neo Tokyo, let's begin the mission!"</div>
                 </div>
                 <!-- Equalizer Waveform -->
                 <div class="audio-equalizer-bars">
@@ -376,16 +324,48 @@ ch
               </div>
             </div>
 
-            <!-- Cinema Controls Bar -->
+            <!-- ACTION TIMELINE & SCRUBBER CONTROLS BAR -->
+            <div class="action-timeline-bar">
+              <div class="timeline-controls-left">
+                <button class="timeline-play-btn" id="btnTimelinePlayPause" title="Play / Pause Animation">⏸</button>
+                <div class="timeline-phase-pill" id="timelinePhasePill">
+                  <span class="phase-indicator-dot"></span>
+                  <span id="timelinePhaseText">⚡ ACTION: BLADE STORM SLASH</span>
+                </div>
+              </div>
+
+              <!-- Interactive Progress Scrubber -->
+              <div class="timeline-scrubber-wrapper">
+                <input type="range" class="timeline-range-slider" id="timelineProgressSlider" min="0" max="100" value="0">
+                <div class="timeline-phase-markers">
+                  <span class="marker" title="Anticipation">1. Anticipation</span>
+                  <span class="marker" title="Energy Surge">2. Surge</span>
+                  <span class="marker" title="Climax Impact">3. Climax</span>
+                  <span class="marker" title="Recovery">4. Recovery</span>
+                </div>
+              </div>
+
+              <div class="timeline-controls-right">
+                <select class="timeline-speed-select" id="timelineSpeedSelect" title="Playback Speed">
+                  <option value="0.5">0.5x</option>
+                  <option value="1.0" selected>1.0x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2.0">2.0x</option>
+                </select>
+                <button class="cinema-ctrl-btn" id="cinemaRecordBtn" title="Record 60FPS Video (WebM/MP4)" onclick="window.App.handleExportVideo()">🎥</button>
+                <button class="cinema-ctrl-btn" id="cinemaCaptureFrameBtn" title="Capture High-Res PNG Frame" onclick="window.App.captureCanvasSnapshot()">📸</button>
+              </div>
+            </div>
+
+            <!-- Cinema Controls Bottom Bar -->
             <div class="cinema-controls-bar">
               <div class="cinema-left-controls">
+                <span style="font-size: 12px; color: var(--text-muted);">Scene Background:</span>
                 <select class="bg-select-dropdown" id="cinemaBgSelect" title="Change Background Scene"></select>
-                <button class="cinema-ctrl-btn" id="cinemaRecordBtn" title="Record Video Clip"
-                  onclick="window.App.handleExportVideo()">🎥</button>
               </div>
               <div class="auto-voice-indicator">
                 <span class="voice-dot"></span>
-                <span data-i18n="autoVoiceBadge">Auto-Voice Assignment: ACTIVE</span>
+                <span data-i18n="autoVoiceBadge">Auto-Voice Synthesis: ACTIVE</span>
               </div>
             </div>
           </div>
@@ -395,45 +375,27 @@ ch
             <div class="script-panel-header">
               <div class="script-panel-title">
                 <span>📜</span>
-                <span data-i18n="scriptTitle">Director Script & Dialogue Engine</span>
+                <span data-i18n="scriptTitle">Director Script & Action Sequencer</span>
               </div>
             </div>
 
             <!-- Preset Storyboard Buttons -->
             <div class="script-presets-row">
-              <button class="preset-chip-btn" data-preset-script="english" data-i18n="presetEnglish">🇬🇧 English
-                Cyberpunk</button>
-              <button class="preset-chip-btn" data-preset-script="tamil" data-i18n="presetTamil">🇮🇳 Tamil
-                Heritage</button>
-              <button class="preset-chip-btn" data-preset-script="japanese" data-i18n="presetJapanese">🇯🇵 Japanese
-                Samurai</button>
-              <button class="preset-chip-btn" data-preset-script="chinese" data-i18n="presetChinese">🇨🇳 Chinese
-                Celestial</button>
-              <button class="preset-chip-btn" data-preset-script="mars" data-i18n="presetMars">🪐 Mars
-                Expedition</button>
-              <button class="preset-chip-btn" data-preset-script="europa" data-i18n="presetEuropa">🌌 Europa
-                Ocean</button>
+              <button class="preset-chip-btn" data-preset-script="english" data-i18n="presetEnglish">🇬🇧 Cyberpunk</button>
+              <button class="preset-chip-btn" data-preset-script="tamil" data-i18n="presetTamil">🇮🇳 Tamil Heritage</button>
+              <button class="preset-chip-btn" data-preset-script="japanese" data-i18n="presetJapanese">🇯🇵 Samurai Duel</button>
+              <button class="preset-chip-btn" data-preset-script="chinese" data-i18n="presetChinese">🇨🇳 Celestial Magic</button>
+              <button class="preset-chip-btn" data-preset-script="mars" data-i18n="presetMars">🪐 Mars Colony</button>
               <button class="preset-chip-btn" data-preset-script="duel" data-i18n="presetDuel">⚔️ 4-Hero Duel</button>
             </div>
 
             <!-- Script Editor Textarea -->
             <div class="script-editor-container">
-              <textarea class="script-textarea" id="scriptEditorTextarea"
-                placeholder="Character: &quot;Dialogue&quot; [action: ActionName]...">Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Power Surge]
-Ananya: "வணக்கம்! நாங்கள் நிச்சயம் வெற்றி பெறுவோம்." [action: Solar Flare]
-Ren: "覚悟はいいか？行くぞ！" [action: Sword Slash]
-Mei: "漫天星辰，为我们引路，光华流转！" [action: Magic Cast]
-Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Dash]</textarea>
-            </div>
-
-            <!-- Quick Action VFX Tags -->
-            <div class="action-palette-tags">
-              <span style="font-size: 11px; color: var(--text-muted);">Quick VFX:</span>
-              <button class="action-tag-chip" data-action-tag="Power Surge">⚡ Power Surge</button>
-              <button class="action-tag-chip" data-action-tag="Sword Slash">⚔️ Sword Slash</button>
-              <button class="action-tag-chip" data-action-tag="Solar Flare">☀️ Solar Flare</button>
-              <button class="action-tag-chip" data-action-tag="Magic Cast">✨ Magic Cast</button>
-              <button class="action-tag-chip" data-action-tag="Smile">😊 Smile</button>
+              <textarea class="script-textarea" id="scriptEditorTextarea" placeholder="Character: &quot;Dialogue&quot; [action: ActionName]...">Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Blade Storm Slash]
+Ananya: "வணக்கம்! நாங்கள் நிச்சயம் வெற்றி பெறுவோம்." [action: Solar Dragon Burst]
+Ren: "覚悟はいいか？行くぞ！" [action: Thunder Overdrive]
+Mei: "漫天星辰，为我们引路，光华流转！" [action: Celestial Starfall]
+Kaito: "Let's finish this together — Maximum Overdrive!" [action: Kinetic Strike]</textarea>
             </div>
 
             <!-- Action Buttons Bar -->
@@ -443,27 +405,222 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
                 <span data-i18n="runScriptBtn">Play Scene & Speak Voice</span>
               </button>
               <button class="btn-stop-scene" id="btnStopScript" data-i18n="stopScriptBtn">⏹ Stop</button>
-              <button class="btn-export-video" id="btnExportVideo" data-i18n="exportVideoBtn">🎥 Export AMV</button>
+              <button class="btn-export-video" id="btnExportVideo" data-i18n="exportVideoBtn" onclick="window.App.handleExportVideo()">🎥 Export AMV</button>
               <button class="btn-secondary" id="btnClearScript" data-i18n="clearScriptBtn">Clear</button>
             </div>
           </div>
         </div>
 
+        <!-- ===================================================================
+             FEATURED AI ANIME ACTION CREATIONS GALLERY (MATCHING SCREENSHOT)
+             =================================================================== -->
+        <div class="featured-gallery-section">
+          <div class="gallery-header-row">
+            <div>
+              <h2 class="gallery-section-title">🌟 Featured AI Creations & Actions</h2>
+              <p class="gallery-section-desc">Explore community showcase creations. Click any card to load the character and execute their signature action animation!</p>
+            </div>
+          </div>
+
+          <!-- Cards Grid matching screenshot layout -->
+          <div class="anime-creations-grid" id="animeCreationsGrid">
+            
+            <!-- Card 1: Mei — Celestial Archon -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Mei', 'Celestial Starfall', 'bg_temple', '漫天星辰，为我们引路，光华流转！', 'zh')">
+              <div class="creation-media-box">
+                <img src="assets/characters/mei.jpg" class="creation-card-img" alt="Mei Cyber Lotus">
+                <div class="creation-action-badge">✨ Celestial Starfall</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Mei — Celestial Archon</div>
+                <div class="creation-card-meta">
+                  <span>Chinese Xianxia</span>
+                  <span class="badge-tag new">MAGIC</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">24</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">58</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">12</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">31</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Kaito — Samurai of Red Umbrella -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Kaito', 'Blade Storm Slash', 'bg_shrine', 'My blade cuts through the storm!', 'en')">
+              <div class="creation-media-box">
+                <img src="assets/characters/kaito.jpg" class="creation-card-img" alt="Kaito Red Umbrella Samurai">
+                <div class="creation-action-badge">⚔️ Blade Storm Slash</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Kaito — Red Umbrella Ronin</div>
+                <div class="creation-card-meta">
+                  <span>Neo Tokyo Cyber</span>
+                  <span class="badge-tag hot">TOP PICK</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">49</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">86</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">23</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">64</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Ren — Imperial Knight -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Ren', 'Thunder Overdrive', 'bg_horror', '覚悟はいいか？行くぞ！', 'ja')">
+              <div class="creation-media-box">
+                <img src="assets/characters/ren.jpg" class="creation-card-img" alt="Ren Imperial Knight">
+                <div class="creation-action-badge">⚡ Thunder Overdrive</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Ren — Blood Moon Paladin</div>
+                <div class="creation-card-meta">
+                  <span>Feudal Samurai Noir</span>
+                  <span class="badge-tag new">LIGHTNING</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">33</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">41</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">16</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">29</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Ananya — Sun Temple Priestess -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Ananya', 'Solar Dragon Burst', 'bg_temple', 'வணக்கம்! சூரியனின் பேரொளி எங்களை வழிநடத்துகிறது.', 'ta')">
+              <div class="creation-media-box">
+                <img src="assets/characters/ananya.jpg" class="creation-card-img" alt="Ananya Sun Temple">
+                <div class="creation-action-badge">🔥 Solar Dragon Burst</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Ananya — Solar Priestess</div>
+                <div class="creation-card-meta">
+                  <span>Tamil Heritage</span>
+                  <span class="badge-tag new">SOLAR</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">41</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">75</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">19</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">52</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Classroom Academy Slice of Life -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Ananya', 'Sakura Waltz', 'bg_classroom', 'Class is in session! Please take your seats.', 'en')">
+              <div class="creation-media-box">
+                <img src="assets/backgrounds/anime_classroom.jpg" class="creation-card-img" alt="Anime High School">
+                <div class="creation-action-badge">🌸 Sakura Waltz</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Sunset Academy — Slice of Life</div>
+                <div class="creation-card-meta">
+                  <span>Anime High School</span>
+                  <span class="badge-tag discount">CHILL</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">18</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">62</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">11</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">24</span></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6: Holiday Gift Maid Celebration -->
+            <div class="creation-card" onclick="window.App.loadShowcaseCharacter('Mei', 'Blushing Love', 'bg_shrine', 'Here is a special gift, just for you!', 'en')">
+              <div class="creation-media-box">
+                <img src="assets/backgrounds/cherry_shrine.jpg" class="creation-card-img" alt="Holiday Shrine Celebration">
+                <div class="creation-action-badge">💖 Blushing Love</div>
+              </div>
+              <div class="creation-card-body">
+                <div class="creation-card-title">Shrine Maiden — Heart Delivery</div>
+                <div class="creation-card-meta">
+                  <span>Romance & Joy</span>
+                  <span class="badge-tag hot">LOVED</span>
+                </div>
+                <div class="reaction-counters-bar">
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🔥 <span class="count">38</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">❤️ <span class="count">94</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">😮 <span class="count">21</span></button>
+                  <button class="react-btn" onclick="event.stopPropagation(); window.App.incrementReaction(this)">🏆 <span class="count">48</span></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ===================================================================
+             ABOUT ANIMEARTS STUDIO SECTION (MATCHING SCREENSHOT TYPOGRAPHY)
+             =================================================================== -->
+        <section class="about-studio-section">
+          <h2 class="about-title">About</h2>
+          <div class="about-content">
+            <p>Welcome to <strong>AnimeArt.Studio</strong>, your ultimate destination for stunning AI-generated Anime. Our curated library boasts an extensive collection of open-source AI Anime Models, specializing in Anime Image, Voice, Video & Animation generation across numerous categories.</p>
+            <p>Our AI Anime Models are pre-trained on unique styles, ensuring impressive results with every use. The best part? You don't need to install any additional environment, app, or software to experience their full potential. We've made it incredibly easy for you to dive right into the world of AI-generated art.</p>
+            <p>Unlike other platforms that restrict you to a single model, AnimeArt.Studio empowers you to explore a diverse range of models using the same prompt. Witness the magic unfold as you generate weird and amazing results that push the boundaries of creativity. And the best part? No more waiting around! Simultaneously run the same prompt across multiple models and watch as your imagination comes to life in real-time.</p>
+            <p>Rest assured, all the models found on AnimeArt.Studio have undergone rigorous testing and reviews. We prioritize your satisfaction and ensure that our models are not only efficient but also free to use for both your personal and commercial projects. However, we also prioritize quality, which is why we occasionally remove underperforming tools or those that infringe upon developers' licenses or offer limited commercial use. We believe in maintaining the highest standards to provide you with the best AI Anime experience possible.</p>
+            <p>If you ever have any concerns or questions, our dedicated team is here to assist you. Feel free to reach out to us via email, and we'll be more than happy to address any queries you may have.</p>
+            <p><strong>Experience the limitless possibilities of AI-generated Anime with AnimeArt.Studio.</strong></p>
+          </div>
+        </section>
+
+        <!-- ===================================================================
+             FOOTER (MATCHING SCREENSHOT)
+             =================================================================== -->
+        <footer class="app-site-footer">
+          <div class="footer-left-col">
+            <div class="footer-brand">
+              <div class="brand-icon">♾️</div>
+              <span>anime art studio</span>
+            </div>
+            <div class="footer-copy">© 2026 AnimeArt.Studio</div>
+            <div class="footer-social-links">
+              <a href="javascript:void(0)" class="social-icon" onclick="window.App.showToast('Twitter / X: @AnimeArtStudio')" title="Twitter / X">🐦</a>
+              <a href="javascript:void(0)" class="social-icon" onclick="window.App.showToast('Discord Community: https://discord.gg/animeart')" title="Discord">💬</a>
+              <a href="javascript:void(0)" class="social-icon" onclick="window.App.showToast('GitHub: https://github.com/NareenKarthik/Anil-ai')" title="GitHub">🐙</a>
+            </div>
+          </div>
+
+          <div class="footer-nav-columns">
+            <div class="footer-col">
+              <h4>Resources</h4>
+              <ul>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Community Hub: 150,000+ Creators Active 🌟')">Community</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Affiliate Program: Earn 30% Recurring Commission 🪙')">Affiliate Program</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Faceless Shorts Studio Active: 1-Click Viral Reels 🎬')">Faceless shorts using AI</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Contact Support: support@animeart.studio')">Contact Us</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('API Documentation v2.4 Active 🚀')">API Docs</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Anime Prompt Generator Loaded')">Anime Prompt Generator</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Privacy Policy: 100% Private, Local-First Engine 🔒')">Privacy Policy</a></li>
+                <li><a href="javascript:void(0)" onclick="window.App.showToast('Terms of Use: 100% Free for Personal & Commercial Use 📜')">Terms of Use</a></li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+
       </section>
 
       <!-- ===================================================================
-           VIEW: WORLD HERITAGE & COSMIC PLANETS HUB
+           VIEW 2: WORLD HERITAGE & COSMIC PLANETS HUB
            =================================================================== -->
       <section class="view-panel" id="view-world-hub">
         <div class="world-explorer-container">
           <div class="asset-manager-header">
             <div class="asset-header-info">
               <h2>🌍 World Heritage, Ancient Civilizations & Cosmic Planets</h2>
-              <p>Explore ancient heritage wonders of all countries, interplanetary worlds, living entities, and
-                mythological guardians.</p>
+              <p>Explore ancient heritage wonders of all countries, interplanetary worlds, living entities, and mythological guardians.</p>
             </div>
-            <button class="btn-primary-gradient" onclick="window.App.switchView('creation-wizard')">⚡ Create Custom
-              World</button>
+            <button class="btn-primary-gradient" onclick="window.App.switchView('creation-wizard')">⚡ Create Custom World</button>
           </div>
 
           <!-- Category Filters -->
@@ -480,19 +637,18 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
       </section>
 
       <!-- ===================================================================
-           VIEW: CREATION STUDIO WIZARD (ROLES, GENRES, SUPERPOWERS & RAM VIDEO)
+           VIEW 3: CREATION STUDIO WIZARD
            =================================================================== -->
       <section class="view-panel" id="view-creation-wizard">
         <div class="creation-wizard-container">
-
+          
           <!-- Wizard Header -->
           <div class="wizard-header">
             <div class="wizard-title-group">
               <h2><span>⚡</span> <span>AI Character & Multi-Genre Story Creation Wizard</span></h2>
-              <p>Step-by-step studio to craft character roles, story genres, custom superpowers, import assets, and
-                render in-RAM video.</p>
+              <p>Step-by-step studio to craft character roles, story genres, custom superpowers, import assets, and render in-RAM video.</p>
             </div>
-            <button class="btn-primary-gradient" id="btnWizardSaveAndRun">💾 Save & Launch on Stage</button>
+            <button class="btn-primary-gradient" id="btnWizardSaveAndRun" onclick="window.App.saveAndLaunchWizard()">💾 Save & Launch on Stage</button>
           </div>
 
           <!-- Wizard Step Navigation Tabs -->
@@ -520,42 +676,42 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
               <span>👑</span> <span>Choose Character Role / Archetype</span>
             </div>
             <div class="roles-selector-grid">
-              <div class="role-select-card active" data-role="Protagonist">
+              <div class="role-select-card active" data-role="Protagonist" onclick="window.App.selectWizardRole(this, 'Protagonist')">
                 <div class="role-card-icon">🗡️</div>
                 <div class="role-card-name">Protagonist / Hero</div>
                 <div class="role-card-desc">Brave, determined leader fighting for justice and protection.</div>
               </div>
-              <div class="role-select-card" data-role="Celestial Mage">
+              <div class="role-select-card" data-role="Celestial Mage" onclick="window.App.selectWizardRole(this, 'Celestial Mage')">
                 <div class="role-card-icon">🔮</div>
                 <div class="role-card-name">Celestial Mage</div>
                 <div class="role-card-desc">Master of cosmic runes, starry astral gates, and ancient magic.</div>
               </div>
-              <div class="role-select-card" data-role="Shadow Assassin">
+              <div class="role-select-card" data-role="Shadow Assassin" onclick="window.App.selectWizardRole(this, 'Shadow Assassin')">
                 <div class="role-card-icon">🥷</div>
                 <div class="role-card-name">Shadow Assassin</div>
                 <div class="role-card-desc">Silent strike master navigating moonlit alleys and rooftops.</div>
               </div>
-              <div class="role-select-card" data-role="Detective">
+              <div class="role-select-card" data-role="Detective" onclick="window.App.selectWizardRole(this, 'Detective')">
                 <div class="role-card-icon">🕵️</div>
                 <div class="role-card-name">Detective / Investigator</div>
                 <div class="role-card-desc">Sharp-witted seeker of truth in rainy noir mysteries.</div>
               </div>
-              <div class="role-select-card" data-role="Royal Priestess">
+              <div class="role-select-card" data-role="Royal Priestess" onclick="window.App.selectWizardRole(this, 'Royal Priestess')">
                 <div class="role-card-icon">👑</div>
                 <div class="role-card-name">Royal Priestess</div>
                 <div class="role-card-desc">Regal guardian of golden sun temples and divine realm.</div>
               </div>
-              <div class="role-select-card" data-role="Romantic Lead">
+              <div class="role-select-card" data-role="Romantic Lead" onclick="window.App.selectWizardRole(this, 'Romantic Lead')">
                 <div class="role-card-icon">💖</div>
                 <div class="role-card-name">Romantic Lead</div>
                 <div class="role-card-desc">Emotional, deeply passionate partner in high-stakes drama.</div>
               </div>
-              <div class="role-select-card" data-role="Family Guardian">
+              <div class="role-select-card" data-role="Family Guardian" onclick="window.App.selectWizardRole(this, 'Family Guardian')">
                 <div class="role-card-icon">👨‍👩‍👧</div>
                 <div class="role-card-name">Family Guardian</div>
                 <div class="role-card-desc">Protective elder, caring parent, or trusted mentor.</div>
               </div>
-              <div class="role-select-card" data-role="Dark Lord">
+              <div class="role-select-card" data-role="Dark Lord" onclick="window.App.selectWizardRole(this, 'Dark Lord')">
                 <div class="role-card-icon">😈</div>
                 <div class="role-card-name">Dark Lord / Antagonist</div>
                 <div class="role-card-desc">Ruthless, calculating sovereign of the blood-moon shadows.</div>
@@ -569,32 +725,32 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
               <span>🎨</span> <span>Select Story Genre & Atmosphere Graphics</span>
             </div>
             <div class="genres-selector-grid">
-              <div class="genre-select-card magic active" data-genre="magic">
+              <div class="genre-select-card magic active" data-genre="magic" onclick="window.App.selectWizardGenre(this, 'magic')">
                 <div class="genre-card-icon">🔮</div>
                 <div class="genre-card-name">Magic / Fantasy</div>
                 <span class="badge-tag new">Arcane VFX</span>
               </div>
-              <div class="genre-select-card horror" data-genre="horror">
+              <div class="genre-select-card horror" data-genre="horror" onclick="window.App.selectWizardGenre(this, 'horror')">
                 <div class="genre-card-icon">👻</div>
                 <div class="genre-card-name">Horror / Mystery</div>
                 <span class="badge-tag hot">Blood Moon</span>
               </div>
-              <div class="genre-select-card mystery" data-genre="mystery">
+              <div class="genre-select-card mystery" data-genre="mystery" onclick="window.App.selectWizardGenre(this, 'mystery')">
                 <div class="genre-card-icon">🕵️</div>
                 <div class="genre-card-name">Detective Noir</div>
                 <span class="badge-tag new">Rain FX</span>
               </div>
-              <div class="genre-select-card romance" data-genre="romance">
+              <div class="genre-select-card romance" data-genre="romance" onclick="window.App.selectWizardGenre(this, 'romance')">
                 <div class="genre-card-icon">💖</div>
                 <div class="genre-card-name">Love Drama</div>
                 <span class="badge-tag new">Heart Petals</span>
               </div>
-              <div class="genre-select-card family" data-genre="family">
+              <div class="genre-select-card family" data-genre="family" onclick="window.App.selectWizardGenre(this, 'family')">
                 <div class="genre-card-icon">👨‍👩‍👧‍👦</div>
                 <div class="genre-card-name">Family / Slice of Life</div>
                 <span class="badge-tag discount">Sunny Motes</span>
               </div>
-              <div class="genre-select-card scifi" data-genre="scifi">
+              <div class="genre-select-card scifi" data-genre="scifi" onclick="window.App.selectWizardGenre(this, 'scifi')">
                 <div class="genre-card-icon">⚡</div>
                 <div class="genre-card-name">Cyberpunk / Sci-Fi</div>
                 <span class="badge-tag hot">Neon Warp</span>
@@ -614,8 +770,7 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
               </div>
               <div class="form-group">
                 <label class="form-label">Native Voice Language</label>
-                <select class="form-select" id="wizCharLang"
-                  onchange="window.App.wizardState.lang=this.value; window.App.updateWizardScriptPreview();">
+                <select class="form-select" id="wizCharLang">
                   <option value="en">English 🇬🇧 / 🇺🇸</option>
                   <option value="ta">Tamil 🇮🇳 (தமிழ்)</option>
                   <option value="ja">Japanese 🇯🇵 (日本語)</option>
@@ -626,14 +781,12 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
             <div class="form-row-2">
               <div class="form-group">
                 <label class="form-label">Voice Pitch (0.6x - 1.8x)</label>
-                <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="wizCharPitch"
-                  oninput="document.getElementById('wizPitchVal').textContent=this.value+'x'">
+                <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="wizCharPitch" oninput="document.getElementById('wizPitchVal').textContent=this.value+'x'">
                 <span id="wizPitchVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
               </div>
               <div class="form-group">
                 <label class="form-label">Speech Speed (0.7x - 1.5x)</label>
-                <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="wizCharSpeed"
-                  oninput="document.getElementById('wizSpeedVal').textContent=this.value+'x'">
+                <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="wizCharSpeed" oninput="document.getElementById('wizSpeedVal').textContent=this.value+'x'">
                 <span id="wizSpeedVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
               </div>
             </div>
@@ -648,94 +801,55 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
               <div style="display: flex; flex-direction: column; gap: 14px;">
                 <div class="form-group">
                   <label class="form-label">Superpower Name</label>
-                  <input type="text" class="form-input" id="wizPowerName" value="Infernal Sunbeam Nova"
-                    placeholder="e.g. Thunder Blade Singularity">
+                  <input type="text" class="form-input" id="wizPowerName" value="Infernal Sunbeam Nova" placeholder="e.g. Thunder Blade Singularity">
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">Elemental Energy Type</label>
                   <div class="power-element-picker">
-                    <button type="button" class="power-element-btn active" data-element="solar">☀️ Solar Light</button>
-                    <button type="button" class="power-element-btn" data-element="electric">⚡ Electric Volt</button>
-                    <button type="button" class="power-element-btn" data-element="fire">🔥 Inferno Fire</button>
-                    <button type="button" class="power-element-btn" data-element="ice">❄️ Frost Ice</button>
-                    <button type="button" class="power-element-btn" data-element="celestial">✨ Celestial Star</button>
-                    <button type="button" class="power-element-btn" data-element="shadow">💀 Shadow / Void</button>
+                    <button type="button" class="power-element-btn active" data-element="solar" onclick="window.App.selectWizardElement(this, 'solar')">☀️ Solar Light</button>
+                    <button type="button" class="power-element-btn" data-element="electric" onclick="window.App.selectWizardElement(this, 'electric')">⚡ Electric Volt</button>
+                    <button type="button" class="power-element-btn" data-element="fire" onclick="window.App.selectWizardElement(this, 'fire')">🔥 Inferno Fire</button>
+                    <button type="button" class="power-element-btn" data-element="ice" onclick="window.App.selectWizardElement(this, 'ice')">❄️ Frost Ice</button>
+                    <button type="button" class="power-element-btn" data-element="celestial" onclick="window.App.selectWizardElement(this, 'celestial')">✨ Celestial Star</button>
+                    <button type="button" class="power-element-btn" data-element="shadow" onclick="window.App.selectWizardElement(this, 'shadow')">💀 Shadow / Void</button>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">Power Activation Shout / Dialogue</label>
-                  <input type="text" class="form-input" id="wizPowerShout" value="By the eternal sun, illuminate!"
-                    placeholder="Dialogue spoken when superpower is triggered">
+                  <label class="form-label">Power Intensity (Damage / Visual Bloom)</label>
+                  <input type="range" min="10" max="100" value="85" class="form-input" id="wizPowerIntensity" oninput="document.getElementById('wizPowerIntVal').textContent=this.value+'%'">
+                  <span id="wizPowerIntVal" style="font-size: 11.5px; color: var(--accent-pink);">85%</span>
                 </div>
-
-                <button type="button" class="btn-secondary" id="btnTestSuperpower" style="align-self: flex-start;">
-                  <span>🔊</span> <span>Audition Superpower Sound & VFX</span>
-                </button>
               </div>
 
-              <!-- Live Power Card Preview -->
-              <div class="superpower-preview-card">
-                <div>
-                  <div class="power-preview-badge" id="powerPreviewElement">☀️ SOLAR LIGHT</div>
-                  <div class="power-preview-title" id="powerPreviewName" style="margin-top: 8px;">Infernal Sunbeam Nova
-                  </div>
+              <!-- Power Preview Canvas Box -->
+              <div class="power-preview-box">
+                <div class="power-preview-header">
+                  <span class="power-badge-live">⚡ REAL-TIME VFX PREVIEW</span>
                 </div>
-                <div>
-                  <span style="font-size: 11px; color: var(--text-muted);">Activation Chant:</span>
-                  <div class="power-preview-shout" id="powerPreviewShout">"By the eternal sun, illuminate!"</div>
+                <div class="power-aura-visual-demo" id="wizAuraVisualDemo">
+                  <div class="power-core-sphere" id="wizPowerCore"></div>
+                  <div class="power-flame-orbit" id="wizPowerOrbit"></div>
                 </div>
-                <div style="font-size: 11.5px; color: var(--accent-gold);">
-                  ⚡ Screen Shake: Active | 60FPS Particles: Active
+                <div class="power-stats-row">
+                  <div class="stat-pill"><span class="stat-lbl">Type:</span> <strong id="wizPowerTypeLbl">SOLAR</strong></div>
+                  <div class="stat-pill"><span class="stat-lbl">Aura:</span> <strong id="wizPowerAuraLbl">GOLDEN FLARE</strong></div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- STEP 5: ASSET & DATASET IMPORTER -->
+          <!-- STEP 5: ASSET IMPORTER -->
           <div class="wizard-card-section wizard-step-section" id="step-importer" style="display: none;">
             <div class="wizard-section-title">
-              <span>📥</span> <span>Import Custom Assets & Dataset</span>
+              <span>📤</span> <span>Custom Asset & Character Importer</span>
             </div>
-            <div class="importer-dropzones-grid">
-              <label class="importer-dropzone">
-                <div class="dropzone-icon">👤</div>
-                <div class="dropzone-title">Upload Character Art</div>
-                <div class="dropzone-sub">PNG / JPG (Saved to /assets/characters/)</div>
-                <input type="file" id="uploadCharFileInput" accept="image/*" style="display: none;">
-              </label>
-
-              <label class="importer-dropzone">
-                <div class="dropzone-icon">🌄</div>
-                <div class="dropzone-title">Upload Background Art</div>
-                <div class="dropzone-sub">PNG / JPG (Saved to /assets/backgrounds/)</div>
-                <input type="file" id="uploadBgFileInput" accept="image/*" style="display: none;">
-              </label>
-
-              <label class="importer-dropzone">
-                <div class="dropzone-icon">🎙️</div>
-                <div class="dropzone-title">Upload Voice Sample</div>
-                <div class="dropzone-sub">WAV / MP3 (Saved to /assets/voices/)</div>
-                <input type="file" id="uploadVoiceFileInput" accept="audio/*" style="display: none;">
-              </label>
-            </div>
-          </div>
-
-          <!-- SCRIPTING & IN-RAM VIDEO ENGINE SECTION -->
-          <div class="ram-video-engine-section">
-            <div class="ram-engine-status-bar">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="ram-badge">⚡ In-RAM Video Engine: 60 FPS</span>
-                <span class="storage-badge">💾 Personal Storage: Synced</span>
-              </div>
-              <span style="font-size: 12px; color: var(--text-secondary);">Real-time memory buffer rendering</span>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Generated Story Script (Auto-tailored to Role & Genre)</label>
-              <textarea class="script-textarea" id="wizScriptArea" style="height: 120px;">Solaris: "I am Solaris, the Protagonist. Witness my Infernal Sunbeam Nova!" [action: Solar Flare]
-Solaris: "No darkness can withstand this force!" [action: Power Surge]</textarea>
+            <div class="upload-dropzone" id="wizardAvatarDropzone" onclick="document.getElementById('wizardAvatarFileInput').click()" style="cursor: pointer;">
+              <div class="dropzone-icon">🖼️</div>
+              <div class="dropzone-title" id="wizardDropzoneText">Click or Drag & Drop Custom Character Art</div>
+              <div class="dropzone-sub">Supported formats: JPG, PNG, WEBP, GIF (Max 10MB)</div>
+              <input type="file" id="wizardAvatarFileInput" accept="image/*" style="display: none;">
             </div>
           </div>
 
@@ -743,88 +857,65 @@ Solaris: "No darkness can withstand this force!" [action: Power Surge]</textarea
       </section>
 
       <!-- ===================================================================
-           VIEW 2: CHARACTER DESIGN LAB & MEMORY HUB
+           VIEW 4: CHARACTER DESIGN LAB
            =================================================================== -->
       <section class="view-panel" id="view-character-lab">
-        <div class="asset-manager-header">
-          <div class="asset-header-info">
-            <h2 data-i18n="charLabTitle">AI Character Creator & Memory Hub</h2>
-            <p data-i18n="charLabDesc">Design custom anime characters with assigned voice profiles, personality traits,
-              and animation triggers.</p>
+        <div class="character-lab-container">
+          <div class="asset-manager-header">
+            <div class="asset-header-info">
+              <h2>👤 AI Character Lab & Motion Rig</h2>
+              <p>Design original anime heroes with customized voice profiles, languages, superpowers, and backstory lore.</p>
+            </div>
+            <button class="btn-primary-gradient" onclick="window.App.openModal('newCharacterModal')">+ Create New AI Hero</button>
           </div>
-          <div class="asset-header-actions">
-            <button class="btn-primary-gradient" onclick="window.App.openModal('modalCreateCharacter')"
-              data-i18n="newCharBtn">+ Create New Character</button>
-          </div>
-        </div>
 
-        <!-- Character Cards Grid -->
-        <div class="asset-items-grid" id="characterLabCardsList" style="margin-top: 24px;"></div>
+          <div class="char-cards-grid" id="characterLabCardsList"></div>
+        </div>
       </section>
 
       <!-- ===================================================================
-           VIEW 3: ASSET DATABASE & FOLDER EXPLORER
+           VIEW 5: ASSETS & DATABASE MANAGER
            =================================================================== -->
       <section class="view-panel" id="view-database">
-        <div class="asset-manager-header">
-          <div class="asset-header-info">
-            <h2 data-i18n="assetManagerTitle">Database & Asset Folders</h2>
-            <p data-i18n="assetManagerDesc">Organize characters, backgrounds, voice recordings, and storyboard scenes in
-              dedicated folders.</p>
-          </div>
-          <div class="asset-header-actions">
-            <button class="btn-secondary" id="btnExportDb" data-i18n="exportDbBtn">📥 Backup Database (JSON)</button>
-            <label class="btn-secondary" style="cursor: pointer;">
-              <span data-i18n="importDbBtn">📤 Import DB</span>
-              <input type="file" id="importDbFileInput" accept=".json" style="display: none;">
-            </label>
-          </div>
-        </div>
-
-        <div class="asset-explorer-layout" style="margin-top: 24px;">
-          <!-- Left: Folders Tree -->
-          <div class="folder-tree-panel">
-            <div class="folder-tree-title">Database Folders</div>
-            <ul class="folder-list" id="folderTreeList"></ul>
+        <div class="asset-manager-container">
+          <div class="asset-manager-header">
+            <div class="asset-header-info">
+              <h2 data-i18n="assetManagerTitle">Database & Folder Management</h2>
+              <p data-i18n="assetManagerDesc">Organize and manage your characters, backgrounds, voices, and scene projects across safe local folders.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-secondary" id="btnExportDatabase" onclick="window.App.exportDatabaseJSON()" data-i18n="exportDbBtn">📥 Backup (JSON)</button>
+              <button class="btn-secondary" id="btnImportDatabase" onclick="document.getElementById('importDatabaseFileInput').click()" data-i18n="importDbBtn">📤 Import DB</button>
+              <input type="file" id="importDatabaseFileInput" accept=".json" style="display: none;" onchange="window.App.importDatabaseJSON(event)">
+            </div>
           </div>
 
-          <!-- Right: Grid of Assets in Folder -->
-          <div class="asset-grid-panel">
-            <div class="asset-items-grid" id="assetItemsGrid"></div>
+          <div class="database-folders-layout">
+            <aside class="folders-sidebar">
+              <div class="folders-title">Folders</div>
+              <ul class="folders-list" id="databaseFoldersList"></ul>
+            </aside>
+            <div class="folders-content-area">
+              <div class="asset-grid" id="databaseAssetsGrid"></div>
+            </div>
           </div>
         </div>
       </section>
 
     </main>
-
-    <!-- =====================================================================
-         FLOATING AI PROMPT & DIRECTOR BAR (Docked at Bottom like Screenshot)
-         ===================================================================== -->
-    <form class="floating-prompt-bar" id="floatingPromptForm">
-      <div class="prompt-bar-icon">📹</div>
-      <input type="text" class="prompt-bar-input" id="floatingPromptInput"
-        placeholder="Describe what anime scene or character action you want to create..."
-        data-i18n-placeholder="promptPlaceholder" />
-      <div class="prompt-bar-actions">
-        <button type="button" class="cinema-ctrl-btn" style="width: 32px; height: 32px;" title="Voice Dictation"
-          onclick="window.App.showToast('Voice Dictation Ready')">🎙️</button>
-        <button type="submit" class="prompt-submit-btn" title="Generate Scene">➔</button>
-      </div>
-    </form>
-
   </div>
 
-  <!-- =====================================================================
-       MODAL: CREATE NEW CHARACTER & VOICE ASSIGNMENT
-       ===================================================================== -->
-  <div class="modal-backdrop" id="modalCreateCharacter">
-    <div class="modal-card">
+  <!-- =======================================================================
+       MODAL 1: CREATE NEW CHARACTER
+       ======================================================================= -->
+  <div class="modal-backdrop" id="newCharacterModal">
+    <div class="modal-box">
       <div class="modal-header">
         <div class="modal-title">
           <span>✨</span>
           <span>Create New AI Character</span>
         </div>
-        <button class="modal-close-btn" data-close-modal>✕</button>
+        <button class="modal-close-btn" onclick="window.App.closeAllModals()">✕</button>
       </div>
       <form id="createCharacterForm">
         <div class="modal-body">
@@ -835,8 +926,7 @@ Solaris: "No darkness can withstand this force!" [action: Power Surge]</textarea
             </div>
             <div class="form-group">
               <label class="form-label" data-i18n="charTitle">Title / Role</label>
-              <input type="text" class="form-input" id="modalCharTitle" required
-                placeholder="e.g. Cyber Samurai, Mystic Queen">
+              <input type="text" class="form-input" id="modalCharTitle" required placeholder="e.g. Cyber Samurai, Mystic Queen">
             </div>
           </div>
 
@@ -865,44 +955,166 @@ Solaris: "No darkness can withstand this force!" [action: Power Surge]</textarea
           <div class="form-row-2">
             <div class="form-group">
               <label class="form-label" data-i18n="charPitch">Voice Pitch (0.5x - 2.0x)</label>
-              <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="modalCharPitch"
-                oninput="document.getElementById('pitchVal').textContent=this.value+'x'">
+              <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="modalCharPitch" oninput="document.getElementById('pitchVal').textContent=this.value+'x'">
               <span id="pitchVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
             </div>
             <div class="form-group">
               <label class="form-label" data-i18n="charSpeed">Speech Speed (0.5x - 2.0x)</label>
-              <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="modalCharSpeed"
-                oninput="document.getElementById('speedVal').textContent=this.value+'x'">
+              <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="modalCharSpeed" oninput="document.getElementById('speedVal').textContent=this.value+'x'">
               <span id="speedVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
             </div>
           </div>
 
           <div class="form-group">
             <label class="form-label" data-i18n="charBackstory">Backstory & Lore</label>
-            <textarea class="form-textarea" id="modalCharBackstory" rows="3"
-              placeholder="Enter lore, motivations, and fighting style..."></textarea>
+            <textarea class="form-textarea" id="modalCharBackstory" rows="3" placeholder="Enter lore, motivations, and fighting style..."></textarea>
           </div>
 
-          <button type="button" class="btn-secondary" id="btnModalTestVoice" style="align-self: flex-start;"
-            data-i18n="testVoiceBtn">
+          <button type="button" class="btn-secondary" id="btnModalTestVoice" onclick="window.App.testModalVoice()" style="align-self: flex-start;" data-i18n="testVoiceBtn">
             🔊 Test Voice Synthesis
           </button>
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn-secondary" data-close-modal>Cancel</button>
-          <button type="submit" class="btn-primary-gradient" data-i18n="saveCharBtn">💾 Save Character to
-            Database</button>
+          <button type="button" class="btn-secondary" onclick="window.App.closeAllModals()">Cancel</button>
+          <button type="submit" class="btn-primary-gradient" data-i18n="saveCharBtn">💾 Save Character to Database</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MODAL 2: PRICING & CREATOR PLANS (INTERACTIVE)
+       ======================================================================= -->
+  <div class="modal-backdrop" id="pricingModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>⚡</span>
+          <span>AnimeArt Studio — Pro & Lifetime Plans</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.App.closeAllModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="pricing-cards-grid">
+          <!-- Lifetime Starter Plan -->
+          <div class="pricing-plan-card featured">
+            <span class="plan-badge">BEST VALUE</span>
+            <div class="plan-title">Lifetime Starter</div>
+            <div class="plan-price">$99 <span>/ one-time</span></div>
+            <p style="font-size: 12px; color: var(--text-secondary);">No recurring subscriptions! Lifetime access to all anime action generators.</p>
+            <ul class="plan-features-list">
+              <li>10,000 Creation Credits</li>
+              <li>60FPS In-RAM Video Engine</li>
+              <li>All 4 Multilingual Voice Synthesizers</li>
+              <li>Full Commercial License</li>
+              <li>Access to all Planet & Heritage Worlds</li>
+            </ul>
+            <button class="btn-primary-gradient" onclick="window.App.purchasePlan('Lifetime Starter', 10000)">⚡ Claim Lifetime Plan ($99)</button>
+          </div>
+
+          <!-- Monthly Pro Studio -->
+          <div class="pricing-plan-card">
+            <div class="plan-title">Pro Studio Monthly</div>
+            <div class="plan-price">$19 <span>/ month</span></div>
+            <p style="font-size: 12px; color: var(--text-secondary);">Flexible monthly plan for content creators and animators.</p>
+            <ul class="plan-features-list">
+              <li>2,500 Monthly Credits</li>
+              <li>High-Res 4K Anime Upscaler</li>
+              <li>WebM/MP4 Recording & GIF Export</li>
+              <li>Custom Superpower Builder</li>
+            </ul>
+            <button class="btn-secondary" onclick="window.App.purchasePlan('Pro Monthly', 2500)">Subscribe ($19/mo)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MODAL 3: CREATOR LOGIN / SIGN IN
+       ======================================================================= -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>👤</span>
+          <span>Creator Sign In</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.App.closeAllModals()">✕</button>
+      </div>
+      <form id="creatorLoginForm" onsubmit="window.App.handleLogin(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Creator Username / Email</label>
+            <input type="text" class="form-input" id="loginInputUser" required placeholder="Enter username or email" value="NareenKarthik">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" id="loginInputPass" required placeholder="••••••••" value="password123">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Creator Avatar</label>
+            <select class="form-select" id="loginAvatarSelect">
+              <option value="assets/characters/kaito.jpg">Kaito (Cyberpunk Ronin)</option>
+              <option value="assets/characters/mei.jpg">Mei (Celestial Archon)</option>
+              <option value="assets/characters/ananya.jpg">Ananya (Solar Priestess)</option>
+              <option value="assets/characters/ren.jpg">Ren (Blood Moon Paladin)</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" onclick="window.App.closeAllModals()">Cancel</button>
+          <button type="submit" class="btn-primary-gradient">Sign In & Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =======================================================================
+       MODAL 4: AI ANIME IMAGE GENERATOR
+       ======================================================================= -->
+  <div class="modal-backdrop" id="imageGenModal">
+    <div class="modal-card" style="max-width: 620px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>✨</span>
+          <span>AI Anime Text-to-Image Generator</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.App.closeAllModals()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Image Prompt</label>
+          <input type="text" class="form-input" id="imageGenPromptInput" placeholder="e.g. Cyberpunk samurai walking in neon rain with glowing pink sword" value="Cyberpunk samurai walking in neon rain with glowing pink sword">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Art Style Preset</label>
+          <div class="imagegen-style-chips">
+            <button class="style-chip-btn active" data-img-style="cyberpunk" onclick="window.App.setImageGenStyle(this, 'assets/backgrounds/cyberpunk_city.jpg')">🌃 Cyberpunk 2099</button>
+            <button class="style-chip-btn" data-img-style="shrine" onclick="window.App.setImageGenStyle(this, 'assets/backgrounds/cherry_shrine.jpg')">🌸 Shinkai Sakura</button>
+            <button class="style-chip-btn" data-img-style="temple" onclick="window.App.setImageGenStyle(this, 'assets/backgrounds/fantasy_temple.jpg')">🏛️ Ancient Celestial</button>
+            <button class="style-chip-btn" data-img-style="classroom" onclick="window.App.setImageGenStyle(this, 'assets/backgrounds/anime_classroom.jpg')">🏫 Sunset Slice of Life</button>
+            <button class="style-chip-btn" data-img-style="horror" onclick="window.App.setImageGenStyle(this, 'assets/backgrounds/horror_castle.jpg')">🏰 Gothic Blood Moon</button>
+          </div>
+        </div>
+
+        <div class="imagegen-preview-box">
+          <img src="assets/backgrounds/cyberpunk_city.jpg" id="imageGenPreviewImg" class="imagegen-preview-img" alt="Generated Anime Art">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="window.App.closeAllModals()">Close</button>
+        <button type="button" class="btn-secondary" onclick="window.App.useImageAsBackground()">🖼️ Set as Studio Background</button>
+        <button type="button" class="btn-primary-gradient" onclick="window.App.generateAIImage()">⚡ Generate Image</button>
+      </div>
     </div>
   </div>
 
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- Main Universal JavaScript App (Runs in all environments) -->
+  <!-- Master Universal Bundle -->
   <script src="src/js/bundle.js"></script>
 </body>
-
 </html>
