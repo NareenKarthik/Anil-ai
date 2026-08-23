@@ -1,0 +1,170 @@
+/* ==========================================================================
+   AnimeArt Studio — Left Navigation Sidebar Styles
+   ========================================================================== */
+
+.app-sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background: var(--bg-dark);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+  padding: 16px 12px 24px 12px;
+  user-select: none;
+}
+
+/* Sidebar Top Home Button */
+.sidebar-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 42, 133, 0.08);
+  border: 1.5px solid var(--accent-pink);
+  border-radius: var(--radius-md);
+  color: var(--accent-pink);
+  font-weight: 600;
+  font-size: 13.5px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 16px var(--accent-pink-glow);
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+.sidebar-home-btn:hover {
+  background: rgba(255, 42, 133, 0.15);
+  transform: translateX(2px);
+}
+.sidebar-home-btn svg {
+  stroke: var(--accent-pink);
+}
+
+/* Sidebar Section Headers */
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-section-title {
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 0 12px;
+  margin-bottom: 8px;
+}
+
+/* Sidebar Navigation Items */
+.sidebar-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-nav-item {
+  width: 100%;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav-link-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-nav-link svg {
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+.sidebar-nav-link:hover svg {
+  color: var(--accent-cyan);
+}
+
+.sidebar-nav-link.active {
+  color: #ffffff;
+  background: var(--bg-card);
+  border-color: rgba(255, 255, 255, 0.12);
+  font-weight: 600;
+}
+.sidebar-nav-link.active svg {
+  color: var(--accent-pink);
+}
+
+/* Sub-folder list inside Assets Section */
+.sidebar-folder-pill {
+  font-size: 12px;
+  padding: 6px 12px 6px 28px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.sidebar-folder-pill:hover {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
+.sidebar-folder-pill.active {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.1);
+  font-weight: 600;
+}
+
+/* Sidebar Footer Profile / Quick Info */
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--accent-pink);
+  object-fit: cover;
+}
+
+.sidebar-user-info {
+  flex: 1;
+  margin-left: 10px;
+}
+.sidebar-user-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.sidebar-user-tier {
+  font-size: 10.5px;
+  color: var(--accent-gold);
+}

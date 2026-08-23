@@ -1,0 +1,1090 @@
+/* ==========================================================================
+   AnimeArt Studio — Studio Director, Canvas Cinema & Script Engine Styles
+   ========================================================================== */
+
+/* Hero Title & Mode Switcher */
+.studio-hero-section {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.studio-hero-title {
+  font-size: 38px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.hero-sparkle {
+  color: var(--accent-pink);
+  display: inline-block;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px var(--accent-pink)); }
+  50% { transform: scale(1.18); filter: drop-shadow(0 0 12px var(--accent-pink)); }
+}
+
+/* Mode Switcher Nav Pills (matching screenshot) */
+.mode-switcher-container {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  gap: 4px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.mode-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.mode-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mode-tab-btn.active {
+  background: #ffffff;
+  color: #0b0b14;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+}
+.mode-tab-btn.active .badge-tag {
+  background: #032b1d;
+  color: #06d6a0;
+}
+
+.hero-vibe-tagline {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff2a85 0%, #c77dff 50%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+/* Modes Cards Grid (Matching screenshot cards) */
+.modes-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.mode-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 9/14;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.mode-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-pink-glow);
+}
+
+.mode-card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.65;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.mode-card:hover .mode-card-img {
+  opacity: 0.95;
+  transform: scale(1.05);
+}
+
+.mode-card-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 14px 10px;
+  background: linear-gradient(0deg, rgba(9, 9, 14, 0.95) 0%, rgba(9, 9, 14, 0.4) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.mode-card-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.mode-card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Studio Cinema Workspace (Canvas Player + Script Director)
+   ========================================================================== */
+
+.studio-workspace-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Left: Cinema Canvas Player */
+.cinema-player-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.cinema-viewport-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+.anime-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* Subtitle & Character Overlay in Cinema */
+.cinema-dialogue-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(12, 12, 20, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 42, 133, 0.4);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.dialogue-speaker-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--accent-pink);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.dialogue-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.dialogue-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.dialogue-speaker-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--accent-pink);
+  letter-spacing: 0.2px;
+}
+
+.dialogue-lang-tag {
+  font-size: 11px;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: var(--accent-cyan);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.dialogue-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+/* Cinema Controls Bar */
+.cinema-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 4px;
+}
+
+.cinema-left-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cinema-ctrl-btn {
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cinema-ctrl-btn:hover {
+  border-color: var(--accent-pink);
+  background: rgba(255, 42, 133, 0.15);
+}
+
+.cinema-ctrl-btn.recording {
+  background: #ff0055;
+  border-color: #ff0055;
+  animation: recPulse 1s infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 8px #ff0055; }
+  50% { transform: scale(1.1); box-shadow: 0 0 16px #ff0055; }
+}
+
+.bg-select-dropdown {
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Audio Visualizer Equalizer */
+.audio-equalizer-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+.equalizer-bar {
+  width: 3px;
+  background: var(--accent-cyan);
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.1s ease;
+}
+
+/* Right: Script & Dialogue Director Panel */
+.script-director-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.script-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.script-panel-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auto-voice-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(6, 214, 160, 0.12);
+  border: 1px solid rgba(6, 214, 160, 0.35);
+  color: #06d6a0;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.voice-dot {
+  width: 6px;
+  height: 6px;
+  background: #06d6a0;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #06d6a0;
+}
+
+/* Preset Script Switchers */
+.script-presets-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.preset-chip-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.preset-chip-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-pink);
+  background: rgba(255, 42, 133, 0.1);
+}
+
+/* Script Code / Textarea Editor */
+.script-editor-container {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.script-textarea {
+  width: 100%;
+  height: 220px;
+  background: #0c0c14;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  color: #e0e0ff;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Outfit', monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.script-textarea:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 16px var(--accent-pink-glow);
+}
+
+/* Quick Action Palette Tags */
+.action-palette-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+.action-tag-chip {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--accent-cyan);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.action-tag-chip:hover {
+  background: rgba(0, 240, 255, 0.2);
+  border-color: var(--accent-cyan);
+}
+
+/* Script Action Buttons Bar */
+.script-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.btn-play-scene {
+  flex: 1;
+  background: linear-gradient(135deg, var(--accent-pink) 0%, #b5179e 100%);
+  color: #ffffff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 0 18px var(--accent-pink-glow);
+  transition: all 0.2s ease;
+}
+.btn-play-scene:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px rgba(255, 42, 133, 0.7);
+}
+
+.btn-stop-scene {
+  background: #252538;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-stop-scene:hover {
+  background: #35354e;
+}
+
+.btn-export-video {
+  background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.btn-export-video:hover {
+  box-shadow: 0 0 16px rgba(67, 97, 238, 0.6);
+}
+
+/* ==========================================================================
+   Floating AI Prompt & Director Bar (Docked Bottom like Screenshot)
+   ========================================================================== */
+
+.floating-prompt-bar {
+  position: fixed;
+  bottom: 24px;
+  left: calc(var(--sidebar-width) + (100% - var(--sidebar-width)) / 2);
+  transform: translateX(-50%);
+  width: min(840px, 85%);
+  background: rgba(18, 18, 28, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  padding: 6px 8px 6px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 240, 255, 0.15);
+  z-index: 80;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.floating-prompt-bar:focus-within {
+  border-color: var(--accent-pink);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 28px var(--accent-pink-glow);
+}
+
+.prompt-bar-icon {
+  color: var(--text-muted);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.prompt-bar-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+.prompt-bar-input::placeholder {
+  color: var(--text-muted);
+}
+
+.prompt-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt-lang-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+.prompt-submit-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--accent-pink) 0%, #d90429 100%);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 14px var(--accent-pink-glow);
+  transition: all 0.2s ease;
+}
+/* ==========================================================================
+   Creation Studio — Multi-Step Wizard & Superpower Engine Styles
+   ========================================================================== */
+
+.creation-wizard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wizard-header {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+.wizard-title-group h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wizard-title-group p {
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+/* Wizard Steps Navigation Bar */
+.wizard-steps-nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 6px;
+}
+
+.wizard-step-tab {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.wizard-step-tab:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+.wizard-step-tab.active {
+  background: var(--accent-pink);
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--accent-pink-glow);
+}
+
+/* Wizard Section Cards */
+.wizard-card-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.wizard-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 12px;
+}
+
+/* Step 1: Character Roles Grid */
+.roles-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.role-select-card {
+  background: #0d0d16;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+.role-select-card:hover {
+  border-color: var(--accent-pink);
+  transform: translateY(-3px);
+}
+.role-select-card.active {
+  border-color: var(--accent-pink);
+  background: rgba(255, 42, 133, 0.12);
+  box-shadow: 0 0 18px var(--accent-pink-glow);
+}
+
+.role-card-icon {
+  font-size: 28px;
+}
+.role-card-name {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.role-card-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Step 2: Genres Selector Grid */
+.genres-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.genre-select-card {
+  background: #0d0d16;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+.genre-select-card:hover {
+  transform: translateY(-3px);
+}
+.genre-select-card.magic.active {
+  border-color: #9d4edd;
+  background: rgba(157, 78, 221, 0.15);
+  box-shadow: 0 0 18px rgba(157, 78, 221, 0.4);
+}
+.genre-select-card.horror.active {
+  border-color: #d90429;
+  background: rgba(217, 4, 41, 0.15);
+  box-shadow: 0 0 18px rgba(217, 4, 41, 0.4);
+}
+.genre-select-card.mystery.active {
+  border-color: #48cae4;
+  background: rgba(72, 202, 228, 0.15);
+  box-shadow: 0 0 18px rgba(72, 202, 228, 0.4);
+}
+.genre-select-card.romance.active {
+  border-color: #ff70a6;
+  background: rgba(255, 112, 166, 0.15);
+  box-shadow: 0 0 18px rgba(255, 112, 166, 0.4);
+}
+.genre-select-card.family.active {
+  border-color: #ffb703;
+  background: rgba(255, 183, 3, 0.15);
+  box-shadow: 0 0 18px rgba(255, 183, 3, 0.4);
+}
+.genre-select-card.scifi.active {
+  border-color: #00f0ff;
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+}
+
+.genre-card-icon {
+  font-size: 26px;
+}
+.genre-card-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Step 4: Superpower Customizer Studio */
+.superpower-builder-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.power-element-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.power-element-btn {
+  background: #0a0a12;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.power-element-btn:hover {
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+}
+.power-element-btn.active {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.15);
+  color: #ffffff;
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+.superpower-preview-card {
+  background: linear-gradient(135deg, rgba(255, 42, 133, 0.08) 0%, rgba(0, 240, 255, 0.08) 100%), #0c0c16;
+  border: 1.5px solid var(--accent-pink);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 0 20px var(--accent-pink-glow);
+}
+
+.power-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 42, 133, 0.2);
+  color: var(--accent-pink);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.power-preview-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+}
+.power-preview-shout {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--accent-cyan);
+}
+
+/* Step 5: Asset / Dataset Importer */
+.importer-dropzones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.importer-dropzone {
+  background: #0c0c16;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.importer-dropzone:hover {
+  border-color: var(--accent-pink);
+  background: rgba(255, 42, 133, 0.05);
+}
+
+.dropzone-icon {
+  font-size: 32px;
+}
+.dropzone-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.dropzone-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* In-RAM Live Video Engine Section */
+.ram-video-engine-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ram-engine-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0c0c16;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+}
+
+.ram-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 240, 255, 0.12);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: var(--accent-cyan);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   World Heritage & Cosmic Planets Studio Styles
+   ========================================================================== */
+
+.world-explorer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.world-categories-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 8px 12px;
+  flex-wrap: wrap;
+}
+
+.world-cat-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.world-cat-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+.world-cat-btn.active {
+  background: linear-gradient(135deg, #00f0ff 0%, #4361ee 100%);
+  color: #0b0b14;
+  font-weight: 700;
+  box-shadow: 0 0 16px var(--accent-cyan-glow);
+}
+
+.world-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.world-item-card {
+  background: #0d0d16;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.world-item-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7), 0 0 20px var(--accent-cyan-glow);
+}
+
+.world-item-preview {
+  width: 100%;
+  aspect-ratio: 16/10;
+  position: relative;
+  background: #06060c;
+  overflow: hidden;
+}
+
+.world-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.world-item-card:hover .world-item-img {
+  transform: scale(1.08);
+}
+
+.world-item-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(10, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.world-item-body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.world-item-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.world-item-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.world-item-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Creature / Living Being Avatar Card */
+.creature-avatar-box {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--accent-cyan);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.creature-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+

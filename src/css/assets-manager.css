@@ -1,0 +1,309 @@
+/* ==========================================================================
+   AnimeArt Studio — Asset Database & Folder Explorer Styles
+   ========================================================================== */
+
+.asset-manager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.asset-manager-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+}
+
+.asset-header-info h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+.asset-header-info p {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.asset-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-secondary {
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  background: #252538;
+  border-color: var(--accent-pink);
+}
+
+/* Asset Folder Explorer Layout */
+.asset-explorer-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+}
+
+/* Left: Folders Navigation Tree */
+.folder-tree-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.folder-tree-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.folder-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.folder-item-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.folder-item-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+.folder-item-btn.active {
+  background: rgba(255, 42, 133, 0.12);
+  border-color: var(--accent-pink);
+  color: #ffffff;
+  font-weight: 600;
+}
+.folder-item-btn.active svg {
+  color: var(--accent-pink);
+}
+
+.folder-item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.folder-count-pill {
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+}
+
+/* Right: Asset Grid Display */
+.asset-grid-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.asset-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 14px;
+}
+
+.asset-filters-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.asset-filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.asset-filter-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+}
+.asset-filter-btn.active {
+  background: var(--accent-cyan);
+  color: #0b0b14;
+  border-color: var(--accent-cyan);
+}
+
+/* Asset Cards Grid */
+.asset-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.asset-card {
+  background: #0d0d14;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+}
+.asset-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.asset-preview-box {
+  width: 100%;
+  aspect-ratio: 4/3;
+  position: relative;
+  background: #050508;
+  overflow: hidden;
+}
+
+.asset-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.asset-card:hover .asset-preview-img {
+  transform: scale(1.06);
+}
+
+.asset-card-details {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.asset-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.asset-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.btn-card-action {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+.btn-card-action:hover {
+  background: var(--accent-pink);
+  border-color: var(--accent-pink);
+  color: #ffffff;
+}
+
+/* Voice Profile Card */
+.voice-profile-card {
+  background: #0e0e18;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.voice-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.voice-lang-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+}
+.voice-lang-badge.en { background: rgba(0, 240, 255, 0.15); color: #00f0ff; }
+.voice-lang-badge.ta { background: rgba(255, 183, 3, 0.15); color: #ffb703; }
+.voice-lang-badge.ja { background: rgba(255, 42, 133, 0.15); color: #ff2a85; }
+.voice-lang-badge.zh { background: rgba(76, 201, 240, 0.15); color: #4cc9f0; }
+
+.voice-waveform-preview {
+  height: 28px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.waveform-bar {
+  width: 3px;
+  background: var(--accent-pink);
+  border-radius: 2px;
+}

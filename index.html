@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnimeArt Studio — AI Character, World Heritage & Cosmic Planets Studio</title>
+  <meta name="description" content="Next-Generation Anime AI Studio with Multilingual Voice Synthesis (English, Tamil, Japanese, Chinese), World Heritage Civilizations, Cosmic Planets, Living Beings, and In-RAM Video Engine.">
+
+  <!-- Google Fonts for English, Tamil, Japanese, Chinese -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/sidebar.css">
+  <link rel="stylesheet" href="src/css/studio.css">
+  <link rel="stylesheet" href="src/css/assets-manager.css">
+  <link rel="stylesheet" href="src/css/modal.css">
+</head>
+<body>
+
+  <!-- Top Announcement Promo Banner -->
+  <header class="promo-banner" id="promoBanner">
+    <span>⚡ <span data-i18n="promoBanner">Limited-time offer! Unlock 1 year of limitless AI Character Studio creation at</span> <span class="promo-highlight">UP TO 27% OFF.</span></span>
+    <a href="#pricing" class="promo-btn" data-i18n="viewPlan">View Plan →</a>
+    <button class="promo-close" onclick="document.getElementById('promoBanner').style.display='none'">✕</button>
+  </header>
+
+  <!-- Main Top Navigation Bar -->
+  <nav class="header-navbar">
+    <div class="nav-brand-group">
+      <a href="#" class="brand-logo" data-view-target="studio">
+        <div class="brand-icon">♾️</div>
+        <span>AnimeArt</span>
+      </a>
+      <span class="breadcrumb-divider">/</span>
+      <span class="breadcrumb-current" id="currentBreadcrumb" data-i18n="navStudio">Anime Studio</span>
+    </div>
+
+    <div class="nav-search-bar">
+      <span class="search-icon-svg">🔍</span>
+      <input type="text" class="nav-search-input" id="globalSearchInput" placeholder="Search characters, planets, heritage, voices..." data-i18n-placeholder="searchPlaceholder">
+    </div>
+
+    <div class="nav-right-actions">
+      <!-- Language Selector -->
+      <select class="lang-selector-btn" id="globalLangSelect" title="Select UI & Voice Language">
+        <option value="en">🇬🇧 English</option>
+        <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+        <option value="ja">🇯🇵 日本語 (Japanese)</option>
+        <option value="zh">🇨🇳 中文 (Chinese)</option>
+      </select>
+
+      <!-- Token Badge -->
+      <div class="token-badge" title="Available Creation Credits">
+        <span>🪙</span>
+        <span>2,450</span>
+      </div>
+
+      <a href="#pricing" class="nav-link-btn" data-i18n="pricing">Pricing</a>
+      <a href="#login" class="nav-link-btn" data-i18n="login">Login</a>
+      <button class="btn-primary-gradient" id="btnOpenNewCharModal" data-i18n="startForFree">
+        <span>Start for Free</span>
+        <span>›</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Master Layout Container -->
+  <div class="app-container">
+
+    <!-- Left Navigation Sidebar -->
+    <aside class="app-sidebar">
+      <!-- Top Home Pill -->
+      <a href="#" class="sidebar-home-btn" data-view-target="studio">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span data-i18n="navHome">Home</span>
+      </a>
+
+      <!-- CREATE Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title" data-i18n="secCreate">CREATE</div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link active" data-view-target="studio">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/></svg>
+                <span data-i18n="navStudio">Anime Studio</span>
+              </span>
+              <span class="badge-tag new">NEW</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="creation-wizard" style="color: var(--accent-pink);">
+              <span class="sidebar-nav-link-left">
+                <span>⚡</span>
+                <span data-i18n="navCreationWizard">Creation Studio</span>
+              </span>
+              <span class="badge-tag hot">HOT</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="world-hub">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                <span data-i18n="navWorld">World & Planets</span>
+              </span>
+              <span class="badge-tag new">COSMOS</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="studio" onclick="window.App.loadPresetScript('duel')">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect width="14" height="14" x="1" y="5" rx="2"/></svg>
+                <span data-i18n="navAMV">AMV Generator</span>
+              </span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="character-lab">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span data-i18n="navCharacter">Character Design</span>
+              </span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="database" onclick="window.App.selectFolder('voices')">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <span data-i18n="navVoice">Voice & Audio</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ASSETS & DATABASE FOLDERS Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title" data-i18n="secAssets">ASSETS & DATABASE</div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" data-view-target="database">
+              <span class="sidebar-nav-link-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+                <span data-i18n="navFolders">All Folders (DB)</span>
+              </span>
+            </a>
+          </li>
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('characters');" data-i18n="navCharFolder">
+            📁 Character Assets
+          </li>
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('backgrounds');" data-i18n="navBgFolder">
+            📁 Background Assets
+          </li>
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('voices');" data-i18n="navVoiceFolder">
+            📁 Voice Profiles
+          </li>
+          <li class="sidebar-folder-pill" onclick="window.App.switchView('database'); window.App.selectFolder('scenes');" data-i18n="navScenesFolder">
+            📁 Storyboards & AMVs
+          </li>
+        </ul>
+      </div>
+
+      <!-- PINNED TOOLS Section -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title" data-i18n="secPinned">PINNED TOOLS</div>
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('Lip-Sync Engine Active')">
+              <span class="sidebar-nav-link-left">
+                <span>🎙️</span>
+                <span data-i18n="toolLipSync">Auto Lip-Sync</span>
+              </span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('Keyframe Sync Active')">
+              <span class="sidebar-nav-link-left">
+                <span>⏱️</span>
+                <span data-i18n="toolKeyframe">Keyframe Sync</span>
+              </span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="#" class="sidebar-nav-link" onclick="window.App.showToast('4K Anime Upscaler Ready')">
+              <span class="sidebar-nav-link-left">
+                <span>✨</span>
+                <span data-i18n="toolUpscale">Upscale Anime</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Sidebar User Profile Footer -->
+      <div class="sidebar-footer">
+        <img src="assets/characters/kaito.jpg" class="sidebar-user-avatar" alt="User Profile">
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Anime Creator</div>
+          <div class="sidebar-user-tier">PRO Studio Plan</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Content Area -->
+    <main class="main-content-view">
+
+      <!-- ===================================================================
+           VIEW 1: ANIME STUDIO & DIRECTOR (MAIN HERO VIEW)
+           =================================================================== -->
+      <section class="view-panel active" id="view-studio">
+        
+        <!-- Hero Section Title & Mode Switcher -->
+        <div class="studio-hero-section">
+          <h1 class="studio-hero-title">
+            <span data-i18n="heroTitle">What would you like to create today?</span>
+            <span class="hero-sparkle">✨</span>
+          </h1>
+
+          <!-- Mode Switcher Tabs -->
+          <div class="mode-switcher-container">
+            <button class="mode-tab-btn active" data-mode="studio">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/></svg>
+              <span data-i18n="tabStudio">Anime Studio</span>
+              <span class="badge-tag new">NEW</span>
+            </button>
+            <button class="mode-tab-btn" data-mode="amv" onclick="window.App.loadPresetScript('duel')">
+              <span>🎬</span>
+              <span data-i18n="tabAMV">AMV</span>
+            </button>
+            <button class="mode-tab-btn" data-mode="character" onclick="window.App.switchView('character-lab')">
+              <span>👤</span>
+              <span data-i18n="tabCharacter">Character</span>
+            </button>
+            <button class="mode-tab-btn" data-mode="world" onclick="window.App.switchView('world-hub')">
+              <span>🌍</span>
+              <span data-i18n="tabWorld">World & Planets</span>
+            </button>
+            <button class="mode-tab-btn" data-mode="audio" onclick="window.App.switchView('database'); window.App.selectFolder('voices');">
+              <span>🎵</span>
+              <span data-i18n="tabAudio">Audio</span>
+            </button>
+          </div>
+
+          <div class="hero-vibe-tagline" data-i18n="heroTagline">Vibe Direct Now — AI Character, World & Voice Studio</div>
+        </div>
+
+        <!-- Mode Carousel Cards (Matching screenshot) -->
+        <div class="modes-cards-grid">
+          <div class="mode-card" onclick="window.App.loadPresetScript('english')">
+            <img src="assets/characters/kaito.jpg" class="mode-card-img" alt="Anime Short">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">🎬</div>
+              <div class="mode-card-title" data-i18n="modeShort">Anime Short</div>
+            </div>
+          </div>
+
+          <div class="mode-card" onclick="window.App.loadPresetScript('tamil')">
+            <img src="assets/characters/ananya.jpg" class="mode-card-img" alt="Character Promo">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">🏛️</div>
+              <div class="mode-card-title">Tamil Heritage</div>
+            </div>
+          </div>
+
+          <div class="mode-card" onclick="window.App.loadPresetScript('mars')">
+            <img src="assets/backgrounds/horror_castle.jpg" class="mode-card-img" alt="Mars Expedition">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">🪐</div>
+              <div class="mode-card-title">Mars Planet</div>
+            </div>
+          </div>
+
+          <div class="mode-card" onclick="window.App.loadPresetScript('japanese')">
+            <img src="assets/characters/ren.jpg" class="mode-card-img" alt="Action AMV">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">⛩️</div>
+              <div class="mode-card-title">Kyoto Shrine</div>
+            </div>
+          </div>
+
+          <div class="mode-card" onclick="window.App.loadPresetScript('europa')">
+            <img src="assets/backgrounds/fantasy_temple.jpg" class="mode-card-img" alt="Europa Ocean">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">🌌</div>
+              <div class="mode-card-title">Europa Moon</div>
+            </div>
+          </div>
+
+          <div class="mode-card" onclick="window.App.loadPresetScript('chinese')">
+            <img src="assets/characters/mei.jpg" class="mode-card-img" alt="Visual Novel">
+            <div class="mode-card-overlay">
+              <div class="mode-card-icon">🐉</div>
+              <div class="mode-card-title">Great Wall</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Director Layout (Left: Cinema Canvas, Right: Script & Voice Engine) -->
+        <div class="studio-workspace-layout">
+
+          <!-- Left: Cinema Canvas Studio -->
+          <div class="cinema-player-panel">
+            <div class="cinema-viewport-wrapper">
+              <canvas id="animeCanvas" class="anime-canvas"></canvas>
+
+              <!-- Dynamic Subtitle Dialogue Box with Speaker Avatar -->
+              <div class="cinema-dialogue-overlay" id="cinemaDialogueOverlay">
+                <img src="assets/characters/kaito.jpg" id="cinemaSpeakerAvatar" class="dialogue-speaker-avatar" alt="Speaker Avatar">
+                <div class="dialogue-content">
+                  <div class="dialogue-header-row">
+                    <span class="dialogue-speaker-name" id="cinemaSpeakerName">Kaito</span>
+                    <span class="dialogue-lang-tag" id="cinemaSpeakerLang">ENGLISH 🇬🇧</span>
+                  </div>
+                  <div class="dialogue-text" id="cinemaDialogueText">"Welcome to Neo Tokyo, let's begin the mission!"</div>
+                </div>
+                <!-- Equalizer Waveform -->
+                <div class="audio-equalizer-bars">
+                  <div class="equalizer-bar"></div>
+                  <div class="equalizer-bar"></div>
+                  <div class="equalizer-bar"></div>
+                  <div class="equalizer-bar"></div>
+                  <div class="equalizer-bar"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cinema Controls Bar -->
+            <div class="cinema-controls-bar">
+              <div class="cinema-left-controls">
+                <select class="bg-select-dropdown" id="cinemaBgSelect" title="Change Background Scene"></select>
+                <button class="cinema-ctrl-btn" id="cinemaRecordBtn" title="Record Video Clip" onclick="window.App.handleExportVideo()">🎥</button>
+              </div>
+              <div class="auto-voice-indicator">
+                <span class="voice-dot"></span>
+                <span data-i18n="autoVoiceBadge">Auto-Voice Assignment: ACTIVE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Multilingual Script & Dialogue Director -->
+          <div class="script-director-panel">
+            <div class="script-panel-header">
+              <div class="script-panel-title">
+                <span>📜</span>
+                <span data-i18n="scriptTitle">Director Script & Dialogue Engine</span>
+              </div>
+            </div>
+
+            <!-- Preset Storyboard Buttons -->
+            <div class="script-presets-row">
+              <button class="preset-chip-btn" data-preset-script="english" data-i18n="presetEnglish">🇬🇧 English Cyberpunk</button>
+              <button class="preset-chip-btn" data-preset-script="tamil" data-i18n="presetTamil">🇮🇳 Tamil Heritage</button>
+              <button class="preset-chip-btn" data-preset-script="japanese" data-i18n="presetJapanese">🇯🇵 Japanese Samurai</button>
+              <button class="preset-chip-btn" data-preset-script="chinese" data-i18n="presetChinese">🇨🇳 Chinese Celestial</button>
+              <button class="preset-chip-btn" data-preset-script="mars" data-i18n="presetMars">🪐 Mars Expedition</button>
+              <button class="preset-chip-btn" data-preset-script="europa" data-i18n="presetEuropa">🌌 Europa Ocean</button>
+              <button class="preset-chip-btn" data-preset-script="duel" data-i18n="presetDuel">⚔️ 4-Hero Duel</button>
+            </div>
+
+            <!-- Script Editor Textarea -->
+            <div class="script-editor-container">
+              <textarea class="script-textarea" id="scriptEditorTextarea" placeholder="Character: &quot;Dialogue&quot; [action: ActionName]...">Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Power Surge]
+Ananya: "வணக்கம்! நாங்கள் நிச்சயம் வெற்றி பெறுவோம்." [action: Solar Flare]
+Ren: "覚悟はいいか？行くぞ！" [action: Sword Slash]
+Mei: "漫天星辰，为我们引路，光华流转！" [action: Magic Cast]
+Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Dash]</textarea>
+            </div>
+
+            <!-- Quick Action VFX Tags -->
+            <div class="action-palette-tags">
+              <span style="font-size: 11px; color: var(--text-muted);">Quick VFX:</span>
+              <button class="action-tag-chip" data-action-tag="Power Surge">⚡ Power Surge</button>
+              <button class="action-tag-chip" data-action-tag="Sword Slash">⚔️ Sword Slash</button>
+              <button class="action-tag-chip" data-action-tag="Solar Flare">☀️ Solar Flare</button>
+              <button class="action-tag-chip" data-action-tag="Magic Cast">✨ Magic Cast</button>
+              <button class="action-tag-chip" data-action-tag="Smile">😊 Smile</button>
+            </div>
+
+            <!-- Action Buttons Bar -->
+            <div class="script-actions-bar">
+              <button class="btn-play-scene" id="btnPlayScript">
+                <span>▶</span>
+                <span data-i18n="runScriptBtn">Play Scene & Speak Voice</span>
+              </button>
+              <button class="btn-stop-scene" id="btnStopScript" data-i18n="stopScriptBtn">⏹ Stop</button>
+              <button class="btn-export-video" id="btnExportVideo" data-i18n="exportVideoBtn">🎥 Export AMV</button>
+              <button class="btn-secondary" id="btnClearScript" data-i18n="clearScriptBtn">Clear</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================================
+           VIEW: WORLD HERITAGE & COSMIC PLANETS HUB
+           =================================================================== -->
+      <section class="view-panel" id="view-world-hub">
+        <div class="world-explorer-container">
+          <div class="asset-manager-header">
+            <div class="asset-header-info">
+              <h2>🌍 World Heritage, Ancient Civilizations & Cosmic Planets</h2>
+              <p>Explore ancient heritage wonders of all countries, interplanetary worlds, living entities, and mythological guardians.</p>
+            </div>
+            <button class="btn-primary-gradient" onclick="window.App.switchView('creation-wizard')">⚡ Create Custom World</button>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="world-categories-bar">
+            <button class="world-cat-btn active" data-world-cat="all">🌐 All Universes & Realities</button>
+            <button class="world-cat-btn" data-world-cat="heritage">🏛️ Earth Heritage & Ancient Wonders</button>
+            <button class="world-cat-btn" data-world-cat="planets">🪐 Solar System & Exoplanets</button>
+            <button class="world-cat-btn" data-world-cat="creatures">🐉 Mythological & Alien Living Beings</button>
+          </div>
+
+          <!-- World Items Grid -->
+          <div class="world-items-grid" id="worldItemsGrid"></div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW: CREATION STUDIO WIZARD (ROLES, GENRES, SUPERPOWERS & RAM VIDEO)
+           =================================================================== -->
+      <section class="view-panel" id="view-creation-wizard">
+        <div class="creation-wizard-container">
+          
+          <!-- Wizard Header -->
+          <div class="wizard-header">
+            <div class="wizard-title-group">
+              <h2><span>⚡</span> <span>AI Character & Multi-Genre Story Creation Wizard</span></h2>
+              <p>Step-by-step studio to craft character roles, story genres, custom superpowers, import assets, and render in-RAM video.</p>
+            </div>
+            <button class="btn-primary-gradient" id="btnWizardSaveAndRun">💾 Save & Launch on Stage</button>
+          </div>
+
+          <!-- Wizard Step Navigation Tabs -->
+          <div class="wizard-steps-nav">
+            <button class="wizard-step-tab active" data-step-target="step-roles">
+              <span>1. Character Roles</span>
+            </button>
+            <button class="wizard-step-tab" data-step-target="step-genres">
+              <span>2. Story Genres & VFX</span>
+            </button>
+            <button class="wizard-step-tab" data-step-target="step-voice">
+              <span>3. Language & Voice</span>
+            </button>
+            <button class="wizard-step-tab" data-step-target="step-powers">
+              <span>4. Superpower Engine</span>
+            </button>
+            <button class="wizard-step-tab" data-step-target="step-importer">
+              <span>5. Asset Importer</span>
+            </button>
+          </div>
+
+          <!-- STEP 1: CHARACTER ROLES -->
+          <div class="wizard-card-section wizard-step-section" id="step-roles">
+            <div class="wizard-section-title">
+              <span>👑</span> <span>Choose Character Role / Archetype</span>
+            </div>
+            <div class="roles-selector-grid">
+              <div class="role-select-card active" data-role="Protagonist">
+                <div class="role-card-icon">🗡️</div>
+                <div class="role-card-name">Protagonist / Hero</div>
+                <div class="role-card-desc">Brave, determined leader fighting for justice and protection.</div>
+              </div>
+              <div class="role-select-card" data-role="Celestial Mage">
+                <div class="role-card-icon">🔮</div>
+                <div class="role-card-name">Celestial Mage</div>
+                <div class="role-card-desc">Master of cosmic runes, starry astral gates, and ancient magic.</div>
+              </div>
+              <div class="role-select-card" data-role="Shadow Assassin">
+                <div class="role-card-icon">🥷</div>
+                <div class="role-card-name">Shadow Assassin</div>
+                <div class="role-card-desc">Silent strike master navigating moonlit alleys and rooftops.</div>
+              </div>
+              <div class="role-select-card" data-role="Detective">
+                <div class="role-card-icon">🕵️</div>
+                <div class="role-card-name">Detective / Investigator</div>
+                <div class="role-card-desc">Sharp-witted seeker of truth in rainy noir mysteries.</div>
+              </div>
+              <div class="role-select-card" data-role="Royal Priestess">
+                <div class="role-card-icon">👑</div>
+                <div class="role-card-name">Royal Priestess</div>
+                <div class="role-card-desc">Regal guardian of golden sun temples and divine realm.</div>
+              </div>
+              <div class="role-select-card" data-role="Romantic Lead">
+                <div class="role-card-icon">💖</div>
+                <div class="role-card-name">Romantic Lead</div>
+                <div class="role-card-desc">Emotional, deeply passionate partner in high-stakes drama.</div>
+              </div>
+              <div class="role-select-card" data-role="Family Guardian">
+                <div class="role-card-icon">👨‍👩‍👧</div>
+                <div class="role-card-name">Family Guardian</div>
+                <div class="role-card-desc">Protective elder, caring parent, or trusted mentor.</div>
+              </div>
+              <div class="role-select-card" data-role="Dark Lord">
+                <div class="role-card-icon">😈</div>
+                <div class="role-card-name">Dark Lord / Antagonist</div>
+                <div class="role-card-desc">Ruthless, calculating sovereign of the blood-moon shadows.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: STORY GENRES & GRAPHICS -->
+          <div class="wizard-card-section wizard-step-section" id="step-genres" style="display: none;">
+            <div class="wizard-section-title">
+              <span>🎨</span> <span>Select Story Genre & Atmosphere Graphics</span>
+            </div>
+            <div class="genres-selector-grid">
+              <div class="genre-select-card magic active" data-genre="magic">
+                <div class="genre-card-icon">🔮</div>
+                <div class="genre-card-name">Magic / Fantasy</div>
+                <span class="badge-tag new">Arcane VFX</span>
+              </div>
+              <div class="genre-select-card horror" data-genre="horror">
+                <div class="genre-card-icon">👻</div>
+                <div class="genre-card-name">Horror / Mystery</div>
+                <span class="badge-tag hot">Blood Moon</span>
+              </div>
+              <div class="genre-select-card mystery" data-genre="mystery">
+                <div class="genre-card-icon">🕵️</div>
+                <div class="genre-card-name">Detective Noir</div>
+                <span class="badge-tag new">Rain FX</span>
+              </div>
+              <div class="genre-select-card romance" data-genre="romance">
+                <div class="genre-card-icon">💖</div>
+                <div class="genre-card-name">Love Drama</div>
+                <span class="badge-tag new">Heart Petals</span>
+              </div>
+              <div class="genre-select-card family" data-genre="family">
+                <div class="genre-card-icon">👨‍👩‍👧‍👦</div>
+                <div class="genre-card-name">Family / Slice of Life</div>
+                <span class="badge-tag discount">Sunny Motes</span>
+              </div>
+              <div class="genre-select-card scifi" data-genre="scifi">
+                <div class="genre-card-icon">⚡</div>
+                <div class="genre-card-name">Cyberpunk / Sci-Fi</div>
+                <span class="badge-tag hot">Neon Warp</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: LANGUAGE & VOICE ENGINE -->
+          <div class="wizard-card-section wizard-step-section" id="step-voice" style="display: none;">
+            <div class="wizard-section-title">
+              <span>🎙️</span> <span>Language & Voice Tuning Engine</span>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Character Name</label>
+                <input type="text" class="form-input" id="wizCharName" value="Solaris" placeholder="Character Name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Native Voice Language</label>
+                <select class="form-select" id="wizCharLang" onchange="window.App.wizardState.lang=this.value; window.App.updateWizardScriptPreview();">
+                  <option value="en">English 🇬🇧 / 🇺🇸</option>
+                  <option value="ta">Tamil 🇮🇳 (தமிழ்)</option>
+                  <option value="ja">Japanese 🇯🇵 (日本語)</option>
+                  <option value="zh">Chinese 🇨🇳 (中文)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label">Voice Pitch (0.6x - 1.8x)</label>
+                <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="wizCharPitch" oninput="document.getElementById('wizPitchVal').textContent=this.value+'x'">
+                <span id="wizPitchVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Speech Speed (0.7x - 1.5x)</label>
+                <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="wizCharSpeed" oninput="document.getElementById('wizSpeedVal').textContent=this.value+'x'">
+                <span id="wizSpeedVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: CUSTOM SUPERPOWER CREATOR -->
+          <div class="wizard-card-section wizard-step-section" id="step-powers" style="display: none;">
+            <div class="wizard-section-title">
+              <span>⚡</span> <span>Custom Superpower Builder & VFX Tuner</span>
+            </div>
+            <div class="superpower-builder-layout">
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div class="form-group">
+                  <label class="form-label">Superpower Name</label>
+                  <input type="text" class="form-input" id="wizPowerName" value="Infernal Sunbeam Nova" placeholder="e.g. Thunder Blade Singularity">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Elemental Energy Type</label>
+                  <div class="power-element-picker">
+                    <button type="button" class="power-element-btn active" data-element="solar">☀️ Solar Light</button>
+                    <button type="button" class="power-element-btn" data-element="electric">⚡ Electric Volt</button>
+                    <button type="button" class="power-element-btn" data-element="fire">🔥 Inferno Fire</button>
+                    <button type="button" class="power-element-btn" data-element="ice">❄️ Frost Ice</button>
+                    <button type="button" class="power-element-btn" data-element="celestial">✨ Celestial Star</button>
+                    <button type="button" class="power-element-btn" data-element="shadow">💀 Shadow / Void</button>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Power Activation Shout / Dialogue</label>
+                  <input type="text" class="form-input" id="wizPowerShout" value="By the eternal sun, illuminate!" placeholder="Dialogue spoken when superpower is triggered">
+                </div>
+
+                <button type="button" class="btn-secondary" id="btnTestSuperpower" style="align-self: flex-start;">
+                  <span>🔊</span> <span>Audition Superpower Sound & VFX</span>
+                </button>
+              </div>
+
+              <!-- Live Power Card Preview -->
+              <div class="superpower-preview-card">
+                <div>
+                  <div class="power-preview-badge" id="powerPreviewElement">☀️ SOLAR LIGHT</div>
+                  <div class="power-preview-title" id="powerPreviewName" style="margin-top: 8px;">Infernal Sunbeam Nova</div>
+                </div>
+                <div>
+                  <span style="font-size: 11px; color: var(--text-muted);">Activation Chant:</span>
+                  <div class="power-preview-shout" id="powerPreviewShout">"By the eternal sun, illuminate!"</div>
+                </div>
+                <div style="font-size: 11.5px; color: var(--accent-gold);">
+                  ⚡ Screen Shake: Active | 60FPS Particles: Active
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 5: ASSET & DATASET IMPORTER -->
+          <div class="wizard-card-section wizard-step-section" id="step-importer" style="display: none;">
+            <div class="wizard-section-title">
+              <span>📥</span> <span>Import Custom Assets & Dataset</span>
+            </div>
+            <div class="importer-dropzones-grid">
+              <label class="importer-dropzone">
+                <div class="dropzone-icon">👤</div>
+                <div class="dropzone-title">Upload Character Art</div>
+                <div class="dropzone-sub">PNG / JPG (Saved to /assets/characters/)</div>
+                <input type="file" id="uploadCharFileInput" accept="image/*" style="display: none;">
+              </label>
+
+              <label class="importer-dropzone">
+                <div class="dropzone-icon">🌄</div>
+                <div class="dropzone-title">Upload Background Art</div>
+                <div class="dropzone-sub">PNG / JPG (Saved to /assets/backgrounds/)</div>
+                <input type="file" id="uploadBgFileInput" accept="image/*" style="display: none;">
+              </label>
+
+              <label class="importer-dropzone">
+                <div class="dropzone-icon">🎙️</div>
+                <div class="dropzone-title">Upload Voice Sample</div>
+                <div class="dropzone-sub">WAV / MP3 (Saved to /assets/voices/)</div>
+                <input type="file" id="uploadVoiceFileInput" accept="audio/*" style="display: none;">
+              </label>
+            </div>
+          </div>
+
+          <!-- SCRIPTING & IN-RAM VIDEO ENGINE SECTION -->
+          <div class="ram-video-engine-section">
+            <div class="ram-engine-status-bar">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="ram-badge">⚡ In-RAM Video Engine: 60 FPS</span>
+                <span class="storage-badge">💾 Personal Storage: Synced</span>
+              </div>
+              <span style="font-size: 12px; color: var(--text-secondary);">Real-time memory buffer rendering</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Generated Story Script (Auto-tailored to Role & Genre)</label>
+              <textarea class="script-textarea" id="wizScriptArea" style="height: 120px;">Solaris: "I am Solaris, the Protagonist. Witness my Infernal Sunbeam Nova!" [action: Solar Flare]
+Solaris: "No darkness can withstand this force!" [action: Power Surge]</textarea>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 2: CHARACTER DESIGN LAB & MEMORY HUB
+           =================================================================== -->
+      <section class="view-panel" id="view-character-lab">
+        <div class="asset-manager-header">
+          <div class="asset-header-info">
+            <h2 data-i18n="charLabTitle">AI Character Creator & Memory Hub</h2>
+            <p data-i18n="charLabDesc">Design custom anime characters with assigned voice profiles, personality traits, and animation triggers.</p>
+          </div>
+          <div class="asset-header-actions">
+            <button class="btn-primary-gradient" onclick="window.App.openModal('modalCreateCharacter')" data-i18n="newCharBtn">+ Create New Character</button>
+          </div>
+        </div>
+
+        <!-- Character Cards Grid -->
+        <div class="asset-items-grid" id="characterLabCardsList" style="margin-top: 24px;"></div>
+      </section>
+
+      <!-- ===================================================================
+           VIEW 3: ASSET DATABASE & FOLDER EXPLORER
+           =================================================================== -->
+      <section class="view-panel" id="view-database">
+        <div class="asset-manager-header">
+          <div class="asset-header-info">
+            <h2 data-i18n="assetManagerTitle">Database & Asset Folders</h2>
+            <p data-i18n="assetManagerDesc">Organize characters, backgrounds, voice recordings, and storyboard scenes in dedicated folders.</p>
+          </div>
+          <div class="asset-header-actions">
+            <button class="btn-secondary" id="btnExportDb" data-i18n="exportDbBtn">📥 Backup Database (JSON)</button>
+            <label class="btn-secondary" style="cursor: pointer;">
+              <span data-i18n="importDbBtn">📤 Import DB</span>
+              <input type="file" id="importDbFileInput" accept=".json" style="display: none;">
+            </label>
+          </div>
+        </div>
+
+        <div class="asset-explorer-layout" style="margin-top: 24px;">
+          <!-- Left: Folders Tree -->
+          <div class="folder-tree-panel">
+            <div class="folder-tree-title">Database Folders</div>
+            <ul class="folder-list" id="folderTreeList"></ul>
+          </div>
+
+          <!-- Right: Grid of Assets in Folder -->
+          <div class="asset-grid-panel">
+            <div class="asset-items-grid" id="assetItemsGrid"></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- =====================================================================
+         FLOATING AI PROMPT & DIRECTOR BAR (Docked at Bottom like Screenshot)
+         ===================================================================== -->
+    <form class="floating-prompt-bar" id="floatingPromptForm">
+      <div class="prompt-bar-icon">📹</div>
+      <input type="text" class="prompt-bar-input" id="floatingPromptInput" placeholder="Describe what anime scene or character action you want to create..." data-i18n-placeholder="promptPlaceholder" />
+      <div class="prompt-bar-actions">
+        <button type="button" class="cinema-ctrl-btn" style="width: 32px; height: 32px;" title="Voice Dictation" onclick="window.App.showToast('Voice Dictation Ready')">🎙️</button>
+        <button type="submit" class="prompt-submit-btn" title="Generate Scene">➔</button>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- =====================================================================
+       MODAL: CREATE NEW CHARACTER & VOICE ASSIGNMENT
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modalCreateCharacter">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>✨</span>
+          <span>Create New AI Character</span>
+        </div>
+        <button class="modal-close-btn" data-close-modal>✕</button>
+      </div>
+      <form id="createCharacterForm">
+        <div class="modal-body">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" data-i18n="charName">Character Name</label>
+              <input type="text" class="form-input" id="modalCharName" required placeholder="e.g. Akira, Shreya, Lin">
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="charTitle">Title / Role</label>
+              <input type="text" class="form-input" id="modalCharTitle" required placeholder="e.g. Cyber Samurai, Mystic Queen">
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" data-i18n="charLang">Native Language & Voice</label>
+              <select class="form-select" id="modalCharLang">
+                <option value="en">English 🇬🇧 / 🇺🇸</option>
+                <option value="ta">Tamil 🇮🇳 (தமிழ்)</option>
+                <option value="ja">Japanese 🇯🇵 (日本語)</option>
+                <option value="zh">Chinese 🇨🇳 (中文)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="charStyle">Visual Art Style</label>
+              <select class="form-select" id="modalCharStyle">
+                <option value="Neo-Tokyo Cyberpunk">Neo-Tokyo Cyberpunk</option>
+                <option value="Ancient Solar Fantasy">Ancient Solar Fantasy</option>
+                <option value="Feudal Samurai Noir">Feudal Samurai Noir</option>
+                <option value="Xianxia Celestial Magic">Xianxia Celestial Magic</option>
+                <option value="Anime High School">Anime High School</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label class="form-label" data-i18n="charPitch">Voice Pitch (0.5x - 2.0x)</label>
+              <input type="range" min="0.6" max="1.8" step="0.05" value="1.0" class="form-input" id="modalCharPitch" oninput="document.getElementById('pitchVal').textContent=this.value+'x'">
+              <span id="pitchVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="charSpeed">Speech Speed (0.5x - 2.0x)</label>
+              <input type="range" min="0.7" max="1.5" step="0.05" value="1.0" class="form-input" id="modalCharSpeed" oninput="document.getElementById('speedVal').textContent=this.value+'x'">
+              <span id="speedVal" style="font-size: 11.5px; color: var(--accent-cyan);">1.0x</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="charBackstory">Backstory & Lore</label>
+            <textarea class="form-textarea" id="modalCharBackstory" rows="3" placeholder="Enter lore, motivations, and fighting style..."></textarea>
+          </div>
+
+          <button type="button" class="btn-secondary" id="btnModalTestVoice" style="align-self: flex-start;" data-i18n="testVoiceBtn">
+            🔊 Test Voice Synthesis
+          </button>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-close-modal>Cancel</button>
+          <button type="submit" class="btn-primary-gradient" data-i18n="saveCharBtn">💾 Save Character to Database</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main Universal JavaScript App (Runs in all environments) -->
+  <script src="src/js/bundle.js"></script>
+</body>
+</html>
