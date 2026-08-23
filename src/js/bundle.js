@@ -1,12 +1,14 @@
 /**
- * AnimeArt AI Character Studio — Master Universe Bundle
+ * AnimeArt AI Character Studio — Master Unified Engine Bundle
  * Includes:
- * - Multilingual Voice Synthesis (English, Tamil, Japanese, Chinese)
- * - World Heritage Sites (India, Japan, China, Egypt, Rome, Peru, Europe)
- * - Cosmic Planets & Moons (Mars, Moon, Saturn, Titan, Europa, Kepler-452b, Nebula X)
- * - Mythological Creatures & Alien Living Beings (Yali, Kitsune, Sphinx, Qilin, Xeno-Archon, Leviathan)
- * - Story Genres (Magic, Horror, Mystery, Romance, Family, Sci-Fi)
- * - Custom Superpower Engine & In-RAM 60FPS Video Renderer
+ * - Web Audio API Procedural Sound FX Synthesizer (Slash, Thunder, Chime, Blast, Aura Surge)
+ * - 60FPS Multi-Phase Action Animation Engine (Anticipation -> Surge -> Climax -> Recovery)
+ * - Natural Language Action Prompt Parser (translates ANY user prompt into real-time animation)
+ * - Web Speech API Multilingual Voice Engine (English, Tamil, Japanese, Chinese) + Auto Lip-Sync
+ * - Script Director & Visual Novel Timeline Sequencer
+ * - Local Database & Assets Management (Characters, Backgrounds, Voices, World Items)
+ * - Interactive Creations Gallery with Clickable Reactions & 1-Click Stage Loading
+ * - Live Sale Promo Countdown Timer & In-RAM Video / PNG Exporter
  */
 
 (function() {
@@ -17,318 +19,127 @@
      ========================================================================== */
   const I18N = {
     currentLang: 'en',
-
     translations: {
       en: {
         appName: 'AnimeArt',
-        appSubtitle: 'AI Character & Scene Studio',
-        promoBanner: '⚡ Limited-time offer! Unlock 1 year of limitless AI Character Studio creation at',
-        viewPlan: 'View Plan →',
+        appSubtitle: 'AI Character, Action & Motion Studio',
+        promoBanner: '🎉 New Year Sale: Lifetime access to Starter Plan $119/mn → Just $99 (no subscriptions)',
+        claimDeal: 'Claim Deal →',
         startForFree: 'Start for Free',
         pricing: 'Pricing',
         login: 'Login',
-        help: 'Help',
-        tokens: 'Tokens',
-        searchPlaceholder: 'Search characters, planets, heritage, voices...',
-        navHome: 'Home',
-        secCreate: 'CREATE',
-        navStudio: 'Anime Studio',
-        navCreationWizard: '⚡ Creation Studio',
-        navAMV: 'AMV Generator',
-        navCharacter: 'Character Design',
-        navWorld: 'World & Planets',
-        navVoice: 'Voice & Audio',
-        secAssets: 'ASSETS & DATABASE',
-        navFolders: 'All Folders (DB)',
-        navCharFolder: '📁 Character Assets',
-        navBgFolder: '📁 Background Assets',
-        navVoiceFolder: '📁 Voice Profiles',
-        navScenesFolder: '📁 Storyboards & AMVs',
-        secPinned: 'PINNED TOOLS',
-        toolLipSync: 'Auto Lip-Sync',
-        toolKeyframe: 'Keyframe Sync',
-        toolUpscale: 'Upscale Anime',
-        heroTitle: 'What would you like to create today?',
-        heroTagline: 'Vibe Direct Now — AI Character, World & Voice Studio',
+        heroTitle: 'What would you like to animate today?',
+        heroTagline: 'Vibe Direct Now — AI Action, Animation & Motion Studio',
         tabStudio: 'Anime Studio',
         tabAMV: 'AMV',
         tabCharacter: 'Character',
         tabWorld: 'World & Planets',
         tabAudio: 'Audio',
-        modeShort: 'Anime Short',
-        modePromo: 'Character Promo',
-        modeAMV: 'Action AMV',
-        modeNovel: 'Visual Novel',
-        modeMusic: 'Music Video',
-        modeTrailer: 'Manga Trailer',
-        scriptTitle: 'Director Script & Dialogue Engine',
         runScriptBtn: 'Play Scene & Speak Voice',
         stopScriptBtn: '⏹ Stop',
         exportVideoBtn: '🎥 Export AMV',
         clearScriptBtn: 'Clear',
-        autoVoiceBadge: 'Auto-Voice Assignment: ACTIVE',
-        presetEnglish: '🇬🇧 English Cyberpunk',
-        presetTamil: '🇮🇳 Tamil Heritage Epic',
-        presetJapanese: '🇯🇵 Japanese Samurai',
-        presetChinese: '🇨🇳 Chinese Celestial',
+        autoVoiceBadge: 'Auto-Voice Synthesis: ACTIVE',
+        presetEnglish: '🇬🇧 Cyberpunk',
+        presetTamil: '🇮🇳 Tamil Heritage',
+        presetJapanese: '🇯🇵 Samurai Duel',
+        presetChinese: '🇨🇳 Celestial Magic',
         presetDuel: '⚔️ 4-Hero Duel',
-        presetMars: '🪐 Mars Expedition',
-        presetEuropa: '🌌 Europa Ocean',
-        promptPlaceholder: 'Describe what anime scene, planet, heritage place or action you want to create...',
-        charLabTitle: 'AI Character Creator & Memory Hub',
-        charLabDesc: 'Design custom anime characters with assigned voice profiles, personality traits, and animation triggers.',
-        newCharBtn: '+ Create New Character',
-        charName: 'Character Name',
-        charTitle: 'Title / Role',
-        charLang: 'Native Language & Voice',
-        charStyle: 'Visual Art Style',
-        charPitch: 'Voice Pitch (0.5x - 2.0x)',
-        charSpeed: 'Speech Speed (0.5x - 2.0x)',
-        charBackstory: 'Backstory & Lore',
-        testVoiceBtn: '🔊 Test Voice Synthesis',
-        saveCharBtn: '💾 Save Character to Database',
-        assetManagerTitle: 'Database & Asset Folders',
-        assetManagerDesc: 'Organize characters, backgrounds, voice recordings, and storyboard scenes in dedicated folders.',
-        exportDbBtn: '📥 Backup Database (JSON)',
-        importDbBtn: '📤 Import DB'
+        presetMars: '🪐 Mars Colony'
       },
       ta: {
         appName: 'AnimeArt',
-        appSubtitle: 'AI கதாப்பாத்திரம், உலக மரபு & விண்வெளி அரங்கம்',
-        promoBanner: '⚡ வரையறுக்கப்பட்ட சலுகை! AI Character Studio-வில் 27% வரை தள்ளுபடி பெறுங்கள்.',
-        viewPlan: 'திட்டங்களை பார்க்க →',
+        appSubtitle: 'AI கதாப்பாத்திரம் மற்றும் அனிமேஷன் ஸ்டுடியோ',
+        promoBanner: '🎉 புத்தாண்டு சிறப்பு தள்ளுபடி! $99 மட்டுமே!',
+        claimDeal: 'சலுகையைப் பெறுங்கள் →',
         startForFree: 'இலவசமாக தொடங்கவும்',
-        pricing: 'விலை பட்டியல்',
+        pricing: 'கட்டணம்',
         login: 'உள்நுழைக',
-        help: 'உதவி',
-        tokens: 'நாணயங்கள்',
-        searchPlaceholder: 'கதாபாத்திரங்கள், கோள்கள், வரலாற்று தலங்களை தேடுங்கள்...',
-        navHome: 'முகப்பு',
-        secCreate: 'உருவாக்கு',
-        navStudio: 'அனிமே ஸ்டுடியோ',
-        navCreationWizard: '⚡ உருவாக்க அரங்கம்',
-        navAMV: 'AMV ஜெனரேட்டர்',
-        navCharacter: 'கதாபாத்திர வடிவமைப்பு',
-        navWorld: 'உலகம் & கோள்கள்',
-        navVoice: 'குரல் & ஒலி',
-        secAssets: 'சொத்துக்கள் & தரவுத்தளம்',
-        navFolders: 'அனைத்து கோப்புறைகள்',
-        navCharFolder: '📁 கதாப்பாத்திர கோப்புறை',
-        navBgFolder: '📁 பின்னணி கோப்புறை',
-        navVoiceFolder: '📁 குரல் கோப்புறை',
-        navScenesFolder: '📁 காட்சிகள் & AMVகள்',
-        secPinned: 'முக்கிய கருவிகள்',
-        toolLipSync: 'தானியங்கி உதட்டு அசைவு',
-        toolKeyframe: 'கீஃப்ரேம் ஒத்திசைவு',
-        toolUpscale: 'அனிமே தரம் உயர்த்து',
-        heroTitle: 'இன்று நீங்கள் எதை உருவாக்க விரும்புகிறீர்கள்?',
-        heroTagline: 'AI கதாப்பாத்திரம், உலக மரபு & பலமொழி குரல் அரங்கம்',
+        heroTitle: 'இன்று நீங்கள் என்ன அனிமேஷன் உருவாக்க விரும்புகிறீர்கள்?',
+        heroTagline: 'AI கதாப்பாத்திரம் மற்றும் அனிமேஷன் இயங்குதளம்',
         tabStudio: 'அனிமே ஸ்டுடியோ',
         tabAMV: 'AMV',
-        tabCharacter: 'கதாபாத்திரம்',
+        tabCharacter: 'கதாப்பாத்திரம்',
         tabWorld: 'உலகம் & கோள்கள்',
-        tabAudio: 'ஒலி',
-        modeShort: 'அனிமே குறும்படம்',
-        modePromo: 'கதாபாத்திர ப்ரோமோ',
-        modeAMV: 'ஆக்‌ஷன் AMV',
-        modeNovel: 'விஷுவல் நாவல்',
-        modeMusic: 'இசை வீடியோ',
-        modeTrailer: 'மங்கா ட்ரெய்லர்',
-        scriptTitle: 'இயக்குனர் ஸ்கிரிப்ட் & வசன என்ஜின்',
+        tabAudio: 'குரல்',
         runScriptBtn: 'காட்சியை இயக்கு & குரல் பேசு',
         stopScriptBtn: '⏹ நிறுத்து',
-        exportVideoBtn: '🎥 வீடியோவை பதிவிறக்கு',
+        exportVideoBtn: '🎥 வீடியோ ஏற்றுமதி',
         clearScriptBtn: 'அழி',
-        autoVoiceBadge: 'தானியங்கி குரல் பொருத்தம்: இயக்கத்தில்',
-        presetEnglish: '🇬🇧 ஆங்கில சைபர்பங்க் காட்சி',
-        presetTamil: '🇮🇳 தமிழ் காவிய பாரம்பரிய காட்சி',
-        presetJapanese: '🇯🇵 ஜப்பானிய சாமுராய் காட்சி',
-        presetChinese: '🇨🇳 சீன விண்மீன் மாய காட்சி',
-        presetDuel: '⚔️ 4-ஹீரோ பலமொழி யுத்தம்',
-        presetMars: '🪐 செவ்வாய் கோள் பயணம்',
-        presetEuropa: '🌌 யூரோபா பனி கடல்',
-        promptPlaceholder: 'நீங்கள் உருவாக்க விரும்பும் காட்சி, கோள் அல்லது பாரம்பரிய தலத்தை விவரிக்கவும்...',
-        charLabTitle: 'AI கதாப்பாத்திர ஆய்வகம் & நினைவகம்',
-        charLabDesc: 'குரல் சுயவிவரம் மற்றும் அனிமேஷன் விளைவுகளுடன் புதிய கதாப்பாத்திரங்களை வடிவமைக்கவும்.',
-        newCharBtn: '+ புதிய கதாப்பாத்திரம் உருவாக்கு',
-        charName: 'கதாபாத்திரத்தின் பெயர்',
-        charTitle: 'பட்டம் / பதவி',
-        charLang: 'தாய்மொழி',
-        charStyle: 'கலை பாணி',
-        charPitch: 'குரல் சுருதி (Pitch)',
-        charSpeed: 'பேச்சு வேகம்',
-        charBackstory: 'பின்புல கதை',
-        testVoiceBtn: '🔊 குரல் சோதனை',
-        saveCharBtn: '💾 தரவுத்தளத்தில் சேமி',
-        assetManagerTitle: 'தரவுத்தளம் & கோப்புறைகள்',
-        assetManagerDesc: 'கதாபாத்திரங்கள், பின்னணிகள், குரல்கள் மற்றும் காட்சிகளை தனித்தனி கோப்புறைகளில் நிர்வகிக்கவும்.',
-        exportDbBtn: '📥 காப்புப்பிரதி (JSON)',
-        importDbBtn: '📤 இறக்குமதி செய்'
+        autoVoiceBadge: 'குரல் ஒத்திசைவு: இயங்குகிறது',
+        presetEnglish: '🇬🇧 சைபர்பங்க் காட்சி',
+        presetTamil: '🇮🇳 தமிழ் பாரம்பரிய காட்சி',
+        presetJapanese: '🇯🇵 ஜப்பானிய சமுராய் போர்',
+        presetChinese: '🇨🇳 சீன விண்மீன் மாயாஜாலம்',
+        presetDuel: '⚔️ 4-வீரர்கள் போர்',
+        presetMars: '🪐 செவ்வாய் ஆய்வு'
       },
       ja: {
         appName: 'AnimeArt',
-        appSubtitle: 'AIキャラクター＆世界遺産・惑星スタジオ',
-        promoBanner: '⚡ 期間限定特典！年間プランで最大27%オフ！',
-        viewPlan: 'プランを見る →',
+        appSubtitle: 'AIキャラクター＆アクションアニメーションスタジオ',
+        promoBanner: '🎉 新年セール！年間プランが今だけ$99（サブスクなし）',
+        claimDeal: '今すぐ入手 →',
         startForFree: '無料で始める',
         pricing: '料金',
         login: 'ログイン',
-        help: 'ヘルプ',
-        tokens: 'トークン',
-        searchPlaceholder: 'キャラクター、惑星、世界遺産を検索...',
-        navHome: 'ホーム',
-        secCreate: '作成',
-        navStudio: 'アニメスタジオ',
-        navCreationWizard: '⚡ クリエイションスタジオ',
-        navAMV: 'AMVジェネレーター',
-        navCharacter: 'キャラクターデザイン',
-        navWorld: '世界遺産＆宇宙惑星',
-        navVoice: 'ボイス＆オーディオ',
-        secAssets: 'アセット＆データベース',
-        navFolders: 'すべてのフォルダ (DB)',
-        navCharFolder: '📁 キャラクターフォルダ',
-        navBgFolder: '📁 背景フォルダ',
-        navVoiceFolder: '📁 ボイスフォルダ',
-        navScenesFolder: '📁 ストーリーボード＆AMV',
-        secPinned: '注目ツール',
-        toolLipSync: '自動リップシンク',
-        toolKeyframe: 'キーフレーム同期',
-        toolUpscale: '画質向上',
-        heroTitle: '今日は何を作成しますか？',
-        heroTagline: 'Vibe Direct Now — AIキャラクター＆マルチ音声スタジオ',
+        heroTitle: '今日はどんなアクションをアニメーションしますか？',
+        heroTagline: 'AIキャラクター＆アクションモーションスタジオ',
         tabStudio: 'アニメスタジオ',
         tabAMV: 'AMV',
         tabCharacter: 'キャラクター',
-        tabWorld: '世界＆惑星',
-        tabAudio: 'オーディオ',
-        modeShort: 'アニメショート',
-        modePromo: 'キャラPV',
-        modeAMV: 'バトルAMV',
-        modeNovel: 'ノベルゲーム',
-        modeMusic: 'ミュージックビデオ',
-        modeTrailer: 'マンガ予告編',
-        scriptTitle: 'ディレクタースクリプト＆台詞エンジン',
+        tabWorld: '世界遺産＆惑星',
+        tabAudio: '音声',
         runScriptBtn: 'シーン再生＆ボイス発声',
         stopScriptBtn: '⏹ 停止',
         exportVideoBtn: '🎥 動画書き出し',
         clearScriptBtn: 'クリア',
-        autoVoiceBadge: '自動ボイス認識: 有効',
-        presetEnglish: '🇬🇧 英語サイバーパンクシーン',
-        presetTamil: '🇮🇳 タミル神話遺産シーン',
-        presetJapanese: '🇯🇵 日本語サムライ決闘シーン',
-        presetChinese: '🇨🇳 中国仙侠スターシーン',
-        presetDuel: '⚔️ 4言語 英雄マルチバトル',
-        presetMars: '🪐 火星コロニー探査',
-        presetEuropa: '🌌 エウロパ氷底海',
-        promptPlaceholder: '作成したいアニメシーン、惑星、遺産を入力...',
-        charLabTitle: 'AIキャラクター作成＆記憶ハブ',
-        charLabDesc: '音声プロファイル、性格設定、アニメーション効果を持つオリジナルキャラクターを作成。',
-        newCharBtn: '+ 新規キャラクター作成',
-        charName: 'キャラクター名',
-        charTitle: '肩書 / 役割',
-        charLang: '主要言語',
-        charStyle: '作画スタイル',
-        charPitch: '声の高さ (Pitch)',
-        charSpeed: '発話速度',
-        charBackstory: '背景設定・ストーリー',
-        testVoiceBtn: '🔊 音声テスト',
-        saveCharBtn: '💾 データベースに保存',
-        assetManagerTitle: 'データベース＆フォルダ管理',
-        assetManagerDesc: 'キャラクター、背景、音声、シーンプロジェクトをフォルダ毎に安全に整理・管理。',
-        exportDbBtn: '📥 DBバックアップ (JSON)',
-        importDbBtn: '📤 DBインポート'
+        autoVoiceBadge: '自動ボイス合成: 有効',
+        presetEnglish: '🇬🇧 英語サイバーパンク',
+        presetTamil: '🇮🇳 タミル神話遺産',
+        presetJapanese: '🇯🇵 日本語サムライ決闘',
+        presetChinese: '🇨🇳 中国仙侠スター',
+        presetDuel: '⚔️ 4英雄マルチバトル',
+        presetMars: '🪐 火星探査'
       },
       zh: {
         appName: 'AnimeArt',
-        appSubtitle: 'AI 动漫角色与世界遗产星际工坊',
-        promoBanner: '⚡ 限时特惠！开启 1 年无限次 AI 动漫创作，最高立省 27%。',
-        viewPlan: '查看方案 →',
+        appSubtitle: 'AI 动漫角色与动作动画工坊',
+        promoBanner: '🎉 新年特惠！终身入门方案仅需 $99（无订阅）',
+        claimDeal: '立即获取 →',
         startForFree: '免费开始',
         pricing: '定价',
         login: '登录',
-        help: '帮助',
-        tokens: '代币',
-        searchPlaceholder: '搜索角色、星球、世界遗产、声音...',
-        navHome: '首页',
-        secCreate: '创作',
-        navStudio: '动漫工作室',
-        navCreationWizard: '⚡ 智能创作者工坊',
-        navAMV: 'AMV 生成器',
-        navCharacter: '角色设计',
-        navWorld: '世界遗产与宇宙星球',
-        navVoice: '配音与音频',
-        secAssets: '资产与数据库',
-        navFolders: '所有文件夹 (数据库)',
-        navCharFolder: '📁 角色资源文件夹',
-        navBgFolder: '📁 背景资源文件夹',
-        navVoiceFolder: '📁 语音配置文件夹',
-        navScenesFolder: '📁 分镜与 AMV 文件夹',
-        secPinned: '置顶工具',
-        toolLipSync: '自动唇形同步',
-        toolKeyframe: '关键帧同步',
-        toolUpscale: '超清画质增强',
-        heroTitle: '今天想创作什么？',
-        heroTagline: 'Vibe Direct Now — AI 多语言角色与语音工作室',
-        tabStudio: '动漫工作室',
+        heroTitle: '今天想要制作什么动作动画？',
+        heroTagline: 'AI 动漫角色与动作生成引擎',
+        tabStudio: '动漫工坊',
         tabAMV: 'AMV',
-        tabCharacter: '角色',
-        tabWorld: '世界与星球',
+        tabCharacter: '角色设计',
+        tabWorld: '世界遗产与行星',
         tabAudio: '音频',
-        modeShort: '动漫短片',
-        modePromo: '角色 PV',
-        modeAMV: '热血 AMV',
-        modeNovel: '视觉小说',
-        modeMusic: '音乐视频',
-        modeTrailer: '漫画预告片',
-        scriptTitle: '导演脚本与台词引擎',
-        runScriptBtn: '播放场景并配音朗读',
-        stopScriptBtn: '⏹ 停止播放',
-        exportVideoBtn: '🎥 导出 AMV',
-        clearScriptBtn: '清空脚本',
-        autoVoiceBadge: '自动角色配音匹配: 已启用',
-        presetEnglish: '🇬🇧 英语赛博朋克场景',
-        presetTamil: '🇮🇳 泰米尔古遗址史诗场景',
-        presetJapanese: '🇯🇵 日语武士对决场景',
-        presetChinese: '🇨🇳 中文仙侠星河场景',
-        presetDuel: '⚔️ 四语言 英雄联动对决',
-        presetMars: '🪐 火星基地探险',
-        presetEuropa: '🌌 木卫二冰下海',
-        promptPlaceholder: '描述你想生成的动漫场景、星球、古遗址或动作...',
-        charLabTitle: 'AI 角色工坊与记忆库',
-        charLabDesc: '创建专属动漫角色，设定独立语音音色、性格设定与动作特效。',
-        newCharBtn: '+ 新建角色',
-        charName: '角色名称',
-        charTitle: '称号 / 角色定位',
-        charLang: '主要语言',
-        charStyle: '美术画风',
-        charPitch: '音高 (Pitch)',
-        charSpeed: '语速',
-        charBackstory: '背景故事与设定',
-        testVoiceBtn: '🔊 试听配音',
-        saveCharBtn: '💾 保存角色至数据库',
-        assetManagerTitle: '数据库与文件夹管理',
-        assetManagerDesc: '按文件夹清晰管理角色、场景背景、语音音频及导出视频工程。',
-        exportDbBtn: '📥 备份数据库 (JSON)',
-        importDbBtn: '📤 导入数据库'
+        runScriptBtn: '播放场景并合成语音',
+        stopScriptBtn: '⏹ 停止',
+        exportVideoBtn: '🎥 导出视频',
+        clearScriptBtn: '清空',
+        autoVoiceBadge: '自动语音合成: 开启',
+        presetEnglish: '🇬🇧 赛博朋克场景',
+        presetTamil: '🇮🇳 泰米尔古遗迹',
+        presetJapanese: '🇯🇵 武士决斗',
+        presetChinese: '🇨🇳 仙侠星斗',
+        presetDuel: '⚔️ 四英雄决斗',
+        presetMars: '🪐 火星探索'
       }
     },
 
     t(key) {
-      const lang = this.currentLang;
-      if (this.translations[lang] && this.translations[lang][key]) {
-        return this.translations[lang][key];
-      }
-      return (this.translations.en && this.translations.en[key]) || key;
+      const dict = this.translations[this.currentLang] || this.translations.en;
+      return dict[key] || this.translations.en[key] || key;
     },
 
     setLanguage(lang) {
       if (this.translations[lang]) {
         this.currentLang = lang;
-        document.documentElement.lang = lang;
         this.updateDOM();
-        return true;
       }
-      return false;
     },
 
     updateDOM() {
@@ -336,582 +147,265 @@
         const key = el.getAttribute('data-i18n');
         el.textContent = this.t(key);
       });
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        el.placeholder = this.t(key);
-      });
-      document.querySelectorAll('[data-i18n-title]').forEach(el => {
-        const key = el.getAttribute('data-i18n-title');
-        el.title = this.t(key);
-      });
     }
   };
 
   /* ==========================================================================
-     2. MASTER DATABASE: CHARACTERS, HERITAGE, PLANETS & CREATURES
+     2. PROCEDURAL SOUND FX SYNTHESIZER (WEB AUDIO API)
      ========================================================================== */
-  const Database = {
-    STORAGE_KEY: 'animeart_studio_universe_v3',
-
-    data: {
-      characters: [
-        {
-          id: 'char_kaito',
-          name: 'Kaito',
-          role: 'Cyberpunk Blade Runner',
-          genre: 'scifi',
-          lang: 'en',
-          pitch: 1.05,
-          speed: 1.0,
-          avatar: 'assets/characters/kaito.jpg',
-          style: 'Neo-Tokyo Cyberpunk',
-          gender: 'Male',
-          backstory: 'A cybernetically enhanced blade wielder navigating the rainy alleys of Neo Tokyo in 2142.',
-          superpower: { name: 'Volt Overdrive Surge', element: 'electric', intensity: 9, shout: 'Maximum Overdrive — Voltage Surge!' },
-          actions: ['Power Surge', 'Cyberpunk Dash', 'Combat Stance'],
-          folder: 'characters/kaito'
-        },
-        {
-          id: 'char_ananya',
-          name: 'Ananya',
-          role: 'Sun Priestess & Royal Warrior',
-          genre: 'magic',
-          lang: 'ta',
-          pitch: 1.15,
-          speed: 0.95,
-          avatar: 'assets/characters/ananya.jpg',
-          style: 'Ancient Solar Fantasy',
-          gender: 'Female',
-          backstory: 'The chosen champion of the Sun Temple, wielding ancient golden runes of the Chola empire.',
-          superpower: { name: 'Solar Flare Judgement', element: 'solar', intensity: 10, shout: 'சூரிய சுடரே எழுந்திடுக! புனித ஒளி பாய்க!' },
-          actions: ['Solar Flare', 'Smile', 'Magic Cast'],
-          folder: 'characters/ananya'
-        },
-        {
-          id: 'char_ren',
-          name: 'Ren',
-          role: 'Shadow Ronin & Katana Master',
-          genre: 'mystery',
-          lang: 'ja',
-          pitch: 0.85,
-          speed: 1.0,
-          avatar: 'assets/characters/ren.jpg',
-          style: 'Feudal Samurai Noir',
-          gender: 'Male',
-          backstory: 'A lone swordsman who wanders Kyoto shrines and moonlit mountains.',
-          superpower: { name: 'Shadow Blade Singularity', element: 'shadow', intensity: 8, shout: '我が刃に宿る影よ、全てを断ち切れ！' },
-          actions: ['Sword Slash', 'Battle Stance', 'Focus'],
-          folder: 'characters/ren'
-        },
-        {
-          id: 'char_mei',
-          name: 'Mei',
-          role: 'Celestial Starlight Mage',
-          genre: 'magic',
-          lang: 'zh',
-          pitch: 1.25,
-          speed: 1.05,
-          avatar: 'assets/characters/mei.jpg',
-          style: 'Xianxia Star Fantasy',
-          gender: 'Female',
-          backstory: 'A celestial enchantress weaving constellations and Great Wall starlight charms.',
-          superpower: { name: 'Starlight Lotus Cascade', element: 'celestial', intensity: 9, shout: '九霄星河，为我号令，星华绽放！' },
-          actions: ['Magic Cast', 'Smile', 'Celestial Lotus'],
-          folder: 'characters/mei'
-        }
-      ],
-
-      // World Heritage Sites (Global Ancient Civilizations & Wonders)
-      heritageSites: [
-        {
-          id: 'h_brihadeeswarar',
-          name: 'Brihadeeswarar & Madurai Temple',
-          country: 'India 🇮🇳 (Tamil Nadu)',
-          period: 'Chola Dynasty / 1010 CE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/fantasy_temple.jpg',
-          desc: 'Magnificent monolithic granitic Gopuram temple with sacred golden lamps and eternal cosmic pillars.',
-          vfxShader: 'golden_solar'
-        },
-        {
-          id: 'h_fushimi_inari',
-          name: 'Fushimi Inari Torii Shrine',
-          country: 'Japan 🇯🇵 (Kyoto)',
-          period: 'Heian Period / 711 CE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/cherry_shrine.jpg',
-          desc: 'Thousands of vermilion Torii gates stretching through serene mountain paths with falling sakura petals.',
-          vfxShader: 'sakura_petals'
-        },
-        {
-          id: 'h_great_wall',
-          name: 'The Great Wall & Imperial Palace',
-          country: 'China 🇨🇳 (Beijing)',
-          period: 'Ming Dynasty / 7th Century BCE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/fantasy_temple.jpg',
-          desc: 'Endless majestic stone fortification weaving across misty mountain peaks with celestial lanterns.',
-          vfxShader: 'celestial_runes'
-        },
-        {
-          id: 'h_pyramids',
-          name: 'Great Pyramids of Giza & Sphinx',
-          country: 'Egypt 🇪🇬 (Cairo)',
-          period: 'Old Kingdom / 2560 BCE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/fantasy_temple.jpg',
-          desc: 'Monumental golden limestone pyramids aligned with Orion under desert starfields.',
-          vfxShader: 'solar_amber'
-        },
-        {
-          id: 'h_colosseum',
-          name: 'Roman Colosseum & Forum',
-          country: 'Italy 🇮🇹 (Rome)',
-          period: 'Flavian Dynasty / 80 CE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/horror_castle.jpg',
-          desc: 'The greatest amphitheater of antiquity standing proud under twilight torchlights.',
-          vfxShader: 'twilight_embers'
-        },
-        {
-          id: 'h_machu_picchu',
-          name: 'Machu Picchu Cloud Citadel',
-          country: 'Peru 🇵🇪 (Andes)',
-          period: 'Inca Empire / 1450 CE',
-          category: 'heritage',
-          bgUrl: 'assets/backgrounds/cherry_shrine.jpg',
-          desc: 'Ancient stone sanctuary nestled atop emerald Andean peaks among mist and floating condors.',
-          vfxShader: 'mountain_mist'
-        }
-      ],
-
-      // Cosmic Planets, Moons & Deep Space Realities
-      planets: [
-        {
-          id: 'p_mars',
-          name: 'Planet Mars (Ares Red Dunes)',
-          type: 'Terrestrial Planet / Solar System',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/horror_castle.jpg',
-          desc: 'Crimson rust plains, deep Valles Marineris canyons, and advanced terraforming geodesic domes.',
-          atmosphere: 'Red Dust Vortex',
-          vfxShader: 'mars_dust'
-        },
-        {
-          id: 'p_moon',
-          name: 'The Moon (Lunar Tycho Outpost)',
-          type: 'Natural Satellite / Earth Orbit',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/cyberpunk_city.jpg',
-          desc: 'Zero-gravity crater colonies with breathtaking panoramic views of radiant blue Earthrise.',
-          atmosphere: 'Zero-G Starfield',
-          vfxShader: 'lunar_stars'
-        },
-        {
-          id: 'p_saturn_titan',
-          name: 'Saturn Rings & Titan Moon',
-          type: 'Gas Giant & Cryo-Methane Ocean',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/cyberpunk_city.jpg',
-          desc: 'Colossal glowing golden icy rings spanning hundreds of thousands of kilometers over Titan methane seas.',
-          atmosphere: 'Golden Ice Shards',
-          vfxShader: 'golden_ice'
-        },
-        {
-          id: 'p_europa',
-          name: 'Jupiter Moon Europa',
-          type: 'Ice World / Subsurface Ocean',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/fantasy_temple.jpg',
-          desc: 'Vast subterranean alien oceans sealed beneath cracked blue ice sheets with geothermal vents.',
-          atmosphere: 'Bioluminescent Cryo-Glow',
-          vfxShader: 'europa_blue'
-        },
-        {
-          id: 'p_kepler452b',
-          name: 'Kepler-452b Super-Earth',
-          type: 'Exoplanet / Cygnus Constellation',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/cherry_shrine.jpg',
-          desc: 'Lush alien world orbiting a twin sun with towering bioluminescent crystal forests.',
-          atmosphere: 'Crystal Aurora',
-          vfxShader: 'crystal_aurora'
-        },
-        {
-          id: 'p_nebula_x',
-          name: 'Nebula X-99 Cosmic Void',
-          type: 'Deep Space Stargate',
-          category: 'planets',
-          bgUrl: 'assets/backgrounds/cyberpunk_city.jpg',
-          desc: 'Vibrant swirling purple-cyan interstellar cloud housing ancient stargate portals.',
-          atmosphere: 'Cosmic Warp Drive',
-          vfxShader: 'warp_speed'
-        }
-      ],
-
-      // Living Beings, Alien Entities & Mythological Guardians
-      creatures: [
-        {
-          id: 'cr_yali',
-          name: 'Golden Yali Guardian',
-          category: 'creatures',
-          origin: 'Tamil Heritage / Ancient Temple',
-          avatar: 'assets/characters/ananya.jpg',
-          role: 'Divine Mythical Guardian',
-          power: 'Solar Roar of Righteousness',
-          desc: 'Sacred mythical chimera with the body of a lion, tusks of an elephant, and golden sun aura.',
-          dialogue: 'Yali: "இந்த புனித கோயிலை அசுர சக்திகளிடமிருந்து காப்போம்!" [action: Solar Flare]'
-        },
-        {
-          id: 'cr_kitsune',
-          name: 'Nine-Tailed Celestial Kitsune',
-          category: 'creatures',
-          origin: 'Japanese Shinto Mythology',
-          avatar: 'assets/characters/ren.jpg',
-          role: 'Fox Spirit of Foxfire',
-          power: 'Foxfire Illusion Dance',
-          desc: 'Wise spirit possessing nine mystical tails glowing with blue spiritual flames.',
-          dialogue: 'Kitsune: "狐火の導きに従え。迷いし者に光を。" [action: Magic Cast]'
-        },
-        {
-          id: 'cr_xeno_archon',
-          name: 'Martian Xeno-Archon',
-          category: 'creatures',
-          origin: 'Planet Mars Ancient Core',
-          avatar: 'assets/characters/kaito.jpg',
-          role: 'Psionic Alien Entity',
-          power: 'Ares Gravitational Singularity',
-          desc: 'Transcendent psionic being of Mars capable of manipulating electromagnetic dust storms.',
-          dialogue: 'Archon: "Human explorers, welcome to the red domain of Ares." [action: Power Surge]'
-        },
-        {
-          id: 'cr_qilin',
-          name: 'Celestial Jade Qilin',
-          category: 'creatures',
-          origin: 'Chinese Celestial Realm',
-          avatar: 'assets/characters/mei.jpg',
-          role: 'Auspicious Cosmic Beast',
-          power: 'Starlight Blessing of Peace',
-          desc: 'Ethereal dragon-stag with shimmering jade scales that walks upon clouds without touching grass.',
-          dialogue: 'Qilin: "瑞兽降世，万物皆安，星辉引路！" [action: Magic Cast]'
-        },
-        {
-          id: 'cr_leviathan',
-          name: 'Europa Luminite Leviathan',
-          category: 'creatures',
-          origin: 'Jupiter Moon Europa Oceans',
-          avatar: 'assets/characters/mei.jpg',
-          role: 'Abyssal Cryo-Entity',
-          power: 'Sub-Zero Cryo Resonance',
-          desc: 'Immense bioluminescent sea entity drifting through Europa deep sub-glacial waters.',
-          dialogue: 'Leviathan: "Echoes from the deep ice... The oceans awaken." [action: Magic Cast]'
-        }
-      ],
-
-      backgrounds: [
-        { id: 'bg_cyberpunk', title: 'Neo Tokyo Cyberpunk Alley', url: 'assets/backgrounds/cyberpunk_city.jpg', genre: 'scifi', theme: 'Cyberpunk', lighting: 'Neon Rain Night' },
-        { id: 'bg_shrine', title: 'Cherry Blossom Shrine & Torii Gate', url: 'assets/backgrounds/cherry_shrine.jpg', genre: 'romance', theme: 'Traditional Romance', lighting: 'Golden Hour Sunset' },
-        { id: 'bg_temple', title: 'Ancient Gopuram Temple of Light', url: 'assets/backgrounds/fantasy_temple.jpg', genre: 'magic', theme: 'South Asian Fantasy', lighting: 'Starlit Twilight' },
-        { id: 'bg_classroom', title: 'Sunset High School Classroom', url: 'assets/backgrounds/anime_classroom.jpg', genre: 'family', theme: 'Slice of Life & Family', lighting: 'Warm Evening Sun' },
-        { id: 'bg_horror', title: 'Blood Moon Gothic Fortress', url: 'assets/backgrounds/horror_castle.jpg', genre: 'horror', theme: 'Dark Horror Mystery', lighting: 'Crimson Blood Moon' }
-      ],
-
-      voices: [
-        { id: 'v1', name: 'Kaito Voice (English)', lang: 'en-US', pitch: 1.05, rate: 1.0, type: 'Male Heroic' },
-        { id: 'v2', name: 'Ananya Voice (Tamil)', lang: 'ta-IN', pitch: 1.15, rate: 0.95, type: 'Female Queen' },
-        { id: 'v3', name: 'Ren Voice (Japanese)', lang: 'ja-JP', pitch: 0.85, rate: 1.0, type: 'Male Samurai' },
-        { id: 'v4', name: 'Mei Voice (Chinese)', lang: 'zh-CN', pitch: 1.25, rate: 1.05, type: 'Female Mystic' }
-      ],
-
-      scenes: [
-        {
-          id: 'scene_1',
-          title: 'Multilingual 4-Hero Epic Duel',
-          bgId: 'bg_cyberpunk',
-          script: `Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Power Surge]\nAnanya: "வணக்கம்! நாங்கள் நிச்சயம் வெற்றி பெறுவோம்." [action: Solar Flare]\nRen: "覚悟はいいか？行くぞ！" [action: Sword Slash]\nMei: "漫天星辰，为我们引路，光华流转！" [action: Magic Cast]\nKaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Dash]`,
-          characters: ['Kaito', 'Ananya', 'Ren', 'Mei']
-        }
-      ]
-    },
+  const SoundEngine = {
+    ctx: null,
 
     init() {
-      try {
-        const saved = localStorage.getItem(this.STORAGE_KEY);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (parsed && parsed.characters && parsed.characters.length > 0) {
-            this.data = parsed;
-          }
+      if (!this.ctx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          this.ctx = new AudioContext();
         }
-      } catch (e) {}
-    },
-
-    save() {
-      try {
-        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.data));
-      } catch (e) {}
-    },
-
-    getCharacters() { return this.data.characters; },
-    getCharacterByName(name) {
-      if (!name) return null;
-      const clean = name.trim().toLowerCase();
-      return this.data.characters.find(c => c.name.toLowerCase() === clean) || null;
-    },
-    getCharacterById(id) {
-      return this.data.characters.find(c => c.id === id) || null;
-    },
-    getHeritageSites() { return this.data.heritageSites || []; },
-    getPlanets() { return this.data.planets || []; },
-    getCreatures() { return this.data.creatures || []; },
-    getBackgrounds() { return this.data.backgrounds; },
-    getBackgroundById(id) {
-      return this.data.backgrounds.find(b => b.id === id) || this.data.backgrounds[0];
-    },
-    getBackgroundsByGenre(genre) {
-      return this.data.backgrounds.filter(b => b.genre === genre);
-    },
-    getVoices() { return this.data.voices; },
-    getScenes() { return this.data.scenes; },
-    getSceneById(id) { return this.data.scenes.find(s => s.id === id) || null; },
-
-    addCharacter(charObj) {
-      const newChar = {
-        id: 'char_' + Date.now(),
-        name: charObj.name || 'Hero',
-        role: charObj.role || 'Protagonist',
-        genre: charObj.genre || 'scifi',
-        lang: charObj.lang || 'en',
-        pitch: parseFloat(charObj.pitch) || 1.0,
-        speed: parseFloat(charObj.speed) || 1.0,
-        avatar: charObj.avatar || 'assets/characters/kaito.jpg',
-        style: charObj.style || 'Anime',
-        gender: charObj.gender || 'Unknown',
-        backstory: charObj.backstory || '',
-        superpower: charObj.superpower || { name: 'Energy Awakening', element: 'electric', intensity: 8, shout: 'Power Unleashed!' },
-        actions: ['Power Surge', 'Smile', 'Battle Stance'],
-        folder: `characters/${charObj.name.toLowerCase().replace(/\s+/g, '_')}`
-      };
-      this.data.characters.push(newChar);
-      this.save();
-      return newChar;
-    },
-
-    addBackground(bgObj) {
-      const newBg = {
-        id: 'bg_' + Date.now(),
-        title: bgObj.title || 'Custom Background',
-        url: bgObj.url,
-        genre: bgObj.genre || 'magic',
-        theme: bgObj.theme || 'Custom Art',
-        lighting: 'Dynamic'
-      };
-      this.data.backgrounds.push(newBg);
-      this.save();
-      return newBg;
-    },
-
-    exportJSON() { return JSON.stringify(this.data, null, 2); },
-    importJSON(str) {
-      try {
-        const parsed = JSON.parse(str);
-        if (parsed.characters && parsed.backgrounds) {
-          this.data = parsed;
-          this.save();
-          return true;
-        }
-      } catch (e) {}
-      return false;
-    }
-  };
-
-  /* ==========================================================================
-     3. MULTILINGUAL VOICE & SPEECH SYNTHESIS ENGINE
-     ========================================================================== */
-  const VoiceEngine = {
-    synth: window.speechSynthesis || null,
-    audioCtx: null,
-    isPlaying: false,
-    audioLevel: 0,
-    voices: [],
-
-    init() {
-      this.loadVoices();
-      if (this.synth) {
-        this.synth.onvoiceschanged = () => this.loadVoices();
       }
-      try {
-        const AC = window.AudioContext || window.webkitAudioContext;
-        if (AC) this.audioCtx = new AC();
-      } catch (e) {}
+      if (this.ctx && this.ctx.state === 'suspended') {
+        this.ctx.resume();
+      }
     },
 
-    loadVoices() {
-      if (this.synth) this.voices = this.synth.getVoices() || [];
+    playSlash() {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      
+      const bufferSize = this.ctx.sampleRate * 0.25;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1400, now);
+      filter.frequency.exponentialRampToValueAtTime(3600, now + 0.1);
+      filter.frequency.exponentialRampToValueAtTime(400, now + 0.25);
+      filter.Q.setValueAtTime(4, now);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.35, now + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      const osc = this.ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(2000, now);
+      osc.frequency.exponentialRampToValueAtTime(500, now + 0.2);
+
+      const oscGain = this.ctx.createGain();
+      oscGain.gain.setValueAtTime(0.18, now);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.connect(oscGain);
+      oscGain.connect(this.ctx.destination);
+
+      noise.start(now);
+      noise.stop(now + 0.25);
+      osc.start(now);
+      osc.stop(now + 0.2);
     },
 
-    findBestVoice(lang) {
-      if (!this.voices || this.voices.length === 0) this.loadVoices();
-      const code = lang.toLowerCase();
-      const matched = this.voices.filter(v => v.lang && v.lang.toLowerCase().startsWith(code));
-      return matched.length > 0 ? matched[0] : (this.voices[0] || null);
+    playThunder() {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+
+      const osc = this.ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.exponentialRampToValueAtTime(35, now + 0.6);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.4, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+
+      const bufferSize = this.ctx.sampleRate * 0.4;
+      const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * (Math.random() > 0.85 ? 1 : 0.2);
+      }
+      const noise = this.ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      const noiseFilter = this.ctx.createBiquadFilter();
+      noiseFilter.type = 'highpass';
+      noiseFilter.frequency.setValueAtTime(800, now);
+
+      const noiseGain = this.ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.3, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.6);
+      noise.start(now);
+      noise.stop(now + 0.4);
     },
 
-    playSuperpowerTone(element = 'electric') {
-      if (!this.audioCtx) return;
-      try {
-        if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
-        const osc = this.audioCtx.createOscillator();
-        const gain = this.audioCtx.createGain();
-        
-        let freq = 440;
-        if (element === 'fire') { osc.type = 'sawtooth'; freq = 220; }
-        else if (element === 'electric') { osc.type = 'square'; freq = 580; }
-        else if (element === 'ice') { osc.type = 'sine'; freq = 880; }
-        else if (element === 'solar') { osc.type = 'triangle'; freq = 520; }
-        else if (element === 'shadow') { osc.type = 'sawtooth'; freq = 130; }
-        
-        osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
-        gain.gain.setValueAtTime(0.08, this.audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 1.2);
-        
+    playMagicChime() {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+      const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+
+      notes.forEach((freq, idx) => {
+        const osc = this.ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+
+        const gain = this.ctx.createGain();
+        gain.gain.setValueAtTime(0.01, now + idx * 0.06);
+        gain.gain.linearRampToValueAtTime(0.18, now + idx * 0.06 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.5);
+
         osc.connect(gain);
-        gain.connect(this.audioCtx.destination);
-        osc.start();
-        osc.stop(this.audioCtx.currentTime + 1.2);
-      } catch (e) {}
-    },
+        gain.connect(this.ctx.destination);
 
-    speak(options = {}) {
-      return new Promise((resolve) => {
-        const { text = '', lang = 'en', pitch = 1.0, rate = 1.0, onStart = null, onEnd = null, onLipSync = null } = options;
-        if (!text || !text.trim()) { resolve(); return; }
-
-        if (this.synth) this.synth.cancel();
-
-        const utterance = new SpeechSynthesisUtterance(text);
-        const voice = this.findBestVoice(lang);
-        if (voice) utterance.voice = voice;
-
-        if (lang === 'ta') utterance.lang = 'ta-IN';
-        else if (lang === 'ja') utterance.lang = 'ja-JP';
-        else if (lang === 'zh') utterance.lang = 'zh-CN';
-        else utterance.lang = 'en-US';
-
-        utterance.pitch = Math.max(0.5, Math.min(2.0, pitch));
-        utterance.rate = Math.max(0.5, Math.min(2.0, rate));
-
-        let lipSyncTimer = null;
-        this.isPlaying = true;
-
-        const startLipSync = () => {
-          lipSyncTimer = setInterval(() => {
-            if (!this.isPlaying) return;
-            const level = Math.sin(Date.now() / 90) * 0.4 + 0.5 + Math.random() * 0.2;
-            this.audioLevel = Math.max(0, Math.min(1, level));
-            if (onLipSync) onLipSync(this.audioLevel);
-          }, 50);
-        };
-
-        const stopLipSync = () => {
-          this.isPlaying = false;
-          this.audioLevel = 0;
-          if (lipSyncTimer) clearInterval(lipSyncTimer);
-          if (onLipSync) onLipSync(0);
-        };
-
-        utterance.onstart = () => {
-          startLipSync();
-          if (onStart) onStart();
-        };
-
-        utterance.onend = () => {
-          stopLipSync();
-          if (onEnd) onEnd();
-          resolve();
-        };
-
-        utterance.onerror = () => {
-          stopLipSync();
-          if (onEnd) onEnd();
-          resolve();
-        };
-
-        const dur = Math.max(1600, (text.length / 8) * 1000 / rate);
-        const safetyTimer = setTimeout(() => {
-          if (this.isPlaying) {
-            stopLipSync();
-            resolve();
-          }
-        }, dur + 2500);
-
-        const oldEnd = utterance.onend;
-        utterance.onend = (e) => {
-          clearTimeout(safetyTimer);
-          oldEnd(e);
-        };
-
-        if (this.synth) {
-          this.synth.speak(utterance);
-        } else {
-          startLipSync();
-          setTimeout(() => {
-            stopLipSync();
-            resolve();
-          }, dur);
-        }
+        osc.start(now + idx * 0.06);
+        osc.stop(now + idx * 0.06 + 0.5);
       });
     },
 
-    stop() {
-      this.isPlaying = false;
-      this.audioLevel = 0;
-      if (this.synth) this.synth.cancel();
+    playImpactBlast() {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+
+      const osc = this.ctx.createOscillator();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(120, now);
+      osc.frequency.exponentialRampToValueAtTime(30, now + 0.5);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.45, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.5);
+    },
+
+    playAuraSurge() {
+      this.init();
+      if (!this.ctx) return;
+      const now = this.ctx.currentTime;
+
+      const osc = this.ctx.createOscillator();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(90, now);
+      osc.frequency.exponentialRampToValueAtTime(450, now + 0.35);
+
+      const filter = this.ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(200, now);
+      filter.frequency.exponentialRampToValueAtTime(2500, now + 0.35);
+
+      const gain = this.ctx.createGain();
+      gain.gain.setValueAtTime(0.01, now);
+      gain.gain.linearRampToValueAtTime(0.25, now + 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 0.45);
     }
   };
 
   /* ==========================================================================
-     4. 60FPS CANVAS SCENE & INTERPLANETARY / HERITAGE SHADER ENGINE
+     3. HIGH-PERFORMANCE 60FPS CANVAS & ACTION ANIMATION ENGINE
      ========================================================================== */
   const CanvasEngine = {
     canvas: null,
     ctx: null,
     width: 1280,
     height: 720,
+    
+    // State
     bgImage: null,
     bgLoaded: false,
     currentChar: null,
     charImage: null,
     charLoaded: false,
-    activeGenre: 'scifi',
-    activeShader: 'default',
-    activeSuperpower: null,
+    
+    // Animation state
     time: 0,
+    animId: null,
+    playbackSpeed: 1.0,
+    isPaused: false,
+    isLooping: true,
+    
+    // Camera
+    cameraZoom: 1.0,
+    cameraPanX: 0,
+    cameraPanY: 0,
+    cameraTargetZoom: 1.0,
+    cameraTargetPanX: 0,
+    cameraTargetPanY: 0,
     shakeAmount: 0,
+    flashWhite: 0,
+    
+    // Lip Sync & Expressions
     lipSyncLevel: 0,
-    currentAction: null,
-    actionTimer: 0,
+    
+    // Action State Machine
+    activeAction: null,
+    actionPhase: 'idle', // 'anticipation', 'surge', 'climax', 'recovery', 'idle'
+    actionProgress: 0,
+    actionDuration: 240,
+    actionElapsed: 0,
+    
+    // Kinematic offsets
+    charOffset: { x: 0, y: 0, scaleX: 1, scaleY: 1, rotation: 0, opacity: 1 },
+    charTargetOffset: { x: 0, y: 0, scaleX: 1, scaleY: 1, rotation: 0, opacity: 1 },
+
+    // VFX
     particles: [],
     slashTrails: [],
     lightningBolts: [],
-    arcaneCircles: [],
+    magicRunes: [],
+    shockwaves: [],
+
+    // Recorder
     mediaRecorder: null,
     recordedChunks: [],
     isRecording: false,
 
-    init(canvasEl) {
-      this.canvas = canvasEl;
-      this.ctx = canvasEl.getContext('2d');
+    init(canvasElement) {
+      this.canvas = canvasElement;
+      this.ctx = this.canvas.getContext('2d');
       this.canvas.width = this.width;
       this.canvas.height = this.height;
+      
       this.initParticles();
       this.startLoop();
     },
 
-    setBackground(url) {
+    setBackground(imageSrc) {
       this.bgLoaded = false;
       const img = new Image();
-      img.src = url;
+      img.crossOrigin = 'anonymous';
+      img.src = imageSrc;
       img.onload = () => {
         this.bgImage = img;
         this.bgLoaded = true;
@@ -921,11 +415,10 @@
     setCharacter(charObj) {
       this.currentChar = charObj;
       this.charLoaded = false;
-      if (charObj && charObj.superpower) {
-        this.activeSuperpower = charObj.superpower;
-      }
       if (!charObj || !charObj.avatar) return;
+
       const img = new Image();
+      img.crossOrigin = 'anonymous';
       img.src = charObj.avatar;
       img.onload = () => {
         this.charImage = img;
@@ -933,182 +426,364 @@
       };
     },
 
-    setGenre(genreKey) {
-      this.activeGenre = genreKey;
-      this.initParticles();
+    setLipSync(level) {
+      this.lipSyncLevel = Math.max(0, Math.min(1, level));
     },
 
-    setShader(shaderName) {
-      this.activeShader = shaderName || 'default';
-      this.initParticles();
-    },
+    triggerAction(actionInput) {
+      const config = this.parseActionPrompt(actionInput);
+      this.activeAction = config;
+      this.actionElapsed = 0;
+      this.actionProgress = 0;
+      this.actionPhase = 'anticipation';
+      this.actionDuration = config.duration || 240;
 
-    setLipSync(val) {
-      this.lipSyncLevel = val || 0;
-    },
+      if (config.category === 'sword') SoundEngine.playAuraSurge();
+      else if (config.category === 'lightning') SoundEngine.playThunder();
+      else if (config.category === 'magic') SoundEngine.playMagicChime();
+      else SoundEngine.playAuraSurge();
 
-    triggerSuperpower(powerObj) {
-      const p = powerObj || this.activeSuperpower;
-      if (!p) return;
-      this.currentAction = `SUPERPOWER: ${p.name.toUpperCase()}`;
-      this.actionTimer = 240;
-      this.shakeAmount = 14;
-      VoiceEngine.playSuperpowerTone(p.element);
-
-      if (p.element === 'electric') this.createLightning();
-      else if (p.element === 'fire') this.createSparks('#ff4500', 60);
-      else if (p.element === 'ice') this.createSparks('#00ffff', 50);
-      else if (p.element === 'solar') this.createSparks('#ffb703', 70);
-      else if (p.element === 'shadow') this.createSparks('#7209b7', 50);
-      else if (p.element === 'celestial') this.createArcaneRunes();
-      else this.createSparks('#ff2a85', 50);
-    },
-
-    triggerAction(name) {
-      this.currentAction = name;
-      this.actionTimer = 200;
-      this.shakeAmount = 10;
-
-      if (name.includes('Sword') || name.includes('Slash')) {
-        this.slashTrails.push({ x1: 200, y1: 150, x2: 1080, y2: 600, progress: 0 });
-      } else if (name.includes('Power') || name.includes('Cyber')) {
-        this.createLightning();
-      } else if (name.includes('Solar') || name.includes('Sun')) {
-        this.createSparks('#ffb703', 45);
-      } else if (name.includes('Magic') || name.includes('Star')) {
-        this.createArcaneRunes();
-      } else {
-        this.createSparks('#ff2a85', 30);
+      if (window.App && window.App.updateActionTimelineUI) {
+        window.App.updateActionTimelineUI(this.actionPhase, 0, config.name);
       }
     },
 
-    createLightning() {
-      this.lightningBolts = [];
-      for (let b = 0; b < 6; b++) {
-        const pts = [];
-        let curX = 640 + (Math.random() - 0.5) * 250;
-        let curY = 180;
-        pts.push({ x: curX, y: curY });
-        for (let i = 0; i < 7; i++) {
-          curX += (Math.random() - 0.5) * 120;
-          curY += 50 + Math.random() * 35;
-          pts.push({ x: curX, y: curY });
-        }
-        this.lightningBolts.push({ pts, life: 30 });
-      }
-    },
+    parseActionPrompt(input) {
+      if (!input) input = 'Blade Storm Slash';
+      const text = String(input).toLowerCase();
 
-    createArcaneRunes() {
-      this.arcaneCircles.push({ x: 640, y: 420, radius: 120, rotation: 0, life: 180 });
-      this.createSparks('#4cc9f0', 50);
-    },
-
-    createSparks(color, count = 40) {
-      for (let i = 0; i < count; i++) {
-        const a = Math.random() * Math.PI * 2;
-        const s = Math.random() * 9 + 3;
-        this.particles.push({
-          x: 640,
-          y: 380,
-          size: Math.random() * 6 + 2,
-          speedX: Math.cos(a) * s,
-          speedY: Math.sin(a) * s,
-          color,
-          life: 55,
-          type: 'spark'
-        });
+      if (text.includes('sword') || text.includes('slash') || text.includes('blade') || text.includes('katana') || text.includes('cut')) {
+        return { name: input, category: 'sword', auraColor: '#ff2a85', secondaryColor: '#00f0ff', duration: 240 };
       }
+      if (text.includes('thunder') || text.includes('lightning') || text.includes('electric') || text.includes('cyber') || text.includes('overdrive')) {
+        return { name: input, category: 'lightning', auraColor: '#00f0ff', secondaryColor: '#ffffff', duration: 240 };
+      }
+      if (text.includes('fire') || text.includes('flame') || text.includes('solar') || text.includes('sun') || text.includes('dragon') || text.includes('burst')) {
+        return { name: input, category: 'fire', auraColor: '#ffb703', secondaryColor: '#ff0055', duration: 240 };
+      }
+      if (text.includes('magic') || text.includes('spell') || text.includes('celestial') || text.includes('star') || text.includes('summon') || text.includes('astral')) {
+        return { name: input, category: 'magic', auraColor: '#8338ec', secondaryColor: '#4cc9f0', duration: 260 };
+      }
+      if (text.includes('sakura') || text.includes('dance') || text.includes('flower') || text.includes('waltz') || text.includes('spin')) {
+        return { name: input, category: 'sakura', auraColor: '#ff70a6', secondaryColor: '#ffd166', duration: 250 };
+      }
+      if (text.includes('punch') || text.includes('kick') || text.includes('strike') || text.includes('kinetic') || text.includes('martial')) {
+        return { name: input, category: 'strike', auraColor: '#06d6a0', secondaryColor: '#ffffff', duration: 220 };
+      }
+      if (text.includes('dark') || text.includes('void') || text.includes('abyss') || text.includes('shadow') || text.includes('berserk')) {
+        return { name: input, category: 'dark', auraColor: '#7209b7', secondaryColor: '#f72585', duration: 240 };
+      }
+      if (text.includes('cry') || text.includes('tear') || text.includes('sad') || text.includes('speech')) {
+        return { name: input, category: 'tears', auraColor: '#4cc9f0', secondaryColor: '#ffffff', duration: 240 };
+      }
+      if (text.includes('smile') || text.includes('love') || text.includes('heart') || text.includes('blush')) {
+        return { name: input, category: 'love', auraColor: '#ff2a85', secondaryColor: '#ffb4d6', duration: 220 };
+      }
+
+      return { name: input, category: 'cosmic', auraColor: '#00f0ff', secondaryColor: '#ff2a85', duration: 240 };
     },
 
     initParticles() {
       this.particles = [];
-      const shader = this.activeShader;
-      const count = shader.includes('mars') || shader.includes('stars') ? 55 : 35;
-
-      for (let i = 0; i < count; i++) {
-        let pType = 'petal';
-        let pColor = 'rgba(255, 180, 220, 0.6)';
-        let speedX = (Math.random() - 0.5) * 1.5 + 0.6;
-        let speedY = Math.random() * 1.2 + 0.5;
-
-        if (shader === 'mars_dust') {
-          pType = 'dust';
-          pColor = 'rgba(230, 70, 40, 0.65)';
-          speedX = Math.random() * 4 + 2;
-          speedY = (Math.random() - 0.5) * 1.2;
-        } else if (shader === 'lunar_stars' || shader === 'warp_speed') {
-          pType = 'star';
-          pColor = 'rgba(180, 240, 255, 0.85)';
-          speedX = (Math.random() - 0.5) * 0.4;
-          speedY = (Math.random() - 0.5) * 0.4;
-        } else if (shader === 'europa_blue') {
-          pType = 'bubble';
-          pColor = 'rgba(0, 240, 255, 0.6)';
-          speedY = -Math.random() * 1.5 - 0.5;
-        } else if (shader === 'golden_ice' || shader === 'golden_solar') {
-          pType = 'spark';
-          pColor = 'rgba(255, 183, 3, 0.7)';
-        }
-
+      for (let i = 0; i < 40; i++) {
         this.particles.push({
           x: Math.random() * this.width,
           y: Math.random() * this.height,
-          size: Math.random() * 5 + 2,
-          speedX,
-          speedY,
-          color: pColor,
-          type: pType
+          size: Math.random() * 5 + 3,
+          speedX: (Math.random() - 0.5) * 1.2 + 0.5,
+          speedY: Math.random() * 1.0 + 0.4,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.04,
+          color: 'rgba(255, 180, 210, 0.6)',
+          type: 'petal'
         });
       }
     },
 
     startLoop() {
       const loop = () => {
-        this.time += 0.016;
-        this.update();
+        if (!this.isPaused) {
+          this.time += 0.016 * this.playbackSpeed;
+          this.update();
+        }
         this.render();
-        requestAnimationFrame(loop);
+        this.animId = requestAnimationFrame(loop);
       };
-      requestAnimationFrame(loop);
+      this.animId = requestAnimationFrame(loop);
+    },
+
+    setPlaybackSpeed(speed) {
+      this.playbackSpeed = Number(speed) || 1.0;
+    },
+
+    togglePause() {
+      this.isPaused = !this.isPaused;
+      return this.isPaused;
+    },
+
+    scrubTo(percent) {
+      if (!this.activeAction) {
+        this.triggerAction('Blade Storm Slash');
+      }
+      this.actionProgress = Math.max(0, Math.min(1, percent));
+      this.actionElapsed = this.actionProgress * this.actionDuration;
+      this.evaluateActionPhase();
     },
 
     update() {
+      this.cameraZoom += (this.cameraTargetZoom - this.cameraZoom) * 0.08;
+      this.cameraPanX += (this.cameraTargetPanX - this.cameraPanX) * 0.08;
+      this.cameraPanY += (this.cameraTargetPanY - this.cameraPanY) * 0.08;
+
+      if (this.flashWhite > 0) {
+        this.flashWhite = Math.max(0, this.flashWhite - 0.05);
+      }
       if (this.shakeAmount > 0) {
-        this.shakeAmount *= 0.9;
+        this.shakeAmount *= 0.90;
         if (this.shakeAmount < 0.2) this.shakeAmount = 0;
       }
-      if (this.actionTimer > 0) {
-        this.actionTimer--;
-        if (this.actionTimer <= 0) this.currentAction = null;
+
+      if (this.activeAction) {
+        this.actionElapsed += this.playbackSpeed;
+        this.actionProgress = Math.min(1.0, this.actionElapsed / this.actionDuration);
+        this.evaluateActionPhase();
+        this.updateActionKinematics();
+
+        if (window.App && window.App.updateActionTimelineUI) {
+          window.App.updateActionTimelineUI(this.actionPhase, this.actionProgress, this.activeAction.name);
+        }
+
+        if (this.actionProgress >= 1.0) {
+          if (this.isLooping) {
+            this.actionElapsed = 0;
+            this.actionProgress = 0;
+            this.actionPhase = 'anticipation';
+          } else {
+            this.activeAction = null;
+            this.actionPhase = 'idle';
+          }
+        }
       }
 
-      this.particles.forEach((p, idx) => {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.life !== undefined) {
-          p.life--;
-          if (p.life <= 0) this.particles.splice(idx, 1);
+      this.charOffset.x += (this.charTargetOffset.x - this.charOffset.x) * 0.15;
+      this.charOffset.y += (this.charTargetOffset.y - this.charOffset.y) * 0.15;
+      this.charOffset.scaleX += (this.charTargetOffset.scaleX - this.charOffset.scaleX) * 0.15;
+      this.charOffset.scaleY += (this.charTargetOffset.scaleY - this.charOffset.scaleY) * 0.15;
+      this.charOffset.rotation += (this.charTargetOffset.rotation - this.charOffset.rotation) * 0.15;
+
+      this.updateVFX();
+    },
+
+    evaluateActionPhase() {
+      const p = this.actionProgress;
+      const prevPhase = this.actionPhase;
+
+      if (p < 0.25) this.actionPhase = 'anticipation';
+      else if (p < 0.50) this.actionPhase = 'surge';
+      else if (p < 0.80) this.actionPhase = 'climax';
+      else this.actionPhase = 'recovery';
+
+      if (this.actionPhase !== prevPhase && this.actionPhase === 'climax') {
+        this.flashWhite = 0.5;
+        this.shakeAmount = 16;
+        if (this.activeAction.category === 'sword') {
+          SoundEngine.playSlash();
+          this.spawnSlashArcs();
+        } else if (this.activeAction.category === 'lightning') {
+          SoundEngine.playThunder();
+          this.spawnLightningBursts();
+        } else if (this.activeAction.category === 'fire') {
+          SoundEngine.playImpactBlast();
+          this.spawnFireNova();
+        } else if (this.activeAction.category === 'magic') {
+          SoundEngine.playMagicChime();
+          this.spawnMagicCircle();
+        } else if (this.activeAction.category === 'strike') {
+          SoundEngine.playImpactBlast();
+          this.spawnShockwaveRing();
         } else {
-          if (p.y > this.height + 15) { p.y = -15; p.x = Math.random() * this.width; }
-          if (p.y < -15) { p.y = this.height + 15; p.x = Math.random() * this.width; }
-          if (p.x > this.width + 15) { p.x = -15; }
+          SoundEngine.playAuraSurge();
+        }
+      }
+    },
+
+    updateActionKinematics() {
+      const act = this.activeAction;
+      if (!act) return;
+      const p = this.actionProgress;
+
+      switch (this.actionPhase) {
+        case 'anticipation':
+          this.cameraTargetZoom = 1.15;
+          this.charTargetOffset = { x: -25, y: 20, scaleX: 1.05, scaleY: 0.95, rotation: -0.05, opacity: 1 };
+          this.spawnChargeMotes(act.auraColor);
+          break;
+        case 'surge':
+          this.cameraTargetZoom = 1.25;
+          this.charTargetOffset = { x: Math.sin(this.time * 25) * 6, y: -40 + Math.sin(this.time * 8) * 15, scaleX: 1.08, scaleY: 1.08, rotation: Math.sin(this.time * 10) * 0.04, opacity: 1 };
+          if (Math.random() > 0.4) this.spawnAuraBurst(act.auraColor, act.secondaryColor);
+          break;
+        case 'climax':
+          this.cameraTargetZoom = 1.35;
+          this.cameraTargetPanX = Math.sin(this.time * 20) * 12;
+          this.charTargetOffset = { x: Math.sin(p * Math.PI * 4) * 80, y: -65 + Math.cos(p * Math.PI * 4) * 20, scaleX: 1.18, scaleY: 1.12, rotation: (Math.random() - 0.5) * 0.08, opacity: 1 };
+          break;
+        case 'recovery':
+          this.cameraTargetZoom = 1.05;
+          this.cameraTargetPanX = 0;
+          this.charTargetOffset = { x: 0, y: 0, scaleX: 1.0, scaleY: 1.0, rotation: 0, opacity: 1 };
+          break;
+      }
+    },
+
+    spawnSlashArcs() {
+      for (let i = 0; i < 3; i++) {
+        this.slashTrails.push({
+          x1: this.width * (0.15 + i * 0.1),
+          y1: this.height * (0.15 + i * 0.15),
+          x2: this.width * (0.85 - i * 0.05),
+          y2: this.height * (0.85 - i * 0.1),
+          progress: 0,
+          color: this.activeAction.auraColor || '#ff2a85',
+          glow: this.activeAction.secondaryColor || '#00f0ff'
+        });
+      }
+    },
+
+    spawnLightningBursts() {
+      this.lightningBolts = [];
+      for (let b = 0; b < 7; b++) {
+        const points = [];
+        let curX = this.width * 0.5 + (Math.random() - 0.5) * 320;
+        let curY = 0;
+        points.push({ x: curX, y: curY });
+        for (let i = 0; i < 8; i++) {
+          curX += (Math.random() - 0.5) * 130;
+          curY += (this.height / 8) + (Math.random() - 0.5) * 30;
+          points.push({ x: curX, y: curY });
+        }
+        this.lightningBolts.push({ points, life: 25, color: '#00f0ff', width: Math.random() * 4 + 2 });
+      }
+    },
+
+    spawnFireNova() {
+      for (let i = 0; i < 70; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 12 + 4;
+        this.particles.push({
+          x: this.width * 0.5,
+          y: this.height * 0.45,
+          size: Math.random() * 8 + 4,
+          speedX: Math.cos(angle) * speed,
+          speedY: Math.sin(angle) * speed,
+          rotation: Math.random() * Math.PI,
+          rotSpeed: (Math.random() - 0.5) * 0.1,
+          color: Math.random() > 0.4 ? '#ffb703' : '#ff0055',
+          life: 65,
+          type: 'spark'
+        });
+      }
+    },
+
+    spawnMagicCircle() {
+      this.magicRunes.push({
+        x: this.width * 0.5,
+        y: this.height * 0.55,
+        radius: 220,
+        rotation: 0,
+        opacity: 1,
+        life: 120,
+        color: '#8338ec',
+        accent: '#4cc9f0'
+      });
+    },
+
+    spawnShockwaveRing() {
+      this.shockwaves.push({
+        x: this.width * 0.5,
+        y: this.height * 0.5,
+        radius: 10,
+        maxRadius: 360,
+        opacity: 1,
+        color: '#06d6a0'
+      });
+    },
+
+    spawnChargeMotes(color) {
+      for (let i = 0; i < 3; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = Math.random() * 220 + 80;
+        this.particles.push({
+          x: this.width * 0.5 + Math.cos(angle) * dist,
+          y: this.height * 0.5 + Math.sin(angle) * dist,
+          size: Math.random() * 4 + 2,
+          speedX: -Math.cos(angle) * 5,
+          speedY: -Math.sin(angle) * 5,
+          rotation: 0,
+          rotSpeed: 0,
+          color: color || '#ff2a85',
+          life: 30,
+          type: 'spark'
+        });
+      }
+    },
+
+    spawnAuraBurst(c1, c2) {
+      for (let i = 0; i < 4; i++) {
+        this.particles.push({
+          x: this.width * 0.5 + (Math.random() - 0.5) * 160,
+          y: this.height * 0.55 + (Math.random() - 0.5) * 200,
+          size: Math.random() * 6 + 3,
+          speedX: (Math.random() - 0.5) * 3,
+          speedY: -Math.random() * 4 - 2,
+          rotation: 0,
+          rotSpeed: 0,
+          color: Math.random() > 0.5 ? c1 : c2,
+          life: 45,
+          type: 'star'
+        });
+      }
+    },
+
+    updateVFX() {
+      this.particles.forEach((p, idx) => {
+        p.x += p.speedX * this.playbackSpeed;
+        p.y += p.speedY * this.playbackSpeed;
+        p.rotation += p.rotSpeed * this.playbackSpeed;
+
+        if (p.type === 'spark' || p.type === 'star') {
+          p.life = (p.life || 60) - this.playbackSpeed;
+          if (p.life <= 0) this.particles.splice(idx, 1);
+        } else if (p.type === 'petal') {
+          if (p.y > this.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * this.width;
+          }
+          if (p.x > this.width + 20) p.x = -20;
         }
       });
 
-      this.arcaneCircles.forEach((c, idx) => {
-        c.rotation += 0.02;
-        c.life--;
-        if (c.life <= 0) this.arcaneCircles.splice(idx, 1);
-      });
-
       this.slashTrails.forEach((s, idx) => {
-        s.progress += 0.1;
+        s.progress += 0.09 * this.playbackSpeed;
         if (s.progress > 1) this.slashTrails.splice(idx, 1);
       });
 
       this.lightningBolts.forEach((b, idx) => {
-        b.life--;
+        b.life -= this.playbackSpeed;
         if (b.life <= 0) this.lightningBolts.splice(idx, 1);
+      });
+
+      this.magicRunes.forEach((m, idx) => {
+        m.rotation += 0.03 * this.playbackSpeed;
+        m.life -= this.playbackSpeed;
+        m.opacity = Math.max(0, m.life / 120);
+        if (m.life <= 0) this.magicRunes.splice(idx, 1);
+      });
+
+      this.shockwaves.forEach((w, idx) => {
+        w.radius += 12 * this.playbackSpeed;
+        w.opacity = Math.max(0, 1 - w.radius / w.maxRadius);
+        if (w.radius >= w.maxRadius) this.shockwaves.splice(idx, 1);
       });
     },
 
@@ -1119,79 +794,133 @@
       ctx.save();
       ctx.clearRect(0, 0, this.width, this.height);
 
+      const cx = this.width / 2;
+      const cy = this.height / 2;
+
+      let shakeX = 0;
+      let shakeY = 0;
       if (this.shakeAmount > 0) {
-        ctx.translate((Math.random() - 0.5) * this.shakeAmount * 2, (Math.random() - 0.5) * this.shakeAmount * 2);
+        shakeX = (Math.random() - 0.5) * this.shakeAmount * 2;
+        shakeY = (Math.random() - 0.5) * this.shakeAmount * 2;
       }
 
-      // Background Rendering with Ken Burns pan
+      ctx.translate(cx + this.cameraPanX + shakeX, cy + this.cameraPanY + shakeY);
+      ctx.scale(this.cameraZoom, this.cameraZoom);
+      ctx.translate(-cx, -cy);
+
+      // 1. Draw Background
       if (this.bgLoaded && this.bgImage) {
-        const zoom = 1.0 + Math.sin(this.time * 0.2) * 0.02;
-        const w = this.width * zoom;
-        const h = this.height * zoom;
-        ctx.drawImage(this.bgImage, (this.width - w) / 2, (this.height - h) / 2, w, h);
+        const zoom = 1.0 + Math.sin(this.time * 0.25) * 0.03;
+        const bgW = this.width * zoom;
+        const bgH = this.height * zoom;
+        const bgX = (this.width - bgW) / 2 + Math.sin(this.time * 0.35) * 14;
+        const bgY = (this.height - bgH) / 2;
+        ctx.drawImage(this.bgImage, bgX, bgY, bgW, bgH);
       } else {
-        ctx.fillStyle = '#0f0f18';
+        const grad = ctx.createLinearGradient(0, 0, this.width, this.height);
+        grad.addColorStop(0, '#0a0a14');
+        grad.addColorStop(0.5, '#161426');
+        grad.addColorStop(1, '#08080f');
+        ctx.fillStyle = grad;
         ctx.fillRect(0, 0, this.width, this.height);
       }
 
-      // Planetary & Atmosphere Shader Tint
-      this.drawAtmosphereTint(ctx);
+      // 2. Atmosphere Speedlines
+      if (this.activeAction && (this.actionPhase === 'surge' || this.actionPhase === 'climax')) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 2.5;
+        const center = { x: this.width / 2, y: this.height / 2 };
+        for (let a = 0; a < Math.PI * 2; a += 0.28) {
+          const jitter = (Math.random() - 0.5) * 0.08;
+          const angle = a + jitter;
+          const r1 = 280 + Math.random() * 90;
+          const r2 = this.width * 0.95;
+          ctx.beginPath();
+          ctx.moveTo(center.x + Math.cos(angle) * r1, center.y + Math.sin(angle) * r1);
+          ctx.lineTo(center.x + Math.cos(angle) * r2, center.y + Math.sin(angle) * r2);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
 
-      // Arcane Summon Circles (Magic/Superpower)
-      this.drawArcaneCircles(ctx);
+      // 3. Ground Magic Runes
+      this.magicRunes.forEach(m => {
+        ctx.save();
+        ctx.translate(m.x, m.y);
+        ctx.rotate(m.rotation);
+        ctx.globalAlpha = m.opacity;
+        ctx.strokeStyle = m.accent;
+        ctx.shadowColor = m.color;
+        ctx.shadowBlur = 25;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(0, 0, m.radius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 0, m.radius * 0.7, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      });
 
-      // Character / Creature Rendering
+      // 4. Character Sprite
       if (this.charLoaded && this.charImage) {
-        const breath = Math.sin(this.time * 2.5) * 5;
-        const charW = 460;
-        const charH = 613;
-        const charX = (this.width - charW) / 2;
-        const charY = this.height - charH + 30 + breath;
+        ctx.save();
+        const breath = Math.sin(this.time * 2.2) * 5;
+        const charWidth = 470;
+        const charHeight = 626;
+        const baseX = (this.width - charWidth) / 2;
+        const baseY = this.height - charHeight + 35 + breath;
 
-        // Dynamic Glow Aura
-        if (this.currentAction || this.activeSuperpower) {
+        ctx.translate(baseX + charWidth / 2 + this.charOffset.x, baseY + charHeight / 2 + this.charOffset.y);
+        ctx.scale(this.charOffset.scaleX, this.charOffset.scaleY);
+        ctx.rotate(this.charOffset.rotation);
+        ctx.translate(-(baseX + charWidth / 2), -(baseY + charHeight / 2));
+
+        if (this.activeAction) {
           ctx.save();
-          ctx.shadowBlur = this.currentAction ? 45 : 20;
-          ctx.shadowColor = this.activeSuperpower && this.activeSuperpower.element === 'solar' ? '#ffb703' :
-                             this.activeSuperpower && this.activeSuperpower.element === 'electric' ? '#00f0ff' :
-                             this.activeSuperpower && this.activeSuperpower.element === 'shadow' ? '#9d4edd' : '#ff2a85';
-          ctx.drawImage(this.charImage, charX, charY, charW, charH);
+          ctx.shadowBlur = 45;
+          ctx.shadowColor = this.activeAction.auraColor || '#ff2a85';
+          ctx.drawImage(this.charImage, baseX, baseY, charWidth, charHeight);
           ctx.restore();
         }
 
         ctx.save();
         ctx.beginPath();
-        ctx.roundRect(charX, charY, charW, charH, [20, 20, 0, 0]);
+        ctx.roundRect(baseX, baseY, charWidth, charHeight, [24, 24, 0, 0]);
         ctx.clip();
-        ctx.drawImage(this.charImage, charX, charY, charW, charH);
+        ctx.drawImage(this.charImage, baseX, baseY, charWidth, charHeight);
         ctx.restore();
 
-        // Lip sync mouth
+        // Lip-Sync Mouth
         if (this.lipSyncLevel > 0.05) {
-          const mouthX = charX + charW * 0.49;
-          const mouthY = charY + charH * 0.42;
+          const mouthX = baseX + charWidth * 0.49;
+          const mouthY = baseY + charHeight * 0.42;
           const openH = this.lipSyncLevel * 14 + 2;
           const openW = 16 + this.lipSyncLevel * 6;
 
+          ctx.save();
           ctx.fillStyle = '#7a142c';
           ctx.beginPath();
           ctx.ellipse(mouthX, mouthY, openW / 2, openH / 2, 0, 0, Math.PI * 2);
           ctx.fill();
-
           ctx.fillStyle = '#ffffff';
           ctx.beginPath();
-          ctx.ellipse(mouthX, mouthY - openH * 0.2, openW * 0.3, 2, 0, 0, Math.PI * 2);
+          ctx.ellipse(mouthX, mouthY - openH * 0.25, openW * 0.35, 2, 0, 0, Math.PI * 2);
           ctx.fill();
+          ctx.restore();
         }
+
+        ctx.restore();
       }
 
-      // Slashes & Lightning
+      // 5. Slash Trails & Lightning
       this.slashTrails.forEach(s => {
         ctx.save();
-        ctx.strokeStyle = '#ff2a85';
-        ctx.shadowColor = '#00f0ff';
-        ctx.shadowBlur = 20;
-        ctx.lineWidth = 10 * (1 - s.progress);
+        ctx.strokeStyle = s.glow;
+        ctx.shadowColor = s.color;
+        ctx.shadowBlur = 30;
+        ctx.lineWidth = 18 * (1 - s.progress);
         ctx.beginPath();
         ctx.moveTo(s.x1, s.y1);
         ctx.lineTo(s.x1 + (s.x2 - s.x1) * s.progress, s.y1 + (s.y2 - s.y1) * s.progress);
@@ -1200,87 +929,74 @@
       });
 
       this.lightningBolts.forEach(b => {
-        if (!b.pts || b.pts.length < 2) return;
+        if (!b.points || b.points.length < 2) return;
         ctx.save();
-        ctx.strokeStyle = '#00f0ff';
+        ctx.strokeStyle = b.color;
         ctx.shadowColor = '#ffffff';
-        ctx.shadowBlur = 15;
-        ctx.lineWidth = 3;
+        ctx.shadowBlur = 25;
+        ctx.lineWidth = b.width || 3;
         ctx.beginPath();
-        ctx.moveTo(b.pts[0].x, b.pts[0].y);
-        for (let i = 1; i < b.pts.length; i++) ctx.lineTo(b.pts[i].x, b.pts[i].y);
+        ctx.moveTo(b.points[0].x, b.points[0].y);
+        for (let i = 1; i < b.points.length; i++) ctx.lineTo(b.points[i].x, b.points[i].y);
         ctx.stroke();
         ctx.restore();
       });
 
-      // Atmosphere Particles
+      this.shockwaves.forEach(w => {
+        ctx.save();
+        ctx.strokeStyle = w.color;
+        ctx.shadowColor = w.color;
+        ctx.shadowBlur = 20;
+        ctx.globalAlpha = w.opacity;
+        ctx.lineWidth = 4 * w.opacity;
+        ctx.beginPath();
+        ctx.arc(w.x, w.y, w.radius, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      });
+
+      // 6. Particles
       this.particles.forEach(p => {
         ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
         ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
-      });
-
-      // Action Title HUD Badge
-      if (this.currentAction) {
-        ctx.fillStyle = 'rgba(10, 10, 18, 0.88)';
-        ctx.strokeStyle = '#00f0ff';
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.roundRect(460, 24, 360, 44, 22);
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 14.5px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.fillText(`⚡ ${this.currentAction.toUpperCase()}`, 640, 51);
-      }
-
-      ctx.restore();
-    },
-
-    drawAtmosphereTint(ctx) {
-      if (this.activeShader === 'mars_dust') {
-        ctx.fillStyle = 'rgba(217, 40, 20, 0.18)';
-        ctx.fillRect(0, 0, this.width, this.height);
-      } else if (this.activeShader === 'europa_blue') {
-        ctx.fillStyle = 'rgba(0, 180, 255, 0.15)';
-        ctx.fillRect(0, 0, this.width, this.height);
-      } else if (this.activeShader === 'golden_solar') {
-        ctx.fillStyle = 'rgba(255, 183, 3, 0.12)';
-        ctx.fillRect(0, 0, this.width, this.height);
-      }
-    },
-
-    drawArcaneCircles(ctx) {
-      this.arcaneCircles.forEach(c => {
-        ctx.save();
-        ctx.translate(c.x, c.y);
-        ctx.rotate(c.rotation);
-        ctx.strokeStyle = 'rgba(0, 240, 255, 0.6)';
-        ctx.shadowColor = '#00f0ff';
-        ctx.shadowBlur = 18;
-        ctx.lineWidth = 2;
-
-        ctx.beginPath();
-        ctx.arc(0, 0, c.radius, 0, Math.PI * 2);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(0, 0, c.radius * 0.7, 0, Math.PI * 2);
-        ctx.stroke();
-
-        for (let i = 0; i < 6; i++) {
-          const a = (i * Math.PI) / 3;
+        if (p.type === 'petal') {
           ctx.beginPath();
-          ctx.moveTo(Math.cos(a) * c.radius * 0.7, Math.sin(a) * c.radius * 0.7);
-          ctx.lineTo(Math.cos(a + 2) * c.radius * 0.7, Math.sin(a + 2) * c.radius * 0.7);
-          ctx.stroke();
+          ctx.ellipse(0, 0, p.size * 1.6, p.size * 0.9, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (p.type === 'star') {
+          ctx.beginPath();
+          ctx.moveTo(0, -p.size * 2);
+          ctx.lineTo(p.size * 0.5, -p.size * 0.5);
+          ctx.lineTo(p.size * 2, 0);
+          ctx.lineTo(p.size * 0.5, p.size * 0.5);
+          ctx.lineTo(0, p.size * 2);
+          ctx.lineTo(-p.size * 0.5, p.size * 0.5);
+          ctx.lineTo(-p.size * 2, 0);
+          ctx.lineTo(-p.size * 0.5, -p.size * 0.5);
+          ctx.closePath();
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.size, 0, Math.PI * 2);
+          ctx.fill();
         }
         ctx.restore();
       });
+
+      ctx.restore();
+
+      // Flash
+      if (this.flashWhite > 0) {
+        ctx.fillStyle = `rgba(255, 255, 255, ${this.flashWhite})`;
+        ctx.fillRect(0, 0, this.width, this.height);
+      }
+    },
+
+    captureFrame() {
+      if (!this.canvas) return null;
+      return this.canvas.toDataURL('image/png');
     },
 
     startRecording() {
@@ -1288,18 +1004,31 @@
       this.recordedChunks = [];
       try {
         const stream = this.canvas.captureStream(60);
-        this.mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        const mimeTypes = ['video/webm;codecs=vp9', 'video/webm', 'video/mp4'];
+        let selectedMime = 'video/webm';
+        for (const m of mimeTypes) {
+          if (MediaRecorder.isTypeSupported(m)) {
+            selectedMime = m;
+            break;
+          }
+        }
+        this.mediaRecorder = new MediaRecorder(stream, { mimeType: selectedMime });
         this.mediaRecorder.ondataavailable = (e) => {
           if (e.data && e.data.size > 0) this.recordedChunks.push(e.data);
         };
         this.mediaRecorder.start(100);
         this.isRecording = true;
-      } catch (e) {}
+      } catch (e) {
+        console.error('Recording error:', e);
+      }
     },
 
     stopRecording() {
       return new Promise((resolve) => {
-        if (!this.isRecording || !this.mediaRecorder) { resolve(null); return; }
+        if (!this.isRecording || !this.mediaRecorder) {
+          resolve(null);
+          return;
+        }
         this.mediaRecorder.onstop = () => {
           this.isRecording = false;
           const blob = new Blob(this.recordedChunks, { type: 'video/webm' });
@@ -1312,188 +1041,276 @@
   };
 
   /* ==========================================================================
-     5. SCRIPT DIRECTOR & DIALOGUE PARSER
+     4. DATABASE & PRESET ENTITIES
      ========================================================================== */
-  const ScriptDirector = {
-    isPlaying: false,
-
-    parseScript(scriptText) {
-      if (!scriptText) return [];
-      const lines = scriptText.split('\n');
-      const parsed = [];
-
-      lines.forEach((rawLine, idx) => {
-        const line = rawLine.trim();
-        if (!line || line.startsWith('//') || line.startsWith('#')) return;
-
-        let charName = '';
-        let dialogue = '';
-        let action = '';
-
-        const actionMatch = line.match(/\[action:\s*([^\]]+)\]/i) || line.match(/\[([^\]]+)\]/);
-        let clean = line;
-        if (actionMatch) {
-          action = actionMatch[1].trim();
-          clean = line.replace(actionMatch[0], '').trim();
-        }
-
-        const colonIdx = clean.indexOf(':');
-        if (colonIdx !== -1) {
-          charName = clean.substring(0, colonIdx).trim();
-          let dialogPart = clean.substring(colonIdx + 1).trim();
-          if ((dialogPart.startsWith('"') && dialogPart.endsWith('"')) || (dialogPart.startsWith('“') && dialogPart.endsWith('”'))) {
-            dialogPart = dialogPart.substring(1, dialogPart.length - 1);
-          }
-          dialogue = dialogPart;
-        } else {
-          charName = 'Kaito';
-          dialogue = clean;
-        }
-
-        // Check if character or creature
-        let character = Database.getCharacterByName(charName);
-        if (!character) {
-          const creature = Database.getCreatures().find(c => c.name.toLowerCase().includes(charName.toLowerCase()) || c.id.toLowerCase().includes(charName.toLowerCase()) || charName.toLowerCase().includes('yali') || charName.toLowerCase().includes('kitsune') || charName.toLowerCase().includes('qilin') || charName.toLowerCase().includes('archon') || charName.toLowerCase().includes('leviathan'));
-          if (creature) {
-            const cLang = creature.origin && creature.origin.includes('Tamil') ? 'ta' :
-                          creature.origin && creature.origin.includes('Japan') ? 'ja' :
-                          creature.origin && creature.origin.includes('Chinese') ? 'zh' : 'en';
-            character = {
-              name: creature.name,
-              lang: cLang,
-              pitch: 0.95,
-              speed: 1.0,
-              avatar: creature.avatar
-            };
-          } else {
-            character = {
-              id: 'char_custom',
-              name: charName,
-              lang: 'en',
-              pitch: 1.0,
-              speed: 1.0,
-              avatar: 'assets/characters/kaito.jpg'
-            };
-          }
-        }
-
-        parsed.push({
-          id: 'line_' + idx,
-          charName: character.name,
-          character,
-          dialogue,
-          action,
-          lang: character.lang || 'en',
-          pitch: character.pitch || 1.0,
-          speed: character.speed || 1.0
-        });
-      });
-
-      return parsed;
-    },
-
-    async play(scriptText, options = {}) {
-      this.stop();
-      const lines = this.parseScript(scriptText);
-      if (lines.length === 0) return;
-
-      this.isPlaying = true;
-      const { onStep = null, onFinish = null } = options;
-
-      for (let i = 0; i < lines.length; i++) {
-        if (!this.isPlaying) break;
-        const cur = lines[i];
-
-        CanvasEngine.setCharacter(cur.character);
-        if (cur.action) {
-          if (cur.action.toLowerCase().includes('power') || cur.action.toLowerCase().includes('surge') || cur.action.toLowerCase().includes('flare')) {
-            CanvasEngine.triggerSuperpower(cur.character.superpower);
-          } else {
-            CanvasEngine.triggerAction(cur.action);
-          }
-        }
-
-        if (onStep) onStep(cur, i, lines.length);
-
-        await VoiceEngine.speak({
-          text: cur.dialogue,
-          lang: cur.lang,
-          pitch: cur.pitch,
-          rate: cur.speed,
-          onLipSync: (lvl) => CanvasEngine.setLipSync(lvl)
-        });
-
-        if (this.isPlaying && i < lines.length - 1) {
-          await new Promise(r => setTimeout(r, 600));
-        }
+  const Database = {
+    characters: [
+      {
+        id: 'char_kaito',
+        name: 'Kaito',
+        role: 'Neo-Tokyo Ronin',
+        gender: 'Male',
+        lang: 'en',
+        avatar: 'assets/characters/kaito.jpg',
+        style: 'Neo-Tokyo Cyberpunk',
+        pitch: 1.0,
+        speed: 1.0,
+        backstory: 'A cybernetic swordsman walking rainy Neo Tokyo neon alleys.',
+        superpower: { name: 'Blade Storm Slash', element: 'plasma' }
+      },
+      {
+        id: 'char_ananya',
+        name: 'Ananya',
+        role: 'Solar Priestess',
+        gender: 'Female',
+        lang: 'ta',
+        avatar: 'assets/characters/ananya.jpg',
+        style: 'Ancient Solar Fantasy',
+        pitch: 1.1,
+        speed: 0.95,
+        backstory: 'Guardian of the thousand-pillar golden sun temple.',
+        superpower: { name: 'Solar Dragon Burst', element: 'solar' }
+      },
+      {
+        id: 'char_ren',
+        name: 'Ren',
+        role: 'Blood Moon Paladin',
+        gender: 'Male',
+        lang: 'ja',
+        avatar: 'assets/characters/ren.jpg',
+        style: 'Feudal Samurai Noir',
+        pitch: 0.9,
+        speed: 1.05,
+        backstory: 'Honor-bound warrior wielding shadow lightning under the blood moon.',
+        superpower: { name: 'Thunder Overdrive', element: 'lightning' }
+      },
+      {
+        id: 'char_mei',
+        name: 'Mei',
+        role: 'Celestial Archon',
+        gender: 'Female',
+        lang: 'zh',
+        avatar: 'assets/characters/mei.jpg',
+        style: 'Xianxia Celestial Magic',
+        pitch: 1.15,
+        speed: 1.0,
+        backstory: 'Master of starry constellations and ancient lotus arts.',
+        superpower: { name: 'Celestial Starfall', element: 'magic' }
       }
+    ],
 
-      this.isPlaying = false;
-      CanvasEngine.setLipSync(0);
-      if (onFinish) onFinish();
+    backgrounds: [
+      { id: 'bg_shrine', title: 'Cherry Blossom Shrine & Torii', url: 'assets/backgrounds/cherry_shrine.jpg', genre: 'romance', theme: 'Traditional Japanese' },
+      { id: 'bg_cyberpunk', title: 'Neo Tokyo Cyberpunk Alley', url: 'assets/backgrounds/cyberpunk_city.jpg', genre: 'scifi', theme: 'Cyberpunk' },
+      { id: 'bg_temple', title: 'Ancient Gopuram Sun Temple', url: 'assets/backgrounds/fantasy_temple.jpg', genre: 'magic', theme: 'South Asian Fantasy' },
+      { id: 'bg_classroom', title: 'Sunset Academy Classroom', url: 'assets/backgrounds/anime_classroom.jpg', genre: 'family', theme: 'Slice of Life' },
+      { id: 'bg_horror', title: 'Blood Moon Gothic Fortress', url: 'assets/backgrounds/horror_castle.jpg', genre: 'horror', theme: 'Dark Horror' }
+    ],
+
+    voices: [
+      { id: 'v_en_kaito', name: 'Kaito (Cyberpunk Pro)', lang: 'en-US', pitch: 1.0, rate: 1.0, type: 'Heroic' },
+      { id: 'v_ta_ananya', name: 'Ananya (Solar Royal)', lang: 'ta-IN', pitch: 1.1, rate: 0.95, type: 'Melodic' },
+      { id: 'v_ja_ren', name: 'Ren (Samurai Noir)', lang: 'ja-JP', pitch: 0.9, rate: 1.05, type: 'Intense' },
+      { id: 'v_zh_mei', name: 'Mei (Celestial Mystic)', lang: 'zh-CN', pitch: 1.15, rate: 1.0, type: 'Ethereal' }
+    ],
+
+    worldItems: [
+      { id: 'w_brihadisvara', title: 'Brihadisvara Temple (Thanjavur)', category: 'heritage', country: 'India', img: 'assets/backgrounds/fantasy_temple.jpg', desc: '1,000-year-old Granite architectural marvel.' },
+      { id: 'w_fushimi', title: 'Fushimi Inari Shrine (Kyoto)', category: 'heritage', country: 'Japan', img: 'assets/backgrounds/cherry_shrine.jpg', desc: 'Sacred mountain covered in thousands of vermilion Torii gates.' },
+      { id: 'w_greatwall', title: 'Great Wall Celestial Pass', category: 'heritage', country: 'China', img: 'assets/characters/mei.jpg', desc: 'Ancient stone dragon stretching over misty mountain ridges.' },
+      { id: 'w_mars', title: 'Mars Olympus Base Colony', category: 'planets', country: 'Solar System', img: 'assets/backgrounds/horror_castle.jpg', desc: 'Red planet terraforming citadel under towering canyons.' },
+      { id: 'w_europa', title: 'Europa Subsurface Ice Ocean', category: 'planets', country: 'Jupiter Moon', img: 'assets/backgrounds/cyberpunk_city.jpg', desc: 'Bioluminescent deep-sea world beneath 20km ice crust.' },
+      { id: 'w_classroom', title: 'Sunset Academy of Tokyo', category: 'creatures', country: 'Japan', img: 'assets/backgrounds/anime_classroom.jpg', desc: 'High school rooftop where student anime legends unfold.' }
+    ],
+
+    getCharacters() { return this.characters; },
+    getCharacterByName(name) { return this.characters.find(c => c.name.toLowerCase() === name.toLowerCase()) || this.characters[0]; },
+    getBackgrounds() { return this.backgrounds; },
+    getBackgroundById(id) { return this.backgrounds.find(b => b.id === id) || this.backgrounds[0]; },
+    getWorldItems(cat = 'all') {
+      if (cat === 'all') return this.worldItems;
+      return this.worldItems.filter(w => w.category === cat);
+    }
+  };
+
+  /* ==========================================================================
+     5. WEB SPEECH API MULTILINGUAL VOICE ENGINE
+     ========================================================================== */
+  const VoiceEngine = {
+    synth: window.speechSynthesis,
+    isSpeaking: false,
+    lipSyncInterval: null,
+
+    speak({ text, lang = 'en', pitch = 1.0, rate = 1.0, onEnd }) {
+      if (!this.synth) {
+        if (onEnd) onEnd();
+        return;
+      }
+      this.synth.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voices = this.synth.getVoices();
+      
+      const langPrefix = lang.slice(0, 2);
+      const voice = voices.find(v => v.lang.startsWith(langPrefix)) || voices[0];
+      if (voice) utterance.voice = voice;
+
+      utterance.pitch = pitch;
+      utterance.rate = rate;
+
+      this.isSpeaking = true;
+      this.startSimulatedLipSync();
+
+      utterance.onend = () => {
+        this.isSpeaking = false;
+        this.stopLipSync();
+        if (onEnd) onEnd();
+      };
+
+      utterance.onerror = () => {
+        this.isSpeaking = false;
+        this.stopLipSync();
+        if (onEnd) onEnd();
+      };
+
+      this.synth.speak(utterance);
     },
 
     stop() {
-      this.isPlaying = false;
-      VoiceEngine.stop();
+      if (this.synth) this.synth.cancel();
+      this.isSpeaking = false;
+      this.stopLipSync();
+    },
+
+    startSimulatedLipSync() {
+      this.stopLipSync();
+      this.lipSyncInterval = setInterval(() => {
+        if (this.isSpeaking) {
+          const level = Math.random() > 0.3 ? (Math.random() * 0.7 + 0.3) : 0;
+          CanvasEngine.setLipSync(level);
+        } else {
+          CanvasEngine.setLipSync(0);
+        }
+      }, 90);
+    },
+
+    stopLipSync() {
+      if (this.lipSyncInterval) clearInterval(this.lipSyncInterval);
       CanvasEngine.setLipSync(0);
     }
   };
 
   /* ==========================================================================
-     6. MAIN APPLICATION CONTROLLER WITH WORLD & PLANETS HUB
+     6. SCRIPT DIRECTOR & DIALOGUE SEQUENCER
+     ========================================================================== */
+  const ScriptDirector = {
+    isPlaying: false,
+    lines: [],
+    currentLineIdx: 0,
+    timeoutId: null,
+
+    parseScript(scriptText) {
+      const rawLines = scriptText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      const result = [];
+
+      for (const line of rawLines) {
+        const colonIdx = line.indexOf(':');
+        if (colonIdx === -1) continue;
+
+        const speaker = line.slice(0, colonIdx).trim();
+        const remainder = line.slice(colonIdx + 1).trim();
+
+        let dialogue = remainder;
+        let action = null;
+
+        const actionMatch = remainder.match(/\[action:\s*([^\]]+)\]/i);
+        if (actionMatch) {
+          action = actionMatch[1].trim();
+          dialogue = remainder.replace(actionMatch[0], '').trim();
+        }
+        dialogue = dialogue.replace(/^["']|["']$/g, '').trim();
+
+        const charObj = Database.getCharacterByName(speaker);
+        result.push({ speaker, dialogue, action, charObj });
+      }
+
+      return result;
+    },
+
+    play(scriptText, onLineChange, onComplete) {
+      this.stop();
+      this.lines = this.parseScript(scriptText);
+      if (this.lines.length === 0) return;
+
+      this.isPlaying = true;
+      this.currentLineIdx = 0;
+      this.executeNextLine(onLineChange, onComplete);
+    },
+
+    executeNextLine(onLineChange, onComplete) {
+      if (!this.isPlaying || this.currentLineIdx >= this.lines.length) {
+        this.isPlaying = false;
+        if (onComplete) onComplete();
+        return;
+      }
+
+      const item = this.lines[this.currentLineIdx];
+      if (onLineChange) onLineChange(item, this.currentLineIdx);
+
+      CanvasEngine.setCharacter(item.charObj);
+      if (item.action) {
+        CanvasEngine.triggerAction(item.action);
+      }
+
+      VoiceEngine.speak({
+        text: item.dialogue,
+        lang: item.charObj.lang,
+        pitch: item.charObj.pitch,
+        rate: item.charObj.speed,
+        onEnd: () => {
+          this.timeoutId = setTimeout(() => {
+            this.currentLineIdx++;
+            this.executeNextLine(onLineChange, onComplete);
+          }, 800);
+        }
+      });
+    },
+
+    stop() {
+      this.isPlaying = false;
+      if (this.timeoutId) clearTimeout(this.timeoutId);
+      VoiceEngine.stop();
+    }
+  };
+
+  /* ==========================================================================
+     7. MASTER APP CONTROLLER
      ========================================================================== */
   const App = {
-    activeView: 'studio',
+    currentView: 'studio',
     selectedFolder: 'characters',
-    selectedWorldCategory: 'all',
-    
-    wizardState: {
-      role: 'Protagonist',
-      genre: 'magic',
-      lang: 'en',
-      charName: 'Solaris',
-      charTitle: 'Celestial Sun Hero',
-      avatarUrl: 'assets/characters/ananya.jpg',
-      superpower: {
-        name: 'Infernal Sunbeam Nova',
-        element: 'solar',
-        intensity: 9,
-        shout: 'By the eternal sun, illuminate!'
-      }
-    },
+    wizardState: { role: 'Protagonist', genre: 'magic', lang: 'en', power: 'Solar Light', intensity: 85 },
 
     init() {
-      Database.init();
-      VoiceEngine.init();
-
-      const canvas = document.getElementById('animeCanvas');
-      if (canvas) {
-        CanvasEngine.init(canvas);
-        const initBg = Database.getBackgroundById('bg_cyberpunk');
-        if (initBg) CanvasEngine.setBackground(initBg.url);
-        const initChar = Database.getCharacterByName('Kaito');
-        if (initChar) CanvasEngine.setCharacter(initChar);
+      const canvasEl = document.getElementById('animeCanvas');
+      if (canvasEl) {
+        CanvasEngine.init(canvasEl);
+        const firstChar = Database.getCharacters()[0];
+        CanvasEngine.setCharacter(firstChar);
+        CanvasEngine.setBackground(Database.getBackgrounds()[0].url);
+        CanvasEngine.triggerAction('Blade Storm Slash');
       }
 
-      this.bindEvents();
-      I18N.setLanguage('en');
-      this.renderFolderDatabase();
-      this.renderCharacterLabList();
+      this.setupEventListeners();
       this.renderBackgroundSelector();
-      this.renderWorldExplorer();
+      this.renderWorldItems('all');
+      this.renderCharacterLabList();
+      this.renderFolderDatabase();
+      this.startCountdownTimer();
     },
 
-    bindEvents() {
-      const langSelect = document.getElementById('globalLangSelect');
-      if (langSelect) {
-        langSelect.addEventListener('change', (e) => {
-          const l = e.target.value;
-          I18N.setLanguage(l);
-          this.showToast(`Language set to ${l.toUpperCase()}`);
-        });
-      }
-
+    setupEventListeners() {
+      // Navigation View Switchers
       document.querySelectorAll('[data-view-target]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1502,677 +1319,374 @@
         });
       });
 
-      // World Explorer Category Filter
-      document.querySelectorAll('.world-cat-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.world-cat-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const cat = btn.getAttribute('data-world-cat');
-          this.selectedWorldCategory = cat;
-          this.renderWorldExplorer();
+      // Language Switcher
+      const langSel = document.getElementById('globalLangSelect');
+      if (langSel) {
+        langSel.addEventListener('change', (e) => I18N.setLanguage(e.target.value));
+      }
+
+      // Background Selector
+      const bgSel = document.getElementById('cinemaBgSelect');
+      if (bgSel) {
+        bgSel.addEventListener('change', (e) => {
+          const bg = Database.getBackgroundById(e.target.value);
+          if (bg) CanvasEngine.setBackground(bg.url);
+        });
+      }
+
+      // Custom Action Prompt Input & Trigger
+      const promptInput = document.getElementById('customActionPromptInput');
+      const btnAnimateAction = document.getElementById('btnExecuteCustomAction');
+      if (btnAnimateAction && promptInput) {
+        const handleActionTrigger = () => {
+          const val = promptInput.value.trim();
+          if (val) {
+            this.triggerCustomAction(val);
+          } else {
+            this.triggerCustomAction('Blade Storm Slash');
+          }
+        };
+        btnAnimateAction.addEventListener('click', handleActionTrigger);
+        promptInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') handleActionTrigger();
+        });
+      }
+
+      // Action Preset Chips
+      document.querySelectorAll('.action-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.action-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const act = chip.getAttribute('data-action');
+          if (promptInput) promptInput.value = act;
+          this.triggerCustomAction(act);
         });
       });
 
-      // Wizard Step Tabs
+      // Action Timeline Play / Pause Toggle
+      const btnPlayPause = document.getElementById('btnTimelinePlayPause');
+      if (btnPlayPause) {
+        btnPlayPause.addEventListener('click', () => {
+          const isPaused = CanvasEngine.togglePause();
+          btnPlayPause.textContent = isPaused ? '▶' : '⏸';
+        });
+      }
+
+      // Timeline Scrubber Slider
+      const timelineSlider = document.getElementById('timelineProgressSlider');
+      if (timelineSlider) {
+        timelineSlider.addEventListener('input', (e) => {
+          const pct = e.target.value / 100;
+          CanvasEngine.scrubTo(pct);
+        });
+      }
+
+      // Timeline Speed Select
+      const speedSelect = document.getElementById('timelineSpeedSelect');
+      if (speedSelect) {
+        speedSelect.addEventListener('change', (e) => {
+          CanvasEngine.setPlaybackSpeed(e.target.value);
+        });
+      }
+
+      // Script Director Buttons
+      const btnPlay = document.getElementById('btnPlayScript');
+      const btnStop = document.getElementById('btnStopScript');
+      const btnClear = document.getElementById('btnClearScript');
+      const txtScript = document.getElementById('scriptEditorTextarea');
+
+      if (btnPlay && txtScript) {
+        btnPlay.addEventListener('click', () => {
+          ScriptDirector.play(
+            txtScript.value,
+            (item) => this.updateDialogueOverlay(item),
+            () => this.showToast('Scene Playback Complete! 🎉')
+          );
+        });
+      }
+
+      if (btnStop) {
+        btnStop.addEventListener('click', () => {
+          ScriptDirector.stop();
+          this.showToast('Scene Playback Stopped');
+        });
+      }
+
+      if (btnClear && txtScript) {
+        btnClear.addEventListener('click', () => {
+          txtScript.value = '';
+        });
+      }
+
+      // Script Preset Chips
+      document.querySelectorAll('[data-preset-script]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const preset = btn.getAttribute('data-preset-script');
+          this.loadPresetScript(preset);
+        });
+      });
+
+      // World Category Filter Buttons
+      document.querySelectorAll('[data-world-cat]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-world-cat]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const cat = btn.getAttribute('data-world-cat');
+          this.renderWorldItems(cat);
+        });
+      });
+
+      // Wizard Step Navigation Tabs
       document.querySelectorAll('.wizard-step-tab').forEach(tab => {
         tab.addEventListener('click', () => {
           document.querySelectorAll('.wizard-step-tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.wizard-step-section').forEach(s => s.style.display = 'none');
           tab.classList.add('active');
-          const stepId = tab.getAttribute('data-step-target');
-          this.showWizardStep(stepId);
+          const targetId = tab.getAttribute('data-step-target');
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) targetSection.style.display = 'block';
         });
       });
 
-      document.querySelectorAll('.role-select-card').forEach(card => {
-        card.addEventListener('click', () => {
-          document.querySelectorAll('.role-select-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-          this.wizardState.role = card.getAttribute('data-role');
-          this.updateWizardScriptPreview();
-        });
-      });
-
-      document.querySelectorAll('.genre-select-card').forEach(card => {
-        card.addEventListener('click', () => {
-          document.querySelectorAll('.genre-select-card').forEach(c => c.classList.remove('active'));
-          card.classList.add('active');
-          const genre = card.getAttribute('data-genre');
-          this.wizardState.genre = genre;
-          CanvasEngine.setGenre(genre);
-          const bgs = Database.getBackgroundsByGenre(genre);
-          if (bgs && bgs.length > 0) CanvasEngine.setBackground(bgs[0].url);
-          this.updateWizardScriptPreview();
-        });
-      });
-
-      document.querySelectorAll('.power-element-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.power-element-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const elem = btn.getAttribute('data-element');
-          this.wizardState.superpower.element = elem;
-          document.getElementById('powerPreviewElement').textContent = elem.toUpperCase();
-          VoiceEngine.playSuperpowerTone(elem);
-        });
-      });
-
-      const powerNameInput = document.getElementById('wizPowerName');
-      if (powerNameInput) {
-        powerNameInput.addEventListener('input', (e) => {
-          this.wizardState.superpower.name = e.target.value;
-          document.getElementById('powerPreviewName').textContent = e.target.value || 'Custom Power';
-        });
+      // Modal Controls
+      const btnNewChar = document.getElementById('btnOpenNewCharModal');
+      if (btnNewChar) {
+        btnNewChar.addEventListener('click', () => this.openModal('newCharacterModal'));
       }
-      const powerShoutInput = document.getElementById('wizPowerShout');
-      if (powerShoutInput) {
-        powerShoutInput.addEventListener('input', (e) => {
-          this.wizardState.superpower.shout = e.target.value;
-          document.getElementById('powerPreviewShout').textContent = `"${e.target.value}"`;
-        });
-      }
-
-      const testPowerBtn = document.getElementById('btnTestSuperpower');
-      if (testPowerBtn) {
-        testPowerBtn.addEventListener('click', () => {
-          CanvasEngine.triggerSuperpower(this.wizardState.superpower);
-          VoiceEngine.speak({
-            text: this.wizardState.superpower.shout || 'Power unleashed!',
-            lang: this.wizardState.lang
-          });
-        });
-      }
-
-      const wizSaveBtn = document.getElementById('btnWizardSaveAndRun');
-      if (wizSaveBtn) {
-        wizSaveBtn.addEventListener('click', () => {
-          const name = document.getElementById('wizCharName').value || 'Hero';
-          const title = `${this.wizardState.role} (${this.wizardState.genre.toUpperCase()})`;
-          const lang = document.getElementById('wizCharLang').value || 'en';
-          const pitch = parseFloat(document.getElementById('wizCharPitch').value) || 1.0;
-          const speed = parseFloat(document.getElementById('wizCharSpeed').value) || 1.0;
-
-          const savedChar = Database.addCharacter({
-            name,
-            role: this.wizardState.role,
-            genre: this.wizardState.genre,
-            title,
-            lang,
-            pitch,
-            speed,
-            avatar: this.wizardState.avatarUrl,
-            superpower: this.wizardState.superpower
-          });
-
-          CanvasEngine.setCharacter(savedChar);
-          this.renderFolderDatabase();
-          this.renderCharacterLabList();
-
-          const area = document.getElementById('scriptEditorTextarea');
-          const wizScript = document.getElementById('wizScriptArea').value;
-          if (area && wizScript) area.value = wizScript;
-
-          this.switchView('studio');
-          this.showToast(`✨ Character "${savedChar.name}" created with custom superpower & stored in Personal Memory!`);
-          this.runCurrentScript();
-        });
-      }
-
-      document.querySelectorAll('[data-preset-script]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          this.loadPresetScript(btn.getAttribute('data-preset-script'));
-        });
-      });
-
-      document.querySelectorAll('.action-tag-chip').forEach(chip => {
-        chip.addEventListener('click', () => {
-          const tag = chip.getAttribute('data-action-tag');
-          const area = document.getElementById('scriptEditorTextarea');
-          if (area) {
-            area.value += ` [action: ${tag}]`;
-            area.focus();
-          }
-        });
-      });
-
-      const playBtn = document.getElementById('btnPlayScript');
-      if (playBtn) playBtn.addEventListener('click', () => this.runCurrentScript());
-
-      const stopBtn = document.getElementById('btnStopScript');
-      if (stopBtn) stopBtn.addEventListener('click', () => {
-        ScriptDirector.stop();
-        this.showToast('Playback stopped.');
-      });
-
-      const clearBtn = document.getElementById('btnClearScript');
-      if (clearBtn) clearBtn.addEventListener('click', () => {
-        const area = document.getElementById('scriptEditorTextarea');
-        if (area) area.value = '';
-      });
-
-      const exportBtn = document.getElementById('btnExportVideo');
-      if (exportBtn) exportBtn.addEventListener('click', () => this.handleExportVideo());
-
-      const bgSelect = document.getElementById('cinemaBgSelect');
-      if (bgSelect) {
-        bgSelect.addEventListener('change', (e) => {
-          const bg = Database.getBackgroundById(e.target.value);
-          if (bg) {
-            CanvasEngine.setBackground(bg.url);
-            this.showToast(`Stage background: ${bg.title}`);
-          }
-        });
-      }
-
-      const promptForm = document.getElementById('floatingPromptForm');
-      if (promptForm) {
-        promptForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          this.handlePromptBarSubmit();
-        });
-      }
-
-      const charForm = document.getElementById('createCharacterForm');
-      if (charForm) {
-        charForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          this.handleSaveCharacterModal();
-        });
-      }
-
       document.querySelectorAll('[data-close-modal]').forEach(btn => {
         btn.addEventListener('click', () => this.closeAllModals());
       });
 
-      const openCharModalBtn = document.getElementById('btnOpenNewCharModal');
-      if (openCharModalBtn) {
-        openCharModalBtn.addEventListener('click', () => this.openModal('modalCreateCharacter'));
-      }
+      // Create Character Form Submit
+      const charForm = document.getElementById('createCharacterForm');
+      if (charForm) {
+        charForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('modalCharName').value.trim();
+          const title = document.getElementById('modalCharTitle').value.trim();
+          const lang = document.getElementById('modalCharLang').value;
+          const style = document.getElementById('modalCharStyle').value;
+          const pitch = parseFloat(document.getElementById('modalCharPitch').value) || 1.0;
+          const speed = parseFloat(document.getElementById('modalCharSpeed').value) || 1.0;
+          const backstory = document.getElementById('modalCharBackstory').value.trim();
 
-      const exportDbBtn = document.getElementById('btnExportDb');
-      if (exportDbBtn) {
-        exportDbBtn.addEventListener('click', () => {
-          const json = Database.exportJSON();
-          const blob = new Blob([json], { type: 'application/json' });
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `animeart_studio_universe_${Date.now()}.json`;
-          a.click();
-          this.showToast('Full Universe Database exported as JSON!');
+          const newChar = {
+            id: 'char_' + Date.now(),
+            name,
+            role: title,
+            gender: 'Custom',
+            lang,
+            avatar: 'assets/characters/mei.jpg',
+            style,
+            pitch,
+            speed,
+            backstory,
+            superpower: { name: 'Cosmic Singularity', element: 'magic' }
+          };
+
+          Database.characters.push(newChar);
+          this.renderCharacterLabList();
+          this.renderFolderDatabase();
+          this.closeAllModals();
+          CanvasEngine.setCharacter(newChar);
+          this.switchView('studio');
+          this.showToast(`Character "${name}" saved and loaded on Stage! 🌟`);
         });
       }
     },
 
-    showWizardStep(stepId) {
-      document.querySelectorAll('.wizard-step-section').forEach(s => s.style.display = 'none');
-      const target = document.getElementById(stepId);
-      if (target) target.style.display = 'flex';
+    triggerCustomAction(promptText) {
+      CanvasEngine.triggerAction(promptText);
+      const activeChar = CanvasEngine.currentChar || Database.getCharacters()[0];
+      let speech = `Executing ${promptText}!`;
+      if (activeChar.lang === 'ta') speech = `${promptText} ஆற்றல் தொடங்குகிறது!`;
+      else if (activeChar.lang === 'ja') speech = `${promptText}！行くぞ！`;
+      else if (activeChar.lang === 'zh') speech = `施展 ${promptText}！`;
+
+      this.updateDialogueOverlay({
+        speaker: activeChar.name,
+        dialogue: speech,
+        action: promptText,
+        charObj: activeChar
+      });
+
+      VoiceEngine.speak({
+        text: speech,
+        lang: activeChar.lang,
+        pitch: activeChar.pitch,
+        rate: activeChar.speed
+      });
+
+      this.showToast(`⚡ Animating: "${promptText}"`);
     },
 
-    updateWizardScriptPreview() {
-      const name = (document.getElementById('wizCharName') && document.getElementById('wizCharName').value) || 'Hero';
-      const lang = (document.getElementById('wizCharLang') && document.getElementById('wizCharLang').value) || 'en';
-      const area = document.getElementById('wizScriptArea');
-      if (!area) return;
-
-      const role = this.wizardState.role;
-      const power = this.wizardState.superpower.name;
-
-      if (lang === 'ta') {
-        area.value = `${name}: "வணக்கம்! நான் ${role}. ${power} கொண்டு இந்த உலகை காப்பேன்!" [action: Solar Flare]\n${name}: "தீமை எதுவாயினும் அதை சுட்டெரிப்போம்!" [action: Power Surge]`;
-      } else if (lang === 'ja') {
-        area.value = `${name}: "我が名は${name}、${role}だ！秘技・${power}を見よ！" [action: Sword Slash]\n${name}: "運命の刃が今、道を切り開く！" [action: Power Surge]`;
-      } else if (lang === 'zh') {
-        area.value = `${name}: "吾乃${name}，身为${role}，觉醒神技——${power}！" [action: Magic Cast]\n${name}: "星河浩瀚，破尽幽冥！" [action: Power Surge]`;
-      } else {
-        area.value = `${name}: "I am ${name}, the ${role}. Witness my ${power}!" [action: Power Surge]\n${name}: "No darkness can withstand this force!" [action: Cyberpunk Dash]`;
+    updateActionTimelineUI(phase, progress, actionName) {
+      const textEl = document.getElementById('timelinePhaseText');
+      const sliderEl = document.getElementById('timelineProgressSlider');
+      if (textEl) {
+        textEl.textContent = `⚡ [${phase.toUpperCase()}]: ${actionName.toUpperCase()}`;
+      }
+      if (sliderEl) {
+        sliderEl.value = Math.round(progress * 100);
       }
     },
 
-    switchView(viewId) {
-      this.activeView = viewId;
+    loadShowcaseCharacter(charName, actionName, bgId, dialogue, lang) {
+      const char = Database.getCharacterByName(charName);
+      const bg = Database.getBackgroundById(bgId);
+
+      if (char) CanvasEngine.setCharacter(char);
+      if (bg) CanvasEngine.setBackground(bg.url);
+
+      const promptInput = document.getElementById('customActionPromptInput');
+      if (promptInput) promptInput.value = actionName;
+
+      this.updateDialogueOverlay({
+        speaker: char.name,
+        dialogue,
+        action: actionName,
+        charObj: char
+      });
+
+      this.switchView('studio');
+      CanvasEngine.triggerAction(actionName);
+
+      VoiceEngine.speak({
+        text: dialogue,
+        lang: lang || char.lang,
+        pitch: char.pitch,
+        rate: char.speed
+      });
+
+      this.showToast(`Loaded "${char.name}" with action "${actionName}"! ✨`);
+    },
+
+    incrementReaction(btn) {
+      const countSpan = btn.querySelector('.count');
+      if (countSpan) {
+        let val = parseInt(countSpan.textContent, 10) || 0;
+        val += 1;
+        countSpan.textContent = val;
+        btn.classList.add('reacted');
+        SoundEngine.playMagicChime();
+      }
+    },
+
+    startCountdownTimer() {
+      const badge = document.getElementById('promoCountdownBadge');
+      if (!badge) return;
+
+      let totalSeconds = 7 * 86400 + 12 * 3600 + 4 * 60 + 21;
+      setInterval(() => {
+        totalSeconds = Math.max(0, totalSeconds - 1);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const mins = Math.floor((totalSeconds % 3600) / 60);
+        const secs = totalSeconds % 60;
+        badge.textContent = `⏳ Expires in: ${days}d ${String(hours).padStart(2, '0')}h ${String(mins).padStart(2, '0')}m ${String(secs).padStart(2, '0')}s`;
+      }, 1000);
+    },
+
+    captureCanvasSnapshot() {
+      const dataUrl = CanvasEngine.captureFrame();
+      if (!dataUrl) return;
+      const link = document.createElement('a');
+      link.download = `animeart_frame_${Date.now()}.png`;
+      link.href = dataUrl;
+      link.click();
+      this.showToast('High-Res PNG Frame Captured & Downloaded! 📸');
+    },
+
+    async handleExportVideo() {
+      const btn = document.getElementById('cinemaRecordBtn');
+      if (btn) btn.textContent = '🔴 Recording...';
+      this.showToast('Recording 60FPS Video Clip in RAM (3s)...');
+
+      CanvasEngine.startRecording();
+      setTimeout(async () => {
+        const result = await CanvasEngine.stopRecording();
+        if (btn) btn.textContent = '🎥';
+        if (result && result.url) {
+          const a = document.createElement('a');
+          a.href = result.url;
+          a.download = `anime_action_clip_${Date.now()}.webm`;
+          a.click();
+          this.showToast('60FPS Video Exported & Downloaded! 🎉');
+        }
+      }, 3500);
+    },
+
+    updateDialogueOverlay(item) {
+      const avatarEl = document.getElementById('cinemaSpeakerAvatar');
+      const nameEl = document.getElementById('cinemaSpeakerName');
+      const langEl = document.getElementById('cinemaSpeakerLang');
+      const textEl = document.getElementById('cinemaDialogueText');
+
+      if (avatarEl && item.charObj) avatarEl.src = item.charObj.avatar;
+      if (nameEl) nameEl.textContent = item.speaker;
+      if (langEl && item.charObj) langEl.textContent = item.charObj.lang.toUpperCase();
+      if (textEl) textEl.textContent = `"${item.dialogue}"`;
+    },
+
+    switchView(viewName) {
+      this.currentView = viewName;
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.sidebar-nav-link').forEach(l => l.classList.remove('active'));
+      const targetPanel = document.getElementById(`view-${viewName}`);
+      if (targetPanel) targetPanel.classList.add('active');
 
-      const target = document.getElementById(`view-${viewId}`);
-      if (target) target.classList.add('active');
-
-      const navBtn = document.querySelector(`[data-view-target="${viewId}"]`);
-      if (navBtn) navBtn.classList.add('active');
+      document.querySelectorAll('.sidebar-nav-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('data-view-target') === viewName);
+      });
 
       const breadcrumb = document.getElementById('currentBreadcrumb');
       if (breadcrumb) {
-        if (viewId === 'studio') breadcrumb.textContent = I18N.t('navStudio');
-        else if (viewId === 'creation-wizard') breadcrumb.textContent = '⚡ Creation Studio Wizard';
-        else if (viewId === 'world-hub') breadcrumb.textContent = '🌍 World Heritage & Cosmic Planets';
-        else if (viewId === 'database') breadcrumb.textContent = I18N.t('secAssets');
-        else if (viewId === 'character-lab') breadcrumb.textContent = I18N.t('navCharacter');
-      }
-    },
-
-    renderWorldExplorer() {
-      const grid = document.getElementById('worldItemsGrid');
-      if (!grid) return;
-
-      const cat = this.selectedWorldCategory;
-      let items = [];
-
-      if (cat === 'heritage' || cat === 'all') {
-        items = items.concat(Database.getHeritageSites());
-      }
-      if (cat === 'planets' || cat === 'all') {
-        items = items.concat(Database.getPlanets());
-      }
-      if (cat === 'creatures' || cat === 'all') {
-        items = items.concat(Database.getCreatures());
-      }
-
-      grid.innerHTML = items.map(item => {
-        if (item.category === 'creatures') {
-          return `
-            <div class="world-item-card" style="border-left: 3px solid var(--accent-cyan);">
-              <div style="padding: 16px; display: flex; align-items: center; gap: 14px;">
-                <div class="creature-avatar-box">
-                  <img src="${item.avatar}" class="creature-avatar-img" alt="${item.name}" />
-                </div>
-                <div>
-                  <div class="world-item-title">${item.name}</div>
-                  <div style="font-size: 11.5px; color: var(--accent-pink); font-weight: 600;">${item.origin}</div>
-                </div>
-              </div>
-              <div class="world-item-body" style="padding-top: 0;">
-                <div style="font-size: 11px; color: var(--accent-gold);">⚡ Superpower: ${item.power}</div>
-                <p class="world-item-desc">${item.desc}</p>
-                <div class="world-item-footer">
-                  <button class="btn-card-action" onclick="window.App.summonCreature('${item.id}')">🐉 Summon to Stage</button>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-
-        return `
-          <div class="world-item-card">
-            <div class="world-item-preview">
-              <img src="${item.bgUrl}" class="world-item-img" alt="${item.name}" />
-              <span class="world-item-badge">${item.country || item.type}</span>
-            </div>
-            <div class="world-item-body">
-              <div class="world-item-title">${item.name}</div>
-              <p class="world-item-desc">${item.desc}</p>
-              <div class="world-item-footer">
-                <span style="font-size: 11px; color: var(--accent-cyan);">${item.atmosphere || item.period || 'Universal'}</span>
-                <button class="btn-card-action" onclick="window.App.applyWorldToStage('${item.id}')">Apply to Stage</button>
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    },
-
-    applyWorldToStage(id) {
-      const heritage = Database.getHeritageSites().find(h => h.id === id);
-      const planet = Database.getPlanets().find(p => p.id === id);
-      const target = heritage || planet;
-
-      if (target) {
-        CanvasEngine.setBackground(target.bgUrl);
-        if (target.vfxShader) CanvasEngine.setShader(target.vfxShader);
-        this.switchView('studio');
-        this.showToast(`🌍 Stage transformed into ${target.name}!`);
-      }
-    },
-
-    summonCreature(id) {
-      const creature = Database.getCreatures().find(c => c.id === id);
-      if (creature) {
-        const area = document.getElementById('scriptEditorTextarea');
-        if (area && creature.dialogue) {
-          area.value = creature.dialogue;
-        }
-        CanvasEngine.setCharacter({
-          name: creature.name,
-          avatar: creature.avatar,
-          lang: creature.origin.includes('Tamil') ? 'ta' : creature.origin.includes('Japan') ? 'ja' : creature.origin.includes('China') ? 'zh' : 'en'
-        });
-        this.switchView('studio');
-        this.showToast(`🐉 ${creature.name} summoned to the Stage!`);
-        this.runCurrentScript();
+        const map = { studio: 'Anime Studio', 'world-hub': 'World Heritage & Planets', 'creation-wizard': 'Creation Studio', 'character-lab': 'Character Lab', database: 'Database Folders' };
+        breadcrumb.textContent = map[viewName] || 'Anime Studio';
       }
     },
 
     loadPresetScript(key) {
-      const area = document.getElementById('scriptEditorTextarea');
-      if (!area) return;
+      const txt = document.getElementById('scriptEditorTextarea');
+      if (!txt) return;
 
-      if (key === 'english') {
-        area.value = `Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Power Surge]\nKaito: "Tracking rogue AI signals across the neon skyline." [action: Cyberpunk Dash]`;
-        const bg = Database.getBackgroundById('bg_cyberpunk');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        const char = Database.getCharacterByName('Kaito');
-        if (char) CanvasEngine.setCharacter(char);
-      } else if (key === 'tamil') {
-        area.value = `Ananya: "வணக்கம்! தஞ்சை பெரிய கோயில் மற்றும் மதுரை மண்ணில் புனித சக்தி எப்போதும் ஒளிரும்!" [action: Solar Flare]
-Yali: "கோயில் மணி ஓசையில் புனித சக்தி எழுந்தது!" [action: Solar Flare]
-Ananya: "எங்கள் நம்பிக்கை தான் எங்களின் மிகப்பெரிய ஆயுதம்." [action: Smile]`;
-        const bg = Database.getBackgroundById('bg_temple');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        const char = Database.getCharacterByName('Ananya');
-        if (char) CanvasEngine.setCharacter(char);
-      } else if (key === 'japanese') {
-        area.value = `Ren: "伏見稲荷の千本鳥居にて、我が刃が道を切り開く！" [action: Sword Slash]
-Kitsune: "狐火の導きに従え。迷いし者に光を。" [action: Magic Cast]
-Ren: "風が止む時、勝負は決している。" [action: Battle Stance]`;
-        const bg = Database.getBackgroundById('bg_shrine');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        const char = Database.getCharacterByName('Ren');
-        if (char) CanvasEngine.setCharacter(char);
-      } else if (key === 'chinese') {
-        area.value = `Mei: "万里长城之上，漫天星辰听我号令，星光绽放！" [action: Magic Cast]
-Qilin: "瑞兽降世，万物皆安，星辉引路！" [action: Magic Cast]
-Mei: "只要心怀光明，黑夜便不再漫长。" [action: Smile]`;
-        const bg = Database.getBackgroundById('bg_temple');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        const char = Database.getCharacterByName('Mei');
-        if (char) CanvasEngine.setCharacter(char);
-      } else if (key === 'mars') {
-        area.value = `Kaito: "Ares Base Mars Expedition online. Atmospheric stabilizers active!" [action: Power Surge]
-Archon: "Human explorers, welcome to the red sands of Mars." [action: Power Surge]
-Kaito: "Initiating terraforming protocol!" [action: Cyberpunk Dash]`;
-        const bg = Database.getBackgroundById('bg_horror');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        CanvasEngine.setShader('mars_dust');
-      } else if (key === 'europa') {
-        area.value = `Mei: "Sub-surface cryo-ocean of Europa detected." [action: Magic Cast]
-Leviathan: "Echoes from the deep ice... The oceans awaken." [action: Magic Cast]
-Mei: "Starlight crystal resonance engaged!" [action: Smile]`;
-        const bg = Database.getBackgroundById('bg_temple');
-        if (bg) CanvasEngine.setBackground(bg.url);
-        CanvasEngine.setShader('europa_blue');
-      } else if (key === 'duel') {
-        area.value = `Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Power Surge]
-Ananya: "வணக்கம்! எங்கள் சூரிய சக்தி எப்போதும் உங்களை காக்கும்." [action: Solar Flare]
-Ren: "覚悟はいいか？行くぞ！" [action: Sword Slash]
-Mei: "漫天星辰，为我们引路，光华流转！" [action: Magic Cast]
-Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Dash]`;
-        const bg = Database.getBackgroundById('bg_cyberpunk');
-        if (bg) CanvasEngine.setBackground(bg.url);
-      }
+      const presets = {
+        english: `Kaito: "Welcome to Neo Tokyo, let's begin the mission!" [action: Blade Storm Slash]\nRen: "Target locked, moving in fast!" [action: Thunder Overdrive]\nKaito: "Maximum Overdrive — Strike now!" [action: Kinetic Strike]`,
+        tamil: `Ananya: "வணக்கம்! சூரியனின் பேரொளி எங்களை வழிநடத்துகிறது." [action: Solar Dragon Burst]\nAnanya: "இந்த தளம் ஆயிரம் ஆண்டுகள் பாரம்பரியம் கொண்டது." [action: Astral Transcendence]`,
+        japanese: `Ren: "覚悟はいいか？行くぞ！" [action: Blade Storm Slash]\nRen: "この刀で闇を切り裂く！" [action: Thunder Overdrive]`,
+        chinese: `Mei: "漫天星辰，为我们引路，光华流转！" [action: Celestial Starfall]\nMei: "万物归一，天地同心！" [action: Astral Transcendence]`,
+        duel: `Kaito: "Cyber blade activated!" [action: Blade Storm Slash]\nAnanya: "சூரிய சக்தி வெளிப்படுகிறது!" [action: Solar Dragon Burst]\nRen: "覚悟！雷光一閃！" [action: Thunder Overdrive]\nMei: "九天星辰，为我所用！" [action: Celestial Starfall]`,
+        mars: `Kaito: "Mars Colony terraforming shields online." [action: Void Singularity]\nRen: "Dust storm approaching Olympus Mons base!" [action: Thunder Overdrive]`
+      };
 
-      this.showToast(`Loaded ${key.toUpperCase()} Scene!`);
+      txt.value = presets[key] || presets.english;
+      this.showToast(`Loaded Script: ${key.toUpperCase()}`);
     },
 
-    runCurrentScript() {
-      const area = document.getElementById('scriptEditorTextarea');
-      if (!area || !area.value.trim()) {
-        this.showToast('Please enter dialogue script lines!');
-        return;
-      }
+    renderWorldItems(cat) {
+      const container = document.getElementById('worldItemsGrid');
+      if (!container) return;
+      const items = Database.getWorldItems(cat);
 
-      const textEl = document.getElementById('cinemaDialogueText');
-      const nameEl = document.getElementById('cinemaSpeakerName');
-      const avatarEl = document.getElementById('cinemaSpeakerAvatar');
-      const langEl = document.getElementById('cinemaSpeakerLang');
-
-      this.showToast('▶ Playing Scene with Auto-Voice Assignment...');
-
-      ScriptDirector.play(area.value, {
-        onStep: (item) => {
-          if (textEl) textEl.textContent = item.dialogue;
-          if (nameEl) nameEl.textContent = item.charName;
-          if (avatarEl && item.character && item.character.avatar) avatarEl.src = item.character.avatar;
-          if (langEl) {
-            const map = { en: 'ENGLISH 🇬🇧', ta: 'TAMIL 🇮🇳 (தமிழ்)', ja: 'JAPANESE 🇯🇵 (日本語)', zh: 'CHINESE 🇨🇳 (中文)' };
-            langEl.textContent = map[item.lang] || item.lang.toUpperCase();
-          }
-          this.animateEqualizer(true);
-        },
-        onFinish: () => {
-          this.animateEqualizer(false);
-          this.showToast('Scene playback finished!');
-        }
-      });
-    },
-
-    animateEqualizer(active) {
-      const bars = document.querySelectorAll('.equalizer-bar');
-      bars.forEach(b => {
-        b.style.height = active ? `${Math.random() * 18 + 4}px` : '4px';
-      });
-    },
-
-    async handleExportVideo() {
-      this.showToast('🎥 Buffering in RAM & Recording anime scene...');
-      CanvasEngine.startRecording();
-
-      const area = document.getElementById('scriptEditorTextarea');
-      const script = area && area.value.trim() ? area.value : 'Kaito: "AnimeArt Studio Universe is ready!" [action: Power Surge]';
-
-      await new Promise(res => {
-        ScriptDirector.play(script, {
-          onStep: (item) => {
-            const textEl = document.getElementById('cinemaDialogueText');
-            if (textEl) textEl.textContent = item.dialogue;
-          },
-          onFinish: () => res()
-        });
-      });
-
-      const res = await CanvasEngine.stopRecording();
-      if (res && res.url) {
-        const a = document.createElement('a');
-        a.href = res.url;
-        a.download = `AnimeArt_Universe_${Date.now()}.webm`;
-        a.click();
-        this.showToast('✅ AMV Video generated from RAM & Saved to Personal Storage!');
-      }
-    },
-
-    handlePromptBarSubmit() {
-      const input = document.getElementById('floatingPromptInput');
-      if (!input || !input.value.trim()) return;
-      const text = input.value.trim();
-      input.value = '';
-
-      const area = document.getElementById('scriptEditorTextarea');
-      if (text.includes(':')) {
-        if (area) area.value = text;
-      } else {
-        const l = text.toLowerCase();
-        let line = `Kaito: "${text}" [action: Power Surge]`;
-        if (l.includes('tamil') || l.includes('temple')) line = `Ananya: "${text}" [action: Solar Flare]`;
-        else if (l.includes('japan') || l.includes('samurai') || l.includes('shrine')) line = `Ren: "${text}" [action: Sword Slash]`;
-        else if (l.includes('china') || l.includes('great wall')) line = `Mei: "${text}" [action: Magic Cast]`;
-        else if (l.includes('mars')) line = `Kaito: "${text}" [action: Power Surge]`;
-        if (area) area.value = line;
-      }
-      this.runCurrentScript();
-    },
-
-    handleSaveCharacterModal() {
-      const name = document.getElementById('modalCharName').value;
-      const title = document.getElementById('modalCharTitle').value;
-      const lang = document.getElementById('modalCharLang').value;
-      const pitch = document.getElementById('modalCharPitch').value;
-      const speed = document.getElementById('modalCharSpeed').value;
-      const style = document.getElementById('modalCharStyle').value;
-      const backstory = document.getElementById('modalCharBackstory').value;
-
-      const newChar = Database.addCharacter({
-        name,
-        title,
-        lang,
-        pitch,
-        speed,
-        style,
-        backstory,
-        avatar: 'assets/characters/kaito.jpg'
-      });
-
-      this.closeAllModals();
-      this.renderCharacterLabList();
-      this.renderFolderDatabase();
-      this.showToast(`Character "${newChar.name}" created with assigned ${lang.toUpperCase()} voice!`);
-    },
-
-    renderFolderDatabase() {
-      const folderListEl = document.getElementById('folderTreeList');
-      const assetGridEl = document.getElementById('assetItemsGrid');
-      if (!folderListEl || !assetGridEl) return;
-
-      const chars = Database.getCharacters();
-      const bgs = Database.getBackgrounds();
-      const voices = Database.getVoices();
-      const scenes = Database.getScenes();
-
-      folderListEl.innerHTML = `
-        <li>
-          <button class="folder-item-btn ${this.selectedFolder === 'characters' ? 'active' : ''}" onclick="window.App.selectFolder('characters')">
-            <span class="folder-item-left">📁 Characters</span>
-            <span class="folder-count-pill">${chars.length}</span>
-          </button>
-        </li>
-        <li>
-          <button class="folder-item-btn ${this.selectedFolder === 'backgrounds' ? 'active' : ''}" onclick="window.App.selectFolder('backgrounds')">
-            <span class="folder-item-left">📁 Backgrounds</span>
-            <span class="folder-count-pill">${bgs.length}</span>
-          </button>
-        </li>
-        <li>
-          <button class="folder-item-btn ${this.selectedFolder === 'voices' ? 'active' : ''}" onclick="window.App.selectFolder('voices')">
-            <span class="folder-item-left">📁 Voice Profiles</span>
-            <span class="folder-count-pill">${voices.length}</span>
-          </button>
-        </li>
-        <li>
-          <button class="folder-item-btn ${this.selectedFolder === 'scenes' ? 'active' : ''}" onclick="window.App.selectFolder('scenes')">
-            <span class="folder-item-left">📁 Storyboards & AMVs</span>
-            <span class="folder-count-pill">${scenes.length}</span>
-          </button>
-        </li>
-      `;
-
-      if (this.selectedFolder === 'characters') {
-        assetGridEl.innerHTML = chars.map(c => `
-          <div class="asset-card">
-            <div class="asset-preview-box">
-              <img src="${c.avatar}" class="asset-preview-img" alt="${c.name}" />
-            </div>
-            <div class="asset-card-details">
-              <div class="asset-card-title">${c.name}</div>
-              <div class="asset-card-meta">
-                <span>${c.role || c.title}</span>
-                <span class="voice-lang-badge ${c.lang}">${c.lang.toUpperCase()}</span>
-              </div>
-              <div class="asset-card-actions">
-                <button class="btn-card-action" onclick="window.App.loadCharacterToStudio('${c.name}')">Select for Stage</button>
-                <button class="btn-card-action" onclick="window.App.testCharacterVoice('${c.id}')">🔊 Voice</button>
-              </div>
-            </div>
+      container.innerHTML = items.map(item => `
+        <div class="world-card" onclick="window.App.loadWorldItemToStage('${item.id}')">
+          <div class="world-preview-box">
+            <img src="${item.img}" class="world-preview-img" alt="${item.title}">
           </div>
-        `).join('');
-      } else if (this.selectedFolder === 'backgrounds') {
-        assetGridEl.innerHTML = bgs.map(b => `
-          <div class="asset-card">
-            <div class="asset-preview-box">
-              <img src="${b.url}" class="asset-preview-img" alt="${b.title}" />
-            </div>
-            <div class="asset-card-details">
-              <div class="asset-card-title">${b.title}</div>
-              <div class="asset-card-meta">
-                <span>${b.theme}</span>
-                <span class="badge-tag new">${(b.genre || 'all').toUpperCase()}</span>
-              </div>
-              <div class="asset-card-actions">
-                <button class="btn-card-action" onclick="window.App.loadBackgroundToStudio('${b.id}')">Apply to Stage</button>
-              </div>
-            </div>
+          <div class="world-card-body">
+            <div style="font-size: 15px; font-weight: 700; color: #ffffff;">${item.title}</div>
+            <div style="font-size: 12px; color: var(--accent-cyan);">${item.country}</div>
+            <p style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">${item.desc}</p>
           </div>
-        `).join('');
-      } else if (this.selectedFolder === 'voices') {
-        assetGridEl.innerHTML = voices.map(v => `
-          <div class="voice-profile-card">
-            <div class="voice-card-header">
-              <div class="asset-card-title">${v.name}</div>
-              <span class="voice-lang-badge ${v.lang.slice(0, 2)}">${v.lang}</span>
-            </div>
-            <div class="asset-card-meta">
-              <span>Pitch: ${v.pitch}x | Rate: ${v.rate}x</span>
-              <span>${v.type}</span>
-            </div>
-            <div class="voice-waveform-preview">
-              <div class="waveform-bar" style="height: 12px"></div>
-              <div class="waveform-bar" style="height: 22px"></div>
-              <div class="waveform-bar" style="height: 16px"></div>
-              <div class="waveform-bar" style="height: 8px"></div>
-            </div>
-            <button class="btn-card-action" onclick="window.App.testVoiceProfile('${v.id}')">🔊 Audition Voice</button>
-          </div>
-        `).join('');
-      } else if (this.selectedFolder === 'scenes') {
-        assetGridEl.innerHTML = scenes.map(s => `
-          <div class="asset-card">
-            <div class="asset-card-details" style="padding: 16px;">
-              <div class="asset-card-title">${s.title}</div>
-              <div class="asset-card-meta" style="margin: 8px 0;">
-                <span>Cast: ${s.characters.join(', ')}</span>
-              </div>
-              <div class="asset-card-actions">
-                <button class="btn-card-action" onclick="window.App.loadSceneToStudio('${s.id}')">Load to Director</button>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
+        </div>
+      `).join('');
     },
 
-    selectFolder(f) {
-      this.selectedFolder = f;
-      this.renderFolderDatabase();
-    },
-
-    loadCharacterToStudio(name) {
-      const c = Database.getCharacterByName(name);
-      if (c) {
-        CanvasEngine.setCharacter(c);
+    loadWorldItemToStage(id) {
+      const item = Database.worldItems.find(w => w.id === id);
+      if (item) {
+        CanvasEngine.setBackground(item.img);
         this.switchView('studio');
-        this.showToast(`Character "${c.name}" on Stage!`);
-      }
-    },
-
-    loadBackgroundToStudio(id) {
-      const b = Database.getBackgroundById(id);
-      if (b) {
-        CanvasEngine.setBackground(b.url);
-        if (b.genre) CanvasEngine.setGenre(b.genre);
-        const sel = document.getElementById('cinemaBgSelect');
-        if (sel) sel.value = b.id;
-        this.switchView('studio');
-        this.showToast(`Background: "${b.title}"!`);
-      }
-    },
-
-    testCharacterVoice(id) {
-      const c = Database.getCharacterById(id);
-      if (c) {
-        let msg = `I am ${c.name}. Ready for the scene!`;
-        if (c.lang === 'ta') msg = `வணக்கம்! நான் ${c.name}. நாங்கள் தயார்!`;
-        else if (c.lang === 'ja') msg = `私は${c.name}。準備完了！`;
-        else if (c.lang === 'zh') msg = `我是${c.name}，一切准备就绪！`;
-
-        VoiceEngine.speak({ text: msg, lang: c.lang, pitch: c.pitch, rate: c.speed });
-      }
-    },
-
-    testVoiceProfile(id) {
-      const v = Database.getVoices().find(x => x.id === id);
-      if (v) {
-        VoiceEngine.speak({
-          text: `Auditioning assigned voice profile for ${v.name}.`,
-          lang: v.lang.slice(0, 2),
-          pitch: v.pitch,
-          rate: v.rate
-        });
+        this.showToast(`Loaded "${item.title}" to Stage! 🪐`);
       }
     },
 
@@ -2181,25 +1695,70 @@ Kaito: "Let's finish this together — Maximum Overdrive!" [action: Cyberpunk Da
       if (!el) return;
       const chars = Database.getCharacters();
       el.innerHTML = chars.map(c => `
-        <div class="asset-card" style="border-left: 3px solid var(--accent-pink);">
-          <div class="asset-preview-box" style="aspect-ratio: 1/1;">
-            <img src="${c.avatar}" class="asset-preview-img" alt="${c.name}" />
+        <div class="creation-card" style="border-left: 3px solid var(--accent-pink);">
+          <div class="creation-media-box">
+            <img src="${c.avatar}" class="creation-card-img" alt="${c.name}">
           </div>
-          <div class="asset-card-details">
-            <div class="asset-card-title">${c.name} <span style="font-size: 11px; color: var(--text-muted);">(${c.gender})</span></div>
-            <div style="font-size: 12px; color: var(--accent-cyan);">${c.role || c.title}</div>
-            <div class="asset-card-meta" style="margin-top: 4px;">
+          <div class="creation-card-body">
+            <div class="creation-card-title">${c.name} (${c.role})</div>
+            <div class="creation-card-meta">
               <span>Voice: ${c.lang.toUpperCase()}</span>
-              <span class="power-preview-badge" style="font-size: 9.5px; padding: 2px 6px;">⚡ ${c.superpower ? c.superpower.name : 'Power'}</span>
+              <span class="badge-tag new">⚡ ${c.superpower.name}</span>
             </div>
-            <p style="font-size: 11.5px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4;">${c.backstory}</p>
-            <div class="asset-card-actions" style="margin-top: 10px;">
-              <button class="btn-card-action" onclick="window.App.testCharacterVoice('${c.id}')">🔊 Test Voice</button>
-              <button class="btn-card-action" onclick="window.App.loadCharacterToStudio('${c.name}')">▶ Use in Studio</button>
+            <p style="font-size: 11.5px; color: var(--text-secondary); line-height: 1.4;">${c.backstory}</p>
+            <div style="display: flex; gap: 6px; margin-top: 8px;">
+              <button class="btn-primary-gradient" style="font-size: 11px; padding: 5px 10px;" onclick="window.App.loadShowcaseCharacter('${c.name}', '${c.superpower.name}', 'bg_shrine', '${c.backstory}', '${c.lang}')">▶ Animate on Stage</button>
             </div>
           </div>
         </div>
       `).join('');
+    },
+
+    renderFolderDatabase() {
+      const listEl = document.getElementById('databaseFoldersList');
+      const gridEl = document.getElementById('databaseAssetsGrid');
+      if (!listEl || !gridEl) return;
+
+      listEl.innerHTML = `
+        <li><button class="folder-btn ${this.selectedFolder === 'characters' ? 'active' : ''}" onclick="window.App.selectFolder('characters')">👤 Characters (${Database.characters.length})</button></li>
+        <li><button class="folder-btn ${this.selectedFolder === 'backgrounds' ? 'active' : ''}" onclick="window.App.selectFolder('backgrounds')">🖼️ Backgrounds (${Database.backgrounds.length})</button></li>
+        <li><button class="folder-btn ${this.selectedFolder === 'voices' ? 'active' : ''}" onclick="window.App.selectFolder('voices')">🎙️ Voices (${Database.voices.length})</button></li>
+      `;
+
+      if (this.selectedFolder === 'characters') {
+        gridEl.innerHTML = Database.characters.map(c => `
+          <div class="creation-card">
+            <div class="creation-media-box"><img src="${c.avatar}" class="creation-card-img"></div>
+            <div class="creation-card-body">
+              <div class="creation-card-title">${c.name}</div>
+              <button class="btn-primary-gradient" style="font-size: 11px; padding: 4px 8px; margin-top: 4px;" onclick="window.App.loadShowcaseCharacter('${c.name}', '${c.superpower.name}', 'bg_shrine', '${c.backstory}', '${c.lang}')">Select for Stage</button>
+            </div>
+          </div>
+        `).join('');
+      } else if (this.selectedFolder === 'backgrounds') {
+        gridEl.innerHTML = Database.backgrounds.map(b => `
+          <div class="creation-card">
+            <div class="creation-media-box"><img src="${b.url}" class="creation-card-img"></div>
+            <div class="creation-card-body">
+              <div class="creation-card-title">${b.title}</div>
+              <button class="btn-secondary" style="font-size: 11px; padding: 4px 8px; margin-top: 4px;" onclick="CanvasEngine.setBackground('${b.url}'); window.App.switchView('studio');">Apply Background</button>
+            </div>
+          </div>
+        `).join('');
+      } else if (this.selectedFolder === 'voices') {
+        gridEl.innerHTML = Database.voices.map(v => `
+          <div class="creation-card" style="padding: 14px;">
+            <div class="creation-card-title">🎙️ ${v.name}</div>
+            <div style="font-size: 12px; color: var(--accent-cyan); margin: 6px 0;">Lang: ${v.lang} | Pitch: ${v.pitch}x</div>
+            <button class="btn-secondary" style="font-size: 11px; padding: 4px 8px;" onclick="VoiceEngine.speak({ text: 'Auditioning voice for ${v.name}', lang: '${v.lang}' })">🔊 Test Voice</button>
+          </div>
+        `).join('');
+      }
+    },
+
+    selectFolder(f) {
+      this.selectedFolder = f;
+      this.renderFolderDatabase();
     },
 
     renderBackgroundSelector() {
